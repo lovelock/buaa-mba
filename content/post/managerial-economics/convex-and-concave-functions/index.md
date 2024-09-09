@@ -11,9 +11,18 @@ categories: ["管理经济学"]
 tags: ["高等数学基础", "凸函数", "凹函数"]
 ---
 
+> 注意：关于凸函数和凹函数的定义国内外有争议，且定义完全相反，本文写的内容是国外通行的说法。国内以同济大学为代表的数学教材和本文描述的内容是相反的。
+>
+> 考证1：[CONVEX FUNCTIONS AND THEIR APPLICATIONS A contemporary approach](https://carmamaths.org/resources/jon/Preprints/Books/CUP/CUPold/np-convex.pdf)
+>
+> 考证2：[维基百科：凹函数](https://zh.wikipedia.org/wiki/%E5%87%B9%E5%87%BD%E6%95%B0)
+>
+> 考证3: ![国内教材凹凸函数](/images/math/国内教材凹凸函数.jpeg)
+
 ## 引言
 
 在数学分析和最优化理论中,凸函数和凹函数是两个非常重要的概念。它们具有一些独特的性质,在许多领域都有广泛的应用,包括运筹学、经济学和机器学习等。本文将详细介绍凸函数和凹函数的定义、特性以及一些典型的例子,并探讨它们在实际问题中的应用。
+
 
 ## 定义
 
