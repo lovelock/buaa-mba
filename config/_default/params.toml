@@ -1,25 +1,25 @@
 # Pages placed under these sections will be shown on homepage and archive page.
 mainSections = ["post"]
 # Output page's full content in RSS.
-rssFullContent = true
 favicon = "/favicon.png"
+rssFullContent = true
 
 [footer]
-since = 2020
 customText = ""
+since = 2024
 
 [dateFormat]
-published = "Jan 02, 2006"
 lastUpdated = "Jan 02, 2006 15:04 MST"
+published = "Jan 02, 2006"
 
 [sidebar]
-emoji = "🍥"
-subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+emoji = ""
+subtitle = "MBA学习过程中的一些问题研究记录"
 
 [sidebar.avatar]
 enabled = true
 local = true
-src = "img/avatar.png"
+src = "img/avatar.jpg"
 
 [article]
 headingAnchor = false
@@ -27,8 +27,8 @@ math = true
 readingTime = true
 
 [article.license]
-enabled = true
 default = "Licensed under CC BY-NC-SA 4.0"
+enabled = true
 
 ## Widgets
 [[widgets.homepage]]
@@ -56,8 +56,8 @@ limit = 10
 type = "toc"
 
 [opengraph.twitter]
-site = ""
 card = "summary_large_image"
+site = ""
 
 [defaultImage.opengraph]
 enabled = false
@@ -65,8 +65,8 @@ local = false
 src = ""
 
 [colorScheme]
-toggle = true
 default = "auto"
+toggle = true
 
 [imageProcessing.cover]
 enabled = true
@@ -80,47 +80,47 @@ enabled = true
 provider = "disqus"
 
 [comments.disqusjs]
-shortname = ""
-apiUrl = ""
-apiKey = ""
 admin = ""
 adminLabel = ""
+apiKey = ""
+apiUrl = ""
+shortname = ""
 
 [comments.utterances]
-repo = ""
 issueTerm = "pathname"
 label = ""
+repo = ""
 
 [comments.remark42]
 host = ""
-site = ""
 locale = ""
+site = ""
 
 [comments.vssue]
-platform = ""
-owner = ""
-repo = ""
+autoCreateIssue = false
 clientId = ""
 clientSecret = ""
-autoCreateIssue = false
+owner = ""
+platform = ""
+repo = ""
 
 [comments.waline]
-serverURL = ""
-lang = ""
-visitor = ""
 avatar = ""
 emoji = ["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"]
-requiredMeta = ["name", "email", "url"]
+lang = ""
 placeholder = ""
+requiredMeta = ["name", "email", "url"]
+serverURL = ""
+visitor = ""
 
 [comments.waline.locale]
 admin = "Admin"
 
 [comments.twikoo]
 envId = ""
-region = ""
-path = ""
 lang = ""
+path = ""
+region = ""
 
 [comments.cactus]
 defaultHomeserverUrl = "https://matrix.cactus.chat:8448"
@@ -128,22 +128,22 @@ serverName = "cactus.chat"
 siteName = ""
 
 [comments.giscus]
-repo = ""
-repoID = ""
 category = ""
 categoryID = ""
-mapping = ""
-lightTheme = ""
 darkTheme = ""
-reactionsEnabled = 1
 emitMetadata = 0
+lightTheme = ""
+mapping = ""
+reactionsEnabled = 1
+repo = ""
+repoID = ""
 
 [comments.gitalk]
-owner = ""
 admin = ""
-repo = ""
 clientID = ""
 clientSecret = ""
+owner = ""
+repo = ""
 
 [comments.cusdis]
 host = ""
