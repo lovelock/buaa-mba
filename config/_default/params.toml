@@ -19,7 +19,7 @@ subtitle = "MBA学习过程中的一些问题研究记录"
 [sidebar.avatar]
 enabled = true
 local = true
-src = "img/avatar.jpg"
+src = "img/avatar.jpeg"
 
 [article]
 headingAnchor = false
