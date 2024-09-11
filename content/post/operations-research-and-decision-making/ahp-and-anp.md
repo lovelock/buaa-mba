@@ -1,4 +1,3 @@
-
 ---
 title: "从层次到网络：探索萨蒂教授的决策分析方法"
 description: 
@@ -8,7 +7,7 @@ math:
 license: 
 hidden: false
 comments: true
-categories: ["运筹学"]
+categories: ["运筹与决策"]
 tags: ["AHP", "ANP"]
 ---
 

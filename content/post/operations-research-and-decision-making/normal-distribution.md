@@ -7,7 +7,7 @@ math: true
 license: 
 hidden: false
 comments: true
-categories: ["运筹学"]
+categories: ["运筹与决策"]
 ---
 
 正态分布（也称为高斯分布）是统计学中非常重要的一种概率分布，其特征是呈钟形曲线。正态分布的形状由其均值（μ）和标准差（σ）决定。以下是正态分布和标准差之间的关系：

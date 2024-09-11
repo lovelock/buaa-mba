@@ -7,8 +7,8 @@ math: true
 license: 
 hidden: false
 comments: true
-categories: ["运筹学"]
-tags: ["math"]
+categories: ["LaTeX"]
+tags: ["math", "latex", "mathjax"]
 ---
 
 来自[MarkDown下编写LaTeX数学公式基本语法](https://github.com/robinchu/blog/blob/master/MarkDown%E4%B8%8B%E7%BC%96%E5%86%99LaTeX%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95.md)

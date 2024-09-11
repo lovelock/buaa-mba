@@ -1,4 +1,3 @@
-
 ---
 title: "Excel高效办公必备：10个强大函数及实用示例"
 description: 
@@ -8,8 +7,8 @@ math:
 license: 
 hidden: false
 comments: true
-categories: ["运筹学"]
-tags: ["excel", "sumproduct", "vlookup", "product", "mmult"]
+categories: ["Excel"]
+tags: ["excel", "sumproduct", "vlookup", "product", "mmult", "运筹与决策"]
 ---
 
 在日常工作中，Excel是我们处理数据、进行分析的得力助手。今天，我们将介绍10个强大的Excel函数，这些函数可以大大提高你的工作效率。我们不仅会解释每个函数的用途，还会提供具体的示例，帮助你更好地理解和应用这些函数。

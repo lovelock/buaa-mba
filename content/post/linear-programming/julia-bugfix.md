@@ -7,8 +7,8 @@ math: true
 license: 
 hidden: false
 comments: true
-categories: ["运筹学"]
-tags: ["线性规划", "Julia"]
+categories: ["线性规划"]
+tags: ["线性规划", "Julia", "运筹与决策"]
 ---
 
 在使用Julia画线性规划的可行域时遇到了一个奇怪的问题，这里记录一下问题的原因以及解决方案，不得不说大模型真是太厉害了（当然好像也没那么厉害）。

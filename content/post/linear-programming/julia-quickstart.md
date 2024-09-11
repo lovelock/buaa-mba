@@ -1,4 +1,3 @@
-
 ---
 title: "Julia快速上手：为了实现线性规划"
 description: 
@@ -8,8 +7,8 @@ math:
 license: 
 hidden: false
 comments: true
-categories: ["运筹学"]
-tags: ["Julia", "Windows", "winget", "homebrew"]
+categories: ["线性规划"]
+tags: ["Julia", "Windows", "winget", "homebrew", "运筹与决策"]
 ---
 
 众所周知，Julia就是为科学计算而生的语言，经过我的检验，它确实是很适合做科学计算，在做线性规划时其语句写出来非常接近自然语言，给人的感觉是用自然语言的方式把问题描述出来，然后就神奇地被Julia给解决了。这篇文章主要介绍Windows下如何安装Julia及做线性规划需要的几个库。

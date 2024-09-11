@@ -7,7 +7,7 @@ math: true
 license: 
 hidden: false
 comments: true
-categories: ["运筹学"]
+categories: ["运筹与决策"]
 tags: ["灵敏度分析", "百分比规则"]
 ---
 

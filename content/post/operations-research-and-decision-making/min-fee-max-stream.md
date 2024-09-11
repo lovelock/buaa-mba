@@ -7,7 +7,7 @@ math:
 license: 
 hidden: false
 comments: true
-categories: ["运筹学"]
+categories: ["运筹与决策"]
 tags: ["最小费用最大流", "项目管理"]
 ---
 

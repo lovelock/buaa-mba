@@ -7,8 +7,8 @@ math: true
 license: 
 hidden: false
 comments: true
-categories: ["运筹学"]
-tags: ["excel", "vlookup"]
+categories: ["Excel"]
+tags: ["excel", "vlookup", "运筹与决策"]
 ---
 
 在Excel的众多函数中，VLOOKUP无疑是最受欢迎和最有用的函数之一。虽然它的基本功能看似简单——在表格中查找并返回特定的值，但其实际应用范围却远远超出了这个简单的描述。今天，让我们深入探讨VLOOKUP的强大之处，并通过三个具体的例子来展示它如何在实际业务中发挥关键作用。
