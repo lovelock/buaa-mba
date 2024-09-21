@@ -21,26 +21,26 @@ def main():
     print("\033[0;32mDeploying updates to GitHub...\033[0m")
 
     # Build the project
-    run_command("hugo")
+#    run_command("hugo")
 
     # Go to Public folder
-    os.chdir("public")
-    print("current dir: ", os.getcwd())
+#    os.chdir("public")
+#    print("current dir: ", os.getcwd())
 
     # Add changes to git
-    run_command("git add .")
+#    run_command("git add .")
 
     # Commit changes
-    msg = f"rebuilding site {datetime.datetime.now()}"
-    if len(sys.argv) > 1:
-        msg = " ".join(sys.argv[1:])
-    run_command(f'git commit -m "{msg}"')
+#    msg = f"rebuilding site {datetime.datetime.now()}"
+#    if len(sys.argv) > 1:
+#        msg = " ".join(sys.argv[1:])
+#    run_command(f'git commit -m "{msg}"')
 
     # Push source and build repos
-    run_command("git push origin master")
+#    run_command("git push origin master")
 
     # Go back to root directory
-    os.chdir("..")
+#    os.chdir("..")
 
     # Add content changes to git
     run_command("git add .")
