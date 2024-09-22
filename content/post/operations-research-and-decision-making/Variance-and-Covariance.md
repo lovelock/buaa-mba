@@ -49,7 +49,9 @@ $$\text{Total Variance} = \sum_{i=1}^k \text{Var}(X_i)$$
 
 然而,在现实世界中,变量往往不是完全独立的。如果变量之间存在相关性,我们需要在计算总体方差时考虑协方差：
 
-$$\text{Total Variance} = \sum_{i=1}^k \text{Var}(X_i) + 2\sum_{i<j} \text{Cov}(X_i, X_j)$$
+$$
+\text{Total Variance} = \sum_{i=1}^k \text{Var}(X_i) + 2 \sum_{i < j} \text{Cov}(X_i, X_j)
+$$
 
 这个公式包含了所有变量的方差之和,以及所有变量对之间的协方差之和。
 
