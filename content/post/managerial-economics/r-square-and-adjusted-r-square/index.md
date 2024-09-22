@@ -1,5 +1,5 @@
 ---
-title: "多元线性回归中的 \( R^2 \) 和调整后的 \( R^2 \) 评判关系"
+title: "多元线性回归中的 R-square 和Ajusted R-square 评判关系"
 description: 
 date: 2024-09-22T20:34:51+08:00
 image: 
