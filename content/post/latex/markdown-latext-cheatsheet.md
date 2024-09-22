@@ -1,5 +1,5 @@
 ---
-title: "Markdown $LaTeX$ Cheatsheet"
+title: "Markdown LaTeX Cheatsheet"
 description: 
 date: 2024-08-22T14:09:04+08:00
 image: 
@@ -11,13 +11,13 @@ categories: ["LaTeX"]
 tags: ["math", "latex", "mathjax"]
 ---
 
-来自[MarkDown下编写LaTeX数学公式基本语法](https://github.com/robinchu/blog/blob/master/MarkDown%E4%B8%8B%E7%BC%96%E5%86%99LaTeX%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95.md)
+来自[MarkDown下编写$\LaTeX$数学公式基本语法](https://github.com/robinchu/blog/blob/master/MarkDown%E4%B8%8B%E7%BC%96%E5%86%99LaTeX%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95.md)
 
 这些写法只有一个`\hline`无法正确渲染，别的都是对的。
 
 ### 前言
 
-$LaTeX$是一套非常优秀的排版系统， 通过它排版的图书和论文会变得非常漂亮和易读。 而$LaTeX$在编写数学公式的易用性和通用性，使我对它产生了浓厚的兴趣。 这篇文章主要介绍了LaTeX公式编辑在MarkDown下的使用语法和方法。
+$\LaTeX$是一套非常优秀的排版系统， 通过它排版的图书和论文会变得非常漂亮和易读。 而$\LaTeX$在编写数学公式的易用性和通用性，使我对它产生了浓厚的兴趣。 这篇文章主要介绍了$\LaTeX$公式编辑在MarkDown下的使用语法和方法。
 以下的例子是在Sublime Text3上编写， 并测试的结果， 当然你也可以在任何引入$MathJax$的MarkDown编辑器上测试。
 
 ### 1.显示方法
