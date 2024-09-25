@@ -5,7 +5,7 @@ favicon = "/favicon.png"
 rssFullContent = true
 
 [footer]
-customText = ""
+customText = "未经允许，禁止转载"
 since = 2024
 
 [dateFormat]
@@ -14,7 +14,7 @@ published = "Jan 02, 2006"
 
 [sidebar]
 emoji = ""
-subtitle = "MBA学习过程中的一些问题研究记录"
+subtitle = "欢迎到微博下留言"
 
 [sidebar.avatar]
 enabled = true
@@ -28,7 +28,7 @@ readingTime = true
 
 [article.license]
 default = "Licensed under CC BY-NC-SA 4.0"
-enabled = true
+enabled = false
 
 ## Widgets
 [[widgets.homepage]]
