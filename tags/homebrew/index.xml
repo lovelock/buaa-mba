@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Homebrew on MBA学习记录</title><link>https://buaa-mba.pages.dev/tags/homebrew/</link><description>Recent content in Homebrew on MBA学习记录</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 11 Aug 2024 22:34:21 +0800</lastBuildDate><atom:link href="https://buaa-mba.pages.dev/tags/homebrew/index.xml" rel="self" type="application/rss+xml"/><item><title>Julia快速上手：为了实现线性规划</title><link>https://buaa-mba.pages.dev/p/julia%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E4%B8%BA%E4%BA%86%E5%AE%9E%E7%8E%B0%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/</link><pubDate>Sun, 11 Aug 2024 22:34:21 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/julia%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E4%B8%BA%E4%BA%86%E5%AE%9E%E7%8E%B0%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/</guid><description>&lt;p>众所周知，Julia就是为科学计算而生的语言，经过我的检验，它确实是很适合做科学计算，在做线性规划时其语句写出来非常接近自然语言，给人的感觉是用自然语言的方式把问题描述出来，然后就神奇地被Julia给解决了。这篇文章主要介绍Windows下如何安装Julia及做线性规划需要的几个库。&lt;/p>
+&lt;h2 id="安装julia">安装Julia
+&lt;/h2>&lt;p>推荐使用Winget进行安装，方便后期的管理。Winget是类似于macOS下的Homebrew的包管理工具。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">winget install julia -s msstore
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>这时候你会发现从CMD/PowerShell是没办法执行&lt;code>julia&lt;/code>命令的，这又是因为万恶的环境变量，而这也体现出winget相比Homebrew的缺陷：没有一个统一不变的路径，也就是说软件包实际是安装在每次对应的版本号的目录下的，但它会通过符号链接给出一个不带版本号的路径，所有通过Homebrew安装的formula的可执行文件都放在同一个路径下，只要把这个路径放在&lt;code>PATH&lt;/code>中，通过Homebrew新安装的软件包自然就可以直接执行了。而Windows上的winget并不会这样，所以我们需要把Julia的安装路径手动添加到环境变量&lt;code>Path&lt;/code>中，在我的环境下是这样（我居然还安装了一个PowerToys来简化这个过程，Windows可真是太好用啦！！！）。这样会有什么问题是显而易见的，等下次升级了Julia，这个路径要么就失效了，要么如果新版本不会覆盖旧版本，那么会发现安装了新版本，使用的还是老版本。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">C:\Users\frost\AppData\Local\Programs\Julia-1.10.4\bin
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="安装所需的包">安装所需的包
+&lt;/h2>&lt;ol>
+&lt;li>执行&lt;code>julia&lt;/code>进入JuliaREPL&lt;/li>
+&lt;li>按&lt;code>]&lt;/code>进行pkg管理模式（这一步很重要）&lt;/li>
+&lt;li>执行&lt;code>add JuMP GLPK Plots&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/julia/julia-installation.png"
+loading="lazy"
+alt="Julia交互界面"
+>
+有可能会有网络问题，请自行解决，这个需要安装非常多的依赖，很可能是由于安装了&lt;code>Plots&lt;/code>包的原因，毕竟需要画图，要的依赖就很多了。&lt;/p>
+&lt;h2 id="编辑器支持">编辑器支持
+&lt;/h2>&lt;p>这一步就很简单了，最简单的做法就是在VSCode里安装Julia扩展。&lt;/p>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/julia/julia-example-01.png"
+loading="lazy"
+alt="Julia效果示例"
+>&lt;/p>
+&lt;h2 id="总结">总结
+&lt;/h2>&lt;p>本文介绍了在Windows下如何安装Julia以及安装需要的科学计算和画图相关的包，接下来就可以回到介绍线性规划的文章继续阅读了。&lt;/p></description></item></channel></rss>

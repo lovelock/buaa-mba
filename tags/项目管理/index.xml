@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>项目管理 on MBA学习记录</title><link>https://buaa-mba.pages.dev/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/</link><description>Recent content in 项目管理 on MBA学习记录</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Tue, 30 Jul 2024 17:03:40 +0800</lastBuildDate><atom:link href="https://buaa-mba.pages.dev/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/index.xml" rel="self" type="application/rss+xml"/><item><title>最小费用最大流：优化项目资源配置的利器</title><link>https://buaa-mba.pages.dev/p/%E6%9C%80%E5%B0%8F%E8%B4%B9%E7%94%A8%E6%9C%80%E5%A4%A7%E6%B5%81%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E8%B5%84%E6%BA%90%E9%85%8D%E7%BD%AE%E7%9A%84%E5%88%A9%E5%99%A8/</link><pubDate>Tue, 30 Jul 2024 17:03:40 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E6%9C%80%E5%B0%8F%E8%B4%B9%E7%94%A8%E6%9C%80%E5%A4%A7%E6%B5%81%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E8%B5%84%E6%BA%90%E9%85%8D%E7%BD%AE%E7%9A%84%E5%88%A9%E5%99%A8/</guid><description>&lt;h2 id="引言">引言
+&lt;/h2>&lt;p>在当今复杂多变的商业环境中,有效管理和分配资源是项目成功的关键。本文将深入探讨最小费用最大流这一强大的优化工具,介绍其基本概念、实际应用场景,并通过一个具体的软件开发项目案例,展示如何使用Excel来解决这类问题。&lt;/p>
+&lt;h2 id="什么是最小费用最大流">什么是最小费用最大流？
+&lt;/h2>&lt;p>最小费用最大流是一个网络优化问题,旨在在给定网络中找到既能满足最大流量需求又能使总体成本最小化的流量分配方案。在这个模型中,&amp;ldquo;流&amp;quot;可以代表多种资源,如信息、物资或人力,而&amp;quot;费用&amp;quot;则可能是金钱成本、时间或其他量化指标。&lt;/p>
+&lt;h2 id="实际应用场景">实际应用场景
+&lt;/h2>&lt;ul>
+&lt;li>供应链管理：优化从多个供应商到多个零售点的产品配送。&lt;/li>
+&lt;li>电信网络：设计既能满足数据传输需求又能最小化基础设施成本的网络结构。&lt;/li>
+&lt;li>人力资源分配：在多个项目或部门间合理分配员工,以最大化生产力并控制成本。&lt;/li>
+&lt;li>交通规划：设计城市交通网络,平衡交通流量和基础设施投资。&lt;/li>
+&lt;li>能源配送：优化电力或燃气从发电站到用户的配送路径。&lt;/li>
+&lt;/ul>
+&lt;h2 id="项目管理中的应用步骤">项目管理中的应用步骤
+&lt;/h2>&lt;ol>
+&lt;li>问题定义和分析&lt;/li>
+&lt;li>数据收集和建模&lt;/li>
+&lt;li>方案设计和优化&lt;/li>
+&lt;li>实施和监控&lt;/li>
+&lt;li>风险管理&lt;/li>
+&lt;li>沟通和协调&lt;/li>
+&lt;li>持续改进&lt;/li>
+&lt;/ol>
+&lt;h2 id="实际案例软件公司的多项目资源分配">实际案例：软件公司的多项目资源分配
+&lt;/h2>&lt;h3 id="背景">背景
+&lt;/h3>&lt;p>软件公司XYZ正在同时进行三个项目：A、B和C。公司有限的开发人员需要在这三个项目之间进行分配。目标是在规定时间内完成所有项目,同时最小化总体成本。&lt;/p>
+&lt;h3 id="资源情况">资源情况
+&lt;/h3>&lt;ul>
+&lt;li>5名高级开发人员（每人每天成本1000元）&lt;/li>
+&lt;li>8名中级开发人员（每人每天成本600元）&lt;/li>
+&lt;li>10名初级开发人员（每人每天成本400元）&lt;/li>
+&lt;/ul>
+&lt;h3 id="项目需求">项目需求
+&lt;/h3>&lt;ol>
+&lt;li>项目A：需要100人天,至少需要2名高级开发人员&lt;/li>
+&lt;li>项目B：需要150人天,至少需要1名高级开发人员和3名中级开发人员&lt;/li>
+&lt;li>项目C：需要200人天,对开发人员级别没有特殊要求&lt;/li>
+&lt;li>所有项目需要在30个工作日内完成。&lt;/li>
+&lt;/ol>
+&lt;h3 id="使用excel解决问题">使用Excel解决问题
+&lt;/h3>&lt;h4 id="步骤1设置初始数据表格">步骤1：设置初始数据表格
+&lt;/h4>&lt;p>创建一个表格,列出所有开发人员类型、每日成本和可用数量。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">开发人员类型&lt;/th>
+&lt;th style="text-align: left">每日成本&lt;/th>
+&lt;th style="text-align: left">可用数量&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">高级&lt;/td>
+&lt;td style="text-align: left">1000&lt;/td>
+&lt;td style="text-align: left">5&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">中级&lt;/td>
+&lt;td style="text-align: left">600&lt;/td>
+&lt;td style="text-align: left">8&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">初级&lt;/td>
+&lt;td style="text-align: left">400&lt;/td>
+&lt;td style="text-align: left">10&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="步骤2创建项目需求表格">步骤2：创建项目需求表格
+&lt;/h4>&lt;p>列出每个项目的总人天需求和特殊要求。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">项目&lt;/th>
+&lt;th style="text-align: left">总人天&lt;/th>
+&lt;th style="text-align: left">特殊要求&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">A&lt;/td>
+&lt;td style="text-align: left">100&lt;/td>
+&lt;td style="text-align: left">至少2名高级&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">B&lt;/td>
+&lt;td style="text-align: left">150&lt;/td>
+&lt;td style="text-align: left">至少1名高级,3名中级&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">C&lt;/td>
+&lt;td style="text-align: left">200&lt;/td>
+&lt;td style="text-align: left">无&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="步骤3创建分配矩阵">步骤3：创建分配矩阵
+&lt;/h4>&lt;p>创建一个矩阵,行为开发人员类型,列为项目。&lt;/p>
+&lt;h4 id="步骤4设置约束条件">步骤4：设置约束条件
+&lt;/h4>&lt;p>使用Excel公式设置各种约束,如总人天、特定技能需求等。&lt;/p>
+&lt;h4 id="步骤5设置目标函数">步骤5：设置目标函数
+&lt;/h4>&lt;p>创建一个单元格计算总成本。&lt;/p>
+&lt;h4 id="步骤6使用excel求解器">步骤6：使用Excel求解器
+&lt;/h4>&lt;p>设置目标函数、变量单元格和约束条件。&lt;/p>
+&lt;h4 id="步骤7运行求解器并分析结果">步骤7：运行求解器并分析结果
+&lt;/h4>&lt;h3 id="最终解决方案">最终解决方案
+&lt;/h3>&lt;p>最优分配结果：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">开发人员类型&lt;/th>
+&lt;th style="text-align: left">项目A&lt;/th>
+&lt;th style="text-align: left">项目B&lt;/th>
+&lt;th style="text-align: left">项目C&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">高级&lt;/td>
+&lt;td style="text-align: left">60&lt;/td>
+&lt;td style="text-align: left">60&lt;/td>
+&lt;td style="text-align: left">30&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">中级&lt;/td>
+&lt;td style="text-align: left">40&lt;/td>
+&lt;td style="text-align: left">90&lt;/td>
+&lt;td style="text-align: left">90&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">初级&lt;/td>
+&lt;td style="text-align: left">0&lt;/td>
+&lt;td style="text-align: left">0&lt;/td>
+&lt;td style="text-align: left">80&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>每个项目的人员分配：&lt;/p>
+&lt;ul>
+&lt;li>项目A：2名高级(30天),2名中级(20天)&lt;/li>
+&lt;li>项目B：2名高级(30天),3名中级(30天)&lt;/li>
+&lt;li>项目C：1名高级(30天),3名中级(30天),8名初级(10天)&lt;/li>
+&lt;/ul>
+&lt;p>总成本计算：
+(60 + 60 + 30) * 1000 + (40 + 90 + 90) * 600 + 80 * 400 = 302,000元&lt;/p>
+&lt;p>约束条件验证：&lt;/p>
+&lt;ul>
+&lt;li>所有项目完成总人天：150 + 150 + 200 = 500 &amp;gt; 450(需求)&lt;/li>
+&lt;li>项目A至少2名高级：满足(2名)&lt;/li>
+&lt;li>项目B至少1名高级,3名中级：满足(2名高级,3名中级)&lt;/li>
+&lt;li>总工期不超过30天：满足&lt;/li>
+&lt;li>所有开发人员数量在可用范围内&lt;/li>
+&lt;/ul>
+&lt;h2 id="结论">结论
+&lt;/h2>&lt;p>通过应用最小费用最大流的原理并利用Excel求解器,我们成功地为XYZ软件公司制定了一个最优的资源分配方案。这个方案不仅满足了所有项目的需求和约束条件,还将总成本控制在了最低水平。&lt;/p>
+&lt;p>这个例子展示了最小费用最大流理论在实际项目管理中的强大应用价值。通过合理分配资源,企业可以在保证项目质量的同时,显著提高资源利用效率,降低运营成本。&lt;/p>
+&lt;p>对于项目经理和资源规划人员来说,掌握这种优化技术可以极大地提升决策质量。而Excel等常用工具的支持,更使得这种复杂的优化过程变得触手可及。&lt;/p>
+&lt;p>在未来的项目管理实践中,我们建议:&lt;/p>
+&lt;ol>
+&lt;li>充分利用数据和分析工具进行资源规划&lt;/li>
+&lt;li>定期review和调整资源分配方案&lt;/li>
+&lt;li>培养团队的跨项目协作能力&lt;/li>
+&lt;li>建立灵活的资源池,以应对项目需求的变化&lt;/li>
+&lt;/ol>
+&lt;p>通过不断实践和优化,相信每个组织都能在资源管理这个永恒的主题上取得显著进步,为企业创造更大的价值。&lt;/p></description></item><item><title>握项目管理的关键：深入理解关键路径法和浮动时间计算</title><link>https://buaa-mba.pages.dev/p/%E6%8F%A1%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%9A%84%E5%85%B3%E9%94%AE%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84%E6%B3%95%E5%92%8C%E6%B5%AE%E5%8A%A8%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97/</link><pubDate>Tue, 30 Jul 2024 14:16:16 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E6%8F%A1%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%9A%84%E5%85%B3%E9%94%AE%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84%E6%B3%95%E5%92%8C%E6%B5%AE%E5%8A%A8%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97/</guid><description>&lt;p>在项目管理中，准确估算时间和资源是确保项目成功的关键因素。关键路径法（Critical Path Method, CPM）和浮动时间计算是两个强大的工具，能帮助项目经理有效规划和控制项目进度。本文将深入探讨这两个概念，解释它们的计算方法及其在项目管理中的重要性。&lt;/p>
+&lt;h2 id="关键路径法eseflslf的计算">关键路径法：ES、EF、LS、LF的计算
+&lt;/h2>&lt;p>关键路径法是一种网络计划技术，用于确定项目中最长的活动序列，即关键路径。它涉及四个关键时间点的计算：最早开始时间（ES）、最早完成时间（EF）、最晚开始时间（LS）和最晚完成时间（LF）。&lt;/p>
+&lt;h3 id="前推法计算es和ef">前推法（计算ES和EF）
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>ES (最早开始时间):&lt;/p>
+&lt;ul>
+&lt;li>对于起始活动：ES = 项目开始时间（通常为0）&lt;/li>
+&lt;li>对于其他活动：ES = 所有紧前活动中最大的EF值&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>EF (最早完成时间):
+EF = ES + 活动持续时间&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="后推法计算ls和lf">后推法（计算LS和LF）
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>LF (最晚完成时间):&lt;/p>
+&lt;ul>
+&lt;li>对于终止活动：LF = 项目的计划完成时间&lt;/li>
+&lt;li>对于其他活动：LF = 所有紧后活动中最小的LS值&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>LS (最晚开始时间):
+LS = LF - 活动持续时间&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="浮动时间的计算及其重要性">浮动时间的计算及其重要性
+&lt;/h2>&lt;p>浮动时间表示一个活动可以推迟的时间而不影响整个项目的完成时间。理解和管理浮动时间对于优化项目进度和资源分配至关重要。&lt;/p>
+&lt;h3 id="总浮动时间-total-float-tf">总浮动时间 (Total Float, TF)
+&lt;/h3>&lt;p>总浮动时间是一个活动可以推迟的最大时间，而不影响整个项目的完成日期。&lt;/p>
+&lt;p>计算方法：
+TF = LS - ES 或 TF = LF - EF&lt;/p>
+&lt;h3 id="自由浮动时间-free-float-ff">自由浮动时间 (Free Float, FF)
+&lt;/h3>&lt;p>自由浮动时间是一个活动可以推迟的时间，而不影响任何后续活动的最早开始时间。&lt;/p>
+&lt;p>计算方法：
+FF = 紧后活动的最早开始时间 - 当前活动的最早完成时间
+或
+FF = MIN(紧后活动的ES) - EF&lt;/p>
+&lt;h2 id="应用这些概念的步骤">应用这些概念的步骤
+&lt;/h2>&lt;ol>
+&lt;li>从项目开始到结束，使用前推法计算每个活动的ES和EF。&lt;/li>
+&lt;li>从项目结束到开始，使用后推法计算每个活动的LF和LS。&lt;/li>
+&lt;li>计算总浮动时间和自由浮动时间。&lt;/li>
+&lt;li>识别关键路径：总浮动时间为0的活动序列即为关键路径。&lt;/li>
+&lt;/ol>
+&lt;h2 id="这些概念的重要性">这些概念的重要性
+&lt;/h2>&lt;ol>
+&lt;li>识别关键活动和非关键活动&lt;/li>
+&lt;li>优化资源分配&lt;/li>
+&lt;li>评估项目风险&lt;/li>
+&lt;li>制定应急计划&lt;/li>
+&lt;/ol>
+&lt;p>通过掌握关键路径法和浮动时间计算，项目经理可以：&lt;/p>
+&lt;ul>
+&lt;li>准确预测项目完成时间&lt;/li>
+&lt;li>识别需要特别关注的关键活动&lt;/li>
+&lt;li>合理分配资源，优化项目进度&lt;/li>
+&lt;li>及时发现潜在的进度问题并采取相应措施&lt;/li>
+&lt;/ul>
+&lt;p>虽然现代项目管理软件可以自动执行这些计算，但深入理解这些概念的原理对于做出明智的项目决策至关重要。通过熟练运用这些工具，项目经理可以更好地控制项目进度，提高项目成功的可能性。&lt;/p></description></item></channel></rss>

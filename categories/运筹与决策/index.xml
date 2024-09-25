@@ -1,0 +1,829 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>运筹与决策 on MBA学习记录</title><link>https://buaa-mba.pages.dev/categories/%E8%BF%90%E7%AD%B9%E4%B8%8E%E5%86%B3%E7%AD%96/</link><description>Recent content in 运筹与决策 on MBA学习记录</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 15 Aug 2024 21:41:14 +0800</lastBuildDate><atom:link href="https://buaa-mba.pages.dev/categories/%E8%BF%90%E7%AD%B9%E4%B8%8E%E5%86%B3%E7%AD%96/index.xml" rel="self" type="application/rss+xml"/><item><title>理解方差、协方差和总体方差：数据分析的基石</title><link>https://buaa-mba.pages.dev/p/%E7%90%86%E8%A7%A3%E6%96%B9%E5%B7%AE%E5%8D%8F%E6%96%B9%E5%B7%AE%E5%92%8C%E6%80%BB%E4%BD%93%E6%96%B9%E5%B7%AE%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%9A%84%E5%9F%BA%E7%9F%B3/</link><pubDate>Thu, 15 Aug 2024 21:41:14 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E7%90%86%E8%A7%A3%E6%96%B9%E5%B7%AE%E5%8D%8F%E6%96%B9%E5%B7%AE%E5%92%8C%E6%80%BB%E4%BD%93%E6%96%B9%E5%B7%AE%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%9A%84%E5%9F%BA%E7%9F%B3/</guid><description>&lt;p>在数据分析和统计学中,方差、协方差和总体方差是非常重要的概念。这些指标帮助我们理解数据的分布和变量之间的关系。本文将深入探讨这些概念,并提供清晰的数学公式来解释它们的计算方法。&lt;/p>
+&lt;h2 id="1-方差-variance">1. 方差 (Variance)
+&lt;/h2>&lt;p>方差是衡量一组数据离散程度的重要指标。它告诉我们数据点与其平均值的偏离程度。&lt;/p>
+&lt;p>对于一组数据 $X = {x_1, x_2, &amp;hellip;, x_n}$，其方差的计算公式为：&lt;/p>
+$$\text{Var}(X) = \frac{1}{n}\sum_{i=1}^n (x_i - \mu)^2$$&lt;p>其中 $\mu$ 是数据的平均值，$n$ 是数据的个数。&lt;/p>
+&lt;p>方差越大,表示数据点越分散；方差越小,表示数据点越集中。&lt;/p>
+&lt;h2 id="2-协方差-covariance">2. 协方差 (Covariance)
+&lt;/h2>&lt;p>协方差用于衡量两个变量之间的线性关系。正的协方差表示两个变量tend to move together，而负的协方差表示它们tend to move in opposite directions。&lt;/p>
+&lt;p>对于两组数据 $X$ 和 $Y$，其协方差的计算公式为：&lt;/p>
+$$\text{Cov}(X,Y) = \frac{1}{n}\sum_{i=1}^n (x_i - \mu_x)(y_i - \mu_y)$$&lt;p>其中 $\mu_x$ 和 $\mu_y$ 分别是 $X$ 和 $Y$ 的平均值。&lt;/p>
+&lt;h2 id="3-总体方差-total-variance">3. 总体方差 (Total Variance)
+&lt;/h2>&lt;p>当我们处理多个变量时,总体方差变得尤为重要。它帮助我们理解整个系统的变异程度。&lt;/p>
+&lt;h3 id="31-独立变量的总体方差">3.1 独立变量的总体方差
+&lt;/h3>&lt;p>对于 $k$ 个相互独立的变量 $X_1, X_2, &amp;hellip;, X_k$，总体方差简单地等于各个变量方差的和：&lt;/p>
+$$\text{Total Variance} = \sum_{i=1}^k \text{Var}(X_i)$$&lt;h3 id="32-考虑协方差的总体方差">3.2 考虑协方差的总体方差
+&lt;/h3>&lt;p>然而,在现实世界中,变量往往不是完全独立的。如果变量之间存在相关性,我们需要在计算总体方差时考虑协方差：&lt;/p>
+$$
+\text{Total Variance} = \sum_{i=1}^k \text{Var}(X_i) + 2 \sum_{i &lt; j} \text{Cov}(X_i, X_j)
+$$&lt;p>这个公式包含了所有变量的方差之和,以及所有变量对之间的协方差之和。&lt;/p>
+&lt;h2 id="4-方差-协方差矩阵">4. 方差-协方差矩阵
+&lt;/h2>&lt;p>对于多个变量,我们通常使用方差-协方差矩阵来概括它们之间的关系。这个矩阵的对角线元素是各个变量的方差,而非对角线元素是变量之间的协方差。&lt;/p>
+$$\Sigma = \begin{bmatrix}
+\text{Var}(X_1) &amp; \text{Cov}(X_1,X_2) &amp; \cdots &amp; \text{Cov}(X_1,X_k) \\
+\text{Cov}(X_2,X_1) &amp; \text{Var}(X_2) &amp; \cdots &amp; \text{Cov}(X_2,X_k) \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\text{Cov}(X_k,X_1) &amp; \text{Cov}(X_k,X_2) &amp; \cdots &amp; \text{Var}(X_k)
+\end{bmatrix}$$&lt;p>总体方差可以通过对这个矩阵的所有元素求和得到：&lt;/p>
+$$\text{Total Variance} = \sum_{i=1}^k \sum_{j=1}^k \Sigma_{ij}$$&lt;h2 id="结论">结论
+&lt;/h2>&lt;p>理解方差、协方差和总体方差对于数据分析至关重要。这些概念不仅帮助我们描述单个变量的分布,还能揭示变量之间的关系。在进行多变量分析、主成分分析或构建预测模型时,这些概念都是不可或缺的工具。&lt;/p>
+&lt;p>通过掌握这些基本概念及其计算方法,你将能更深入地理解数据,做出更准确的分析和预测。无论你是数据科学家、统计学家还是对数据分析感兴趣的学习者,这些知识都将为你的数据之旅提供坚实的基础。&lt;/p></description></item><item><title>线性规划中的百分比规则：多系数变化下的灵敏度分析</title><link>https://buaa-mba.pages.dev/p/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E4%B8%AD%E7%9A%84%E7%99%BE%E5%88%86%E6%AF%94%E8%A7%84%E5%88%99%E5%A4%9A%E7%B3%BB%E6%95%B0%E5%8F%98%E5%8C%96%E4%B8%8B%E7%9A%84%E7%81%B5%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90/</link><pubDate>Tue, 13 Aug 2024 20:34:22 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E4%B8%AD%E7%9A%84%E7%99%BE%E5%88%86%E6%AF%94%E8%A7%84%E5%88%99%E5%A4%9A%E7%B3%BB%E6%95%B0%E5%8F%98%E5%8C%96%E4%B8%8B%E7%9A%84%E7%81%B5%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90/</guid><description>&lt;h2 id="引言">引言
+&lt;/h2>&lt;p>在线性规划问题中，灵敏度分析是一个重要的步骤，它帮助我们理解模型参数变化对最优解的影响。当我们面对多个目标函数系数同时变化的情况时，百分比规则（也称为100%规则）提供了一个简单而有效的方法来评估这些变化是否会影响最优解。&lt;/p>
+&lt;h2 id="什么是灵敏度分析">什么是灵敏度分析
+&lt;/h2>&lt;p>灵敏度分析是研究模型输入参数的变化如何影响模型输出结果的过程。这样说还是比较抽象，我们来举个例子。（张老师对不起了）&lt;/p>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/%e7%81%b5%e6%95%8f%e5%ba%a6%e5%88%86%e6%9e%90/001.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>根据前面介绍过的线性规划的知识，我们得到了如果要让利润最大化，生产门和窗的时间分别是2和6，这是总利润是$3600。&lt;/p>
+&lt;p>那么问题来了，当单品（门或窗）的利润发生变化时，在什么范围内变化才能不影响上面的生产决策呢？这里岔开一个话题，为什么需要不影响生产决策？因为在实际的生产中调整流水线什么的是有成本的，既然希望只通过调整价格来让利润不变，当然是希望在不增加成本的基础上进行了。&lt;/p>
+&lt;p>另外一个问题是，同样在不调整生产计划的条件下，能不能调整约束条件，也就是每种Hours Available，来让总利润不变呢？这个问题的来源是，有可能现在产能是过剩的，在不影响利润的前提下，看是否可以把产能出租出去来获得更多利润。&lt;/p>
+&lt;p>要解决这两个问题，就需要进行灵敏度分析了。而这对应的是灵敏度分析的两个方面&lt;/p>
+&lt;ol>
+&lt;li>目标函数系数的灵敏度分析&lt;/li>
+&lt;li>资源约束的灵敏度分析&lt;/li>
+&lt;/ol>
+&lt;h2 id="百分比规则的核心思想">百分比规则的核心思想
+&lt;/h2>&lt;h3 id="基本原理">基本原理
+&lt;/h3>&lt;p>百分比规则指出：&lt;/p>
+&lt;ol>
+&lt;li>当多个目标函数系数同时发生变化时，只要这些变化的相对百分比之和不超过100%，最优解就不会改变。&lt;/li>
+&lt;li>当多个右端项的值同时发生变化时，只要这些变化的相对百分比不超过100%，影子价格就不会改变。&lt;/li>
+&lt;/ol>
+&lt;h3 id="计算方法">计算方法
+&lt;/h3>&lt;ul>
+&lt;li>对于系数增加：计算 &amp;ldquo;实际增加量 / 允许的增加量&amp;rdquo; 的比率&lt;/li>
+&lt;li>对于系数减少：计算 &amp;ldquo;实际减少量 / 允许的减少量&amp;rdquo; 的比率&lt;/li>
+&lt;li>对于右端值增加：计算 &amp;ldquo;实际增加量 / 允许的增加量&amp;rdquo; 的比率&lt;/li>
+&lt;li>对于右端值减少：计算 &amp;ldquo;实际减少量 / 允许的减少量&amp;rdquo; 的比率&lt;/li>
+&lt;/ul>
+&lt;h3 id="判断标准">判断标准
+&lt;/h3>&lt;p>将所有计算出的比率相加。如果总和不超过100%（或1），则最优解/影子价格保持不变。&lt;/p>
+&lt;h2 id="应用百分比规则的步骤">应用百分比规则的步骤
+&lt;/h2>&lt;h3 id="获取灵敏度报告">获取灵敏度报告
+&lt;/h3>&lt;p>使用线性规划求解器获取每个目标函数系数的允许增量和减量。&lt;/p>
+&lt;h3 id="确定系数变化">确定系数变化
+&lt;/h3>&lt;p>明确每个受影响系数的实际变化量和方向（增加或减少）。&lt;/p>
+&lt;h3 id="计算相对变化">计算相对变化
+&lt;/h3>&lt;p>对每个变化的系数，根据其变化方向计算相对于允许变化的百分比。&lt;/p>
+&lt;h3 id="汇总变化">汇总变化
+&lt;/h3>&lt;p>将所有计算出的百分比相加。&lt;/p>
+&lt;h3 id="判断影响">判断影响
+&lt;/h3>&lt;p>如果总和小于或等于100%，最优解不变；如果超过100%，可能需要重新求解问题。&lt;/p>
+&lt;h2 id="举例说明">举例说明
+&lt;/h2>&lt;h3 id="目标函数系数的灵敏度分析">目标函数系数的灵敏度分析
+&lt;/h3>&lt;ol>
+&lt;li>例1
+&lt;img src="https://buaa-mba.pages.dev/images/%e7%81%b5%e6%95%8f%e5%ba%a6%e5%88%86%e6%9e%90/002.png"
+loading="lazy"
+>&lt;/li>
+&lt;/ol>
+&lt;p>根据前面的公式，$P_D$的变化率是$(450-300)/450=1/3$，$P_W$的变化率是$(500-400)/300=1/3$，所以系数的总的变化率是$2/3 &amp;lt; 1$，故最优解保持不变。&lt;/p>
+&lt;ol start="2">
+&lt;li>例2&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/%e7%81%b5%e6%95%8f%e5%ba%a6%e5%88%86%e6%9e%90/003.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>根据前面的公式，$P_D$的变化率是$(600-300)/450=2/3$，$P_W$的变化率是$(500-300)/300=2/3$，所以系数的总的变化率是$4/3 &amp;gt; 1$，故最优解会发生变化。&lt;/p>
+&lt;ol start="3">
+&lt;li>例3&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/%e7%81%b5%e6%95%8f%e5%ba%a6%e5%88%86%e6%9e%90/004.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>根据前面的公式，$P_D$的变化率是$(300-150)/300=1/2$，$P_W$的变化率是$(500-250)/300=5/6$，所以系数的总的变化率是$4/3 &amp;gt; 1$，故最优解会发生变化。&lt;/p>
+&lt;p>&lt;strong>小结：最优解不变的前提下，单位利润率的变化范围，相当于在不影响生产运营的前提下，销售或市场部门关于产品定价所拥有的最大自由裁量权&lt;/strong>&lt;/p>
+&lt;h3 id="资源约束的灵敏度分析">资源约束的灵敏度分析
+&lt;/h3>&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/%e7%81%b5%e6%95%8f%e5%ba%a6%e5%88%86%e6%9e%90/005.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>这里一个重要的概念是影子价格，是约束右端项的单位增量所引起的目标函数值的增量/变化量（约束条件右端的值的改变给目标函数带来的变化率）表示单位资源对于企业的价值。&lt;/p>
+&lt;p>对于上面的表格，工厂2的影子价格（阴影价格）为150，表示工厂2增加1小时的产能会让总利润增加150，也就是前面说的&lt;strong>增量/变化量&lt;/strong>。工厂3也是同理。但工厂1就不同了，影子价格是0，表示已经产能过剩了，甚至可以减掉2个，同时保持影子价格不变。更进一步，工厂1的影子价格不变，也就是0，意思就是当减少2个小时的产能时它仍然是满足整体产能要求的，如果要再减，才需要做进一步的分析。&lt;/p>
+&lt;p>&lt;strong>影子价格代表了约束右端项所对应的单位资源量对于企业能创造的价值&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>例1&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/%e7%81%b5%e6%95%8f%e5%ba%a6%e5%88%86%e6%9e%90/006.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>根据前面的灵敏度分析可知，在工厂2的产能扩大到18之前，影子价格是不变的，也就是150，而企业X要租赁工厂2新增的产能，出价在成本价的基础上增加了158元，显然$158 &amp;gt; 150$，当然应该出租这部分产能。&lt;/p>
+&lt;ol start="2">
+&lt;li>例2&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/%e7%81%b5%e6%95%8f%e5%ba%a6%e5%88%86%e6%9e%90/007.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>根据前面的灵敏度分析可知，在工厂2的产能缩减到6之前，影子价格是不变的，也就是150，而企业X要租赁工厂2的现有产能，出价只在成本价的基础上增加了149元，显然$149 &amp;lt; 150$，当然不应该出租这部分产能。&lt;/p>
+&lt;ol start="3">
+&lt;li>例3&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/%e7%81%b5%e6%95%8f%e5%ba%a6%e5%88%86%e6%9e%90/008.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>根据前面的灵敏度分析可知，在工厂2的产能缩减到6之前，影子价格是不变的，也就是150，而企业X要租赁工厂2的现有产能，最多租赁6个工时时影子价格将发生变化，所以需要重新计算此时的影子价格是否大于180，如果仍然小于则可以继续增加出租量，如果大于则最多只能出租6个工时。&lt;/p>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/%e7%81%b5%e6%95%8f%e5%ba%a6%e5%88%86%e6%9e%90/009.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>将工厂2的产能调整到5时，新的灵敏度报告显示，工厂2的影子价格变成了250，而$250 &amp;gt; 180$，所以最多只能出租6个工时。&lt;/p>
+&lt;ol start="4">
+&lt;li>例4（百分百法则）&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/%e7%81%b5%e6%95%8f%e5%ba%a6%e5%88%86%e6%9e%90/010.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>工厂2和工厂3减少的工时对应的百分比为$4/6 + 1/6 = 5/6 &amp;lt; 1$，所以出租这些产能时，影子价格不变。现有的产能价值（抛开成本）是$150*4 + 100*1 = 700$ ，而出租之后这部分的产能价值是$160*4 + 110*1 = 750 &amp;gt; 700$，所以应该出租这部分产能。&lt;/p>
+&lt;h2 id="重要注意事项">重要注意事项
+&lt;/h2>&lt;ol>
+&lt;li>方向一致性：增加应与允许的增量比较，减少应与允许的减量比较。&lt;/li>
+&lt;li>线性假设：此规则基于线性规划问题的性质，假设问题保持线性。&lt;/li>
+&lt;li>局限性：仅适用于目标函数系数变化，不适用于约束条件变化。&lt;/li>
+&lt;li>精确性：在实际应用中，接近100%的总和可能导致数值不稳定，建议保留安全余量。&lt;/li>
+&lt;li>复杂情况：对于大规模或高度约束的问题，可能需要更复杂的分析方法。&lt;/li>
+&lt;/ol>
+&lt;h2 id="结论">结论
+&lt;/h2>&lt;p>百分比规则为决策者提供了一个快速评估多个系数变化影响的工具，特别适用于敏感性分析和情景规划。它允许在不需要重新求解整个问题的情况下，快速判断某些变化是否会影响最优解。然而，在应用此规则时，务必考虑到其假设和局限性，以确保分析的准确性和可靠性。&lt;/p></description></item><item><title>层次分析法(AHP)详解：如何选择最佳工作offer</title><link>https://buaa-mba.pages.dev/p/%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95ahp%E8%AF%A6%E8%A7%A3%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E6%9C%80%E4%BD%B3%E5%B7%A5%E4%BD%9Coffer/</link><pubDate>Sat, 10 Aug 2024 23:51:22 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95ahp%E8%AF%A6%E8%A7%A3%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E6%9C%80%E4%BD%B3%E5%B7%A5%E4%BD%9Coffer/</guid><description>&lt;p>在职业生涯中,我们经常需要在多个工作offer之间做出选择。本文将详细介绍如何使用层次分析法(Analytic Hierarchy Process, AHP)来系统地分析和选择最佳工作offer。我们将通过一个具体案例,逐步展示AHP的应用过程。&lt;/p>
+&lt;h2 id="什么是ahp">什么是AHP？
+&lt;/h2>&lt;p>AHP是一种多准则决策方法,由Thomas L. Saaty在20世纪70年代开发。它通过将复杂问题分解为层次结构,然后进行两两比较,最终综合各层次的权重得出结论。&lt;/p>
+&lt;h2 id="案例背景">案例背景
+&lt;/h2>&lt;p>假设你收到了来自A、B、C三家公司的工作offer,需要在它们之间做出选择。你考虑的主要因素包括薪资、发展前景、工作环境和工作内容。&lt;/p>
+&lt;h2 id="ahp分析步骤">AHP分析步骤
+&lt;/h2>&lt;h3 id="步骤1建立层次结构">步骤1：建立层次结构
+&lt;/h3>&lt;ul>
+&lt;li>目标：选择最佳offer&lt;/li>
+&lt;li>准则：薪资、发展前景、工作环境、工作内容&lt;/li>
+&lt;li>方案：A公司、B公司、C公司&lt;/li>
+&lt;/ul>
+&lt;h3 id="步骤2构建判断矩阵">步骤2：构建判断矩阵
+&lt;/h3>&lt;p>首先,我们需要构建准则比较矩阵:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">&lt;/th>
+&lt;th style="text-align: left">薪资&lt;/th>
+&lt;th style="text-align: left">发展前景&lt;/th>
+&lt;th style="text-align: left">工作环境&lt;/th>
+&lt;th style="text-align: left">工作内容&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">薪资&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;td style="text-align: left">3&lt;/td>
+&lt;td style="text-align: left">1/2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">发展前景&lt;/td>
+&lt;td style="text-align: left">1/2&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;td style="text-align: left">1/3&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">工作环境&lt;/td>
+&lt;td style="text-align: left">1/3&lt;/td>
+&lt;td style="text-align: left">1/2&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">1/4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">工作内容&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;td style="text-align: left">3&lt;/td>
+&lt;td style="text-align: left">4&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>然后,我们需要为每个准则构建方案比较矩阵。以下是全部四个准则的方案比较矩阵:&lt;/p>
+&lt;ol>
+&lt;li>薪资比较矩阵:&lt;/li>
+&lt;/ol>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">&lt;/th>
+&lt;th style="text-align: left">A公司&lt;/th>
+&lt;th style="text-align: left">B公司&lt;/th>
+&lt;th style="text-align: left">C公司&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">A公司&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;td style="text-align: left">3&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">B公司&lt;/td>
+&lt;td style="text-align: left">1/2&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">C公司&lt;/td>
+&lt;td style="text-align: left">1/3&lt;/td>
+&lt;td style="text-align: left">1/2&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;ol>
+&lt;li>发展前景比较矩阵:&lt;/li>
+&lt;/ol>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">&lt;/th>
+&lt;th style="text-align: left">A公司&lt;/th>
+&lt;th style="text-align: left">B公司&lt;/th>
+&lt;th style="text-align: left">C公司&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">A公司&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">1/2&lt;/td>
+&lt;td style="text-align: left">1/3&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">B公司&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">1/2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">C公司&lt;/td>
+&lt;td style="text-align: left">3&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;ol>
+&lt;li>工作环境比较矩阵:&lt;/li>
+&lt;/ol>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">&lt;/th>
+&lt;th style="text-align: left">A公司&lt;/th>
+&lt;th style="text-align: left">B公司&lt;/th>
+&lt;th style="text-align: left">C公司&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">A公司&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">B公司&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">C公司&lt;/td>
+&lt;td style="text-align: left">1/2&lt;/td>
+&lt;td style="text-align: left">1/2&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;ol>
+&lt;li>工作内容比较矩阵:&lt;/li>
+&lt;/ol>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">&lt;/th>
+&lt;th style="text-align: left">A公司&lt;/th>
+&lt;th style="text-align: left">B公司&lt;/th>
+&lt;th style="text-align: left">C公司&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">A公司&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">3&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">B公司&lt;/td>
+&lt;td style="text-align: left">1/3&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">1/2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">C公司&lt;/td>
+&lt;td style="text-align: left">1/2&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="步骤3计算权重向量">步骤3：计算权重向量
+&lt;/h3>&lt;p>对每个判断矩阵,我们使用几何平均法计算权重向量。以准则比较矩阵为例:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>计算每行的几何平均值:&lt;/p>
+&lt;p>薪资: $\sqrt[4]{(1 \times 2 \times 3 \times 1/2)} = 1.316$&lt;/p>
+&lt;p>发展前景: $\sqrt[4]{(1/2 \times 1 \times 2 \times 1/3)} = 0.760$&lt;/p>
+&lt;p>工作环境: $\sqrt[4]{(1/3 \times 1/2 \times 1 \times 1/4)} = 0.452$&lt;/p>
+&lt;p>工作内容: $\sqrt[4]{(2 \times 3 \times 4 \times 1)} = 2.213$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>归一化处理:&lt;/p>
+&lt;p>$总和 = 1.316 + 0.760 + 0.452 + 2.213 = 4.741$&lt;/p>
+&lt;p>薪资: $1.316 / 4.741 = 0.278$&lt;/p>
+&lt;p>发展前景: $0.760 / 4.741 = 0.160$&lt;/p>
+&lt;p>工作环境: $0.452 / 4.741 = 0.095$&lt;/p>
+&lt;p>工作内容: $2.213 / 4.741 = 0.467$&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>准则权重计算结果:&lt;/p>
+&lt;ul>
+&lt;li>薪资: 0.278&lt;/li>
+&lt;li>发展前景: 0.160&lt;/li>
+&lt;li>工作环境: 0.095&lt;/li>
+&lt;li>工作内容: 0.467&lt;/li>
+&lt;/ul>
+&lt;p>对于每个准则下的方案比较矩阵,我们使用相同的方法计算权重。以下是所有方案比较矩阵的权重计算结果:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>薪资:
+A公司: 0.540, B公司: 0.297, C公司: 0.163&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>发展前景:
+A公司: 0.163, B公司: 0.297, C公司: 0.540&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>工作环境:
+A公司: 0.400, B公司: 0.400, C公司: 0.200&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>工作内容:
+A公司: 0.540, B公司: 0.163, C公司: 0.297&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="步骤4一致性检验">步骤4：一致性检验
+&lt;/h3>&lt;p>在实际应用中,应进行一致性检验以确保判断的合理性。&lt;/p>
+&lt;p>设比较矩阵为$A$，特征向量为$w$，一致性检验的步骤如下：&lt;/p>
+$$
+B_w=MMULT(A, w)
+$$$$
+\lambda_{max} = \frac{\sum\limits_{i=1}^n{\frac{(B_w)_i}{w_i}}}{n}
+$$$$
+C.I. = \frac{\lambda_{max} - n}{n-1}
+$$$$
+C.R. = \frac{C.I.}{R.I.}
+$$&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/or/ahp-001.png"
+loading="lazy"
+alt="准则比较矩阵"
+>
+&lt;img src="https://buaa-mba.pages.dev/images/or/ahp-002.png"
+loading="lazy"
+alt="薪资比较矩阵"
+>
+&lt;img src="https://buaa-mba.pages.dev/images/or/ahp-003.png"
+loading="lazy"
+alt="发展前景比较矩阵"
+>
+&lt;img src="https://buaa-mba.pages.dev/images/or/ahp-004.png"
+loading="lazy"
+alt="工作环境比较矩阵"
+>
+&lt;img src="https://buaa-mba.pages.dev/images/or/ahp-005.png"
+loading="lazy"
+alt="工作内容比较矩阵"
+>&lt;/p>
+&lt;p>可以看到，每个$C.R.$都是小于0.1的，所以这些比较矩阵是是满足一致性的。&lt;/p>
+&lt;p>如果一致性检验不通过，这通常代表以下几个方面的问题：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>判断不一致：
+这意味着决策者在进行成对比较时，可能存在逻辑矛盾。例如，如果A比B重要，B比C重要，但C却比A重要，这就是一个典型的不一致判断。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>数据质量问题：
+可能存在数据输入错误，或者在收集判断数据时出现了误解或偏差。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>复杂性过高：
+当比较的因素数量较多时，保持所有判断的一致性变得更加困难。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>专家意见分歧：
+如果矩阵是基于多个专家的意见综合而成，不同专家之间的判断差异可能导致整体一致性较差。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>决策问题定义不清：
+如果问题本身定义不明确，或者各因素之间的关系复杂，可能导致判断困难，从而影响一致性。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>尺度使用不当：
+在使用1-9尺度进行判断时，如果对尺度的理解不准确，可能导致不一致的判断。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>当一致性检验不通过时，通常需要采取以下措施：&lt;/p>
+&lt;ol>
+&lt;li>重新审视判断：检查是否存在明显的逻辑矛盾或输入错误。&lt;/li>
+&lt;li>调整判断：适当调整一些判断值，使其更加一致。&lt;/li>
+&lt;li>重新收集数据：如果问题严重，可能需要重新进行调查或咨询。&lt;/li>
+&lt;li>使用其他方法：考虑使用其他决策方法或模型来补充分析。&lt;/li>
+&lt;li>分解问题：如果问题过于复杂，考虑将其分解为更小的子问题。&lt;/li>
+&lt;li>提高一致性比率阈值：在某些情况下，可以适当放宽一致性要求，但这需要谨慎操作。&lt;/li>
+&lt;/ol>
+&lt;p>总之，一致性检验不通过并不意味着整个分析无效，但确实表明需要仔细审视和可能的修正，以确保决策的可靠性和有效性。&lt;/p>
+&lt;h3 id="步骤5计算总排序">步骤5：计算总排序
+&lt;/h3>&lt;p>将每个准则下的方案权重与准则权重相乘,然后求和:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">公司&lt;/th>
+&lt;th style="text-align: left">薪资(0.278)&lt;/th>
+&lt;th style="text-align: left">发展前景(0.160)&lt;/th>
+&lt;th style="text-align: left">工作环境(0.095)&lt;/th>
+&lt;th style="text-align: left">工作内容(0.467)&lt;/th>
+&lt;th style="text-align: left">总分&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">A&lt;/td>
+&lt;td style="text-align: left">$0.540 \times 0.278$&lt;/td>
+&lt;td style="text-align: left">$0.163 \times 0.160$&lt;/td>
+&lt;td style="text-align: left">$0.400 \times 0.095$&lt;/td>
+&lt;td style="text-align: left">$0.540 \times 0.467$&lt;/td>
+&lt;td style="text-align: left">0.466&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">B&lt;/td>
+&lt;td style="text-align: left">$0.297 \times 0.278$&lt;/td>
+&lt;td style="text-align: left">$0.297 \times 0.160$&lt;/td>
+&lt;td style="text-align: left">$0.400 \times 0.095$&lt;/td>
+&lt;td style="text-align: left">$0.163 \times 0.467$&lt;/td>
+&lt;td style="text-align: left">0.242&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">C&lt;/td>
+&lt;td style="text-align: left">$0.163 \times 0.278$&lt;/td>
+&lt;td style="text-align: left">$0.540 \times 0.160$&lt;/td>
+&lt;td style="text-align: left">$0.200 \times 0.095$&lt;/td>
+&lt;td style="text-align: left">$0.297 \times 0.467$&lt;/td>
+&lt;td style="text-align: left">0.292&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>计算过程示例(A公司):&lt;/p>
+&lt;p>$0.540 \times 0.278 + 0.163 \times 0.160 + 0.400 \times 0.095 + 0.540 \times 0.467 = 0.466$&lt;/p>
+&lt;h2 id="结果分析">结果分析
+&lt;/h2>&lt;p>根据AHP分析结果,三家公司的最终排序为:&lt;/p>
+&lt;ol>
+&lt;li>A公司: 0.466&lt;/li>
+&lt;li>C公司: 0.292&lt;/li>
+&lt;li>B公司: 0.242&lt;/li>
+&lt;/ol>
+&lt;p>A公司的综合得分最高,主要得益于其在薪资和工作内容方面的优势。虽然C公司在发展前景方面表现最佳,但在其他方面相对较弱。B公司在各方面表现中等,但没有突出优势。&lt;/p>
+&lt;h2 id="结论">结论
+&lt;/h2>&lt;p>通过AHP分析,我们可以看到A公司是最佳选择。这种方法帮助我们系统地考虑了多个因素,并根据它们的相对重要性进行了权衡。然而,需要注意的是,AHP分析结果应该作为决策的参考,而不是唯一依据。个人偏好、直觉和其他定性因素也应该在最终决策中得到考虑。&lt;/p>
+&lt;p>AHP方法为复杂的决策问题提供了一个结构化的分析框架,特别适用于需要考虑多个相互冲突的准则的情况。无论是在职业选择、项目评估还是战略规划中,AHP都是一个强大的决策支持工具。&lt;/p>
+&lt;p>文中使用的&lt;a class="link" href="https://buaa-mba.pages.dev/xlsx/AHP%e7%a4%ba%e4%be%8b.xlsx" >excel文件下载&lt;/a>&lt;/p></description></item><item><title>从层次到网络：探索萨蒂教授的决策分析方法</title><link>https://buaa-mba.pages.dev/p/%E4%BB%8E%E5%B1%82%E6%AC%A1%E5%88%B0%E7%BD%91%E7%BB%9C%E6%8E%A2%E7%B4%A2%E8%90%A8%E8%92%82%E6%95%99%E6%8E%88%E7%9A%84%E5%86%B3%E7%AD%96%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/</link><pubDate>Sat, 10 Aug 2024 22:44:51 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E4%BB%8E%E5%B1%82%E6%AC%A1%E5%88%B0%E7%BD%91%E7%BB%9C%E6%8E%A2%E7%B4%A2%E8%90%A8%E8%92%82%E6%95%99%E6%8E%88%E7%9A%84%E5%86%B3%E7%AD%96%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/</guid><description>&lt;p>在我们日常生活和工作中，经常面临复杂的决策问题。如何在众多因素中权衡取舍，做出最优选择？美国著名数学家托马斯·萨蒂（Thomas L. Saaty）教授为我们提供了两个强大的工具：层次分析法（AHP）和网络分析法（ANP）。今天，让我们一起深入了解这两种方法及其应用。&lt;/p>
+&lt;p>一、决策科学的先驱：托马斯·萨蒂教授&lt;/p>
+&lt;p>托马斯·萨蒂（1926-2017）是运筹学和决策理论领域的杰出学者。他出生于伊拉克摩苏尔，在美国接受教育，先后在哥伦比亚大学和耶鲁大学获得数学学位。萨蒂教授曾在美国国防部和国务院工作，后来在匹兹堡大学担任杰出教授。他发表了近400篇学术论文和40多本著作，获得了包括国际系统科学奖在内的多个国际奖项。&lt;/p>
+&lt;p>二、层次分析法（AHP）：结构化的决策方法&lt;/p>
+&lt;p>20世纪70年代，萨蒂教授发明了层次分析法。这是一种将复杂决策问题分解为层次结构的方法，通过比较不同因素的相对重要性来做出决策。&lt;/p>
+&lt;p>AHP的主要步骤包括：&lt;/p>
+&lt;ol>
+&lt;li>建立层次结构模型&lt;/li>
+&lt;li>构造判断矩阵&lt;/li>
+&lt;li>计算权重向量&lt;/li>
+&lt;li>一致性检验&lt;/li>
+&lt;li>层次单排序&lt;/li>
+&lt;li>层次总排序&lt;/li>
+&lt;/ol>
+&lt;p>例子：选择最佳工作offer&lt;/p>
+&lt;p>假设你刚毕业，收到了三个工作offer，需要做出选择。你考虑的主要因素有：薪资、发展前景、工作环境和工作内容。使用AHP方法可以这样分析：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>建立层次结构：
+目标：选择最佳offer
+准则：薪资、发展前景、工作环境、工作内容
+方案：A公司、B公司、C公司&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>对准则进行两两比较，得出各准则的权重。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>在每个准则下对三个公司进行评分。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>综合各准则的权重和公司得分，得出最终排序。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>通过这种方式，你可以系统地考虑各个因素，做出更客观的决策。&lt;/p>
+&lt;p>三、网络分析法（ANP）：更复杂决策的解决方案&lt;/p>
+&lt;p>随着研究深入，萨蒂教授意识到现实中许多决策问题存在要素间的相互依赖和反馈关系。1996年，他提出了AHP的进阶版本——网络分析法（ANP）。&lt;/p>
+&lt;p>ANP的主要特点：&lt;/p>
+&lt;ul>
+&lt;li>允许要素之间存在网络式的复杂关系&lt;/li>
+&lt;li>考虑了要素间的依赖性和反馈&lt;/li>
+&lt;li>使用超矩阵来综合各种影响&lt;/li>
+&lt;/ul>
+&lt;p>ANP的基本步骤：&lt;/p>
+&lt;ol>
+&lt;li>建立网络结构模型&lt;/li>
+&lt;li>构造成对比较矩阵&lt;/li>
+&lt;li>形成未加权超矩阵&lt;/li>
+&lt;li>计算加权超矩阵&lt;/li>
+&lt;li>计算极限超矩阵&lt;/li>
+&lt;li>确定最终优先权重&lt;/li>
+&lt;/ol>
+&lt;p>例子：制定公司发展战略&lt;/p>
+&lt;p>假设一家公司正在制定未来五年的发展战略，需要考虑的因素包括：市场需求、技术创新、人才储备、财务状况、竞争环境等。这些因素之间存在复杂的相互影响，例如：&lt;/p>
+&lt;ul>
+&lt;li>技术创新会影响市场需求，反之亦然&lt;/li>
+&lt;li>人才储备影响技术创新能力&lt;/li>
+&lt;li>财务状况影响人才招聘和技术投入&lt;/li>
+&lt;li>竞争环境影响市场策略和创新方向&lt;/li>
+&lt;/ul>
+&lt;p>在这种情况下，使用ANP可以更好地捕捉这些复杂关系：&lt;/p>
+&lt;ol>
+&lt;li>建立包含所有因素的网络模型&lt;/li>
+&lt;li>分析因素间的影响关系&lt;/li>
+&lt;li>进行成对比较和权重计算&lt;/li>
+&lt;li>构建和计算超矩阵&lt;/li>
+&lt;li>得出各战略选项的最终优先级&lt;/li>
+&lt;/ol>
+&lt;p>通过ANP，公司可以更全面地考虑各种因素的相互作用，制定出更加合理的发展战略。&lt;/p>
+&lt;p>四、AHP vs ANP：何时使用？&lt;/p>
+&lt;p>虽然ANP比AHP更加灵活，能处理更复杂的决策情境，但它也增加了建模和计算的复杂性。在实际应用中：&lt;/p>
+&lt;ul>
+&lt;li>对于层次结构清晰、要素相对独立的问题，AHP往往就足够了&lt;/li>
+&lt;li>当决策问题涉及复杂的相互依赖关系时，ANP则更为适用&lt;/li>
+&lt;/ul>
+&lt;p>无论选择哪种方法，关键是要准确理解问题的本质，合理构建模型。&lt;/p>
+&lt;p>五、结语&lt;/p>
+&lt;p>托马斯·萨蒂教授通过AHP和ANP的开发，为复杂决策问题提供了强大的分析工具。这些方法不仅在管理、工程、政策等领域得到广泛应用，也推动了整个决策科学的发展。在面对复杂决策时，不妨尝试运用这些方法，你可能会发现决策过程变得更加清晰和系统化。&lt;/p>
+&lt;p>记住，好的决策工具可以辅助我们的思考，但最终的选择仍然需要我们的智慧和判断。让我们善用这些工具，在复杂的世界中做出更明智的决策！&lt;/p></description></item><item><title>最小费用最大流：优化项目资源配置的利器</title><link>https://buaa-mba.pages.dev/p/%E6%9C%80%E5%B0%8F%E8%B4%B9%E7%94%A8%E6%9C%80%E5%A4%A7%E6%B5%81%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E8%B5%84%E6%BA%90%E9%85%8D%E7%BD%AE%E7%9A%84%E5%88%A9%E5%99%A8/</link><pubDate>Tue, 30 Jul 2024 17:03:40 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E6%9C%80%E5%B0%8F%E8%B4%B9%E7%94%A8%E6%9C%80%E5%A4%A7%E6%B5%81%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E8%B5%84%E6%BA%90%E9%85%8D%E7%BD%AE%E7%9A%84%E5%88%A9%E5%99%A8/</guid><description>&lt;h2 id="引言">引言
+&lt;/h2>&lt;p>在当今复杂多变的商业环境中,有效管理和分配资源是项目成功的关键。本文将深入探讨最小费用最大流这一强大的优化工具,介绍其基本概念、实际应用场景,并通过一个具体的软件开发项目案例,展示如何使用Excel来解决这类问题。&lt;/p>
+&lt;h2 id="什么是最小费用最大流">什么是最小费用最大流？
+&lt;/h2>&lt;p>最小费用最大流是一个网络优化问题,旨在在给定网络中找到既能满足最大流量需求又能使总体成本最小化的流量分配方案。在这个模型中,&amp;ldquo;流&amp;quot;可以代表多种资源,如信息、物资或人力,而&amp;quot;费用&amp;quot;则可能是金钱成本、时间或其他量化指标。&lt;/p>
+&lt;h2 id="实际应用场景">实际应用场景
+&lt;/h2>&lt;ul>
+&lt;li>供应链管理：优化从多个供应商到多个零售点的产品配送。&lt;/li>
+&lt;li>电信网络：设计既能满足数据传输需求又能最小化基础设施成本的网络结构。&lt;/li>
+&lt;li>人力资源分配：在多个项目或部门间合理分配员工,以最大化生产力并控制成本。&lt;/li>
+&lt;li>交通规划：设计城市交通网络,平衡交通流量和基础设施投资。&lt;/li>
+&lt;li>能源配送：优化电力或燃气从发电站到用户的配送路径。&lt;/li>
+&lt;/ul>
+&lt;h2 id="项目管理中的应用步骤">项目管理中的应用步骤
+&lt;/h2>&lt;ol>
+&lt;li>问题定义和分析&lt;/li>
+&lt;li>数据收集和建模&lt;/li>
+&lt;li>方案设计和优化&lt;/li>
+&lt;li>实施和监控&lt;/li>
+&lt;li>风险管理&lt;/li>
+&lt;li>沟通和协调&lt;/li>
+&lt;li>持续改进&lt;/li>
+&lt;/ol>
+&lt;h2 id="实际案例软件公司的多项目资源分配">实际案例：软件公司的多项目资源分配
+&lt;/h2>&lt;h3 id="背景">背景
+&lt;/h3>&lt;p>软件公司XYZ正在同时进行三个项目：A、B和C。公司有限的开发人员需要在这三个项目之间进行分配。目标是在规定时间内完成所有项目,同时最小化总体成本。&lt;/p>
+&lt;h3 id="资源情况">资源情况
+&lt;/h3>&lt;ul>
+&lt;li>5名高级开发人员（每人每天成本1000元）&lt;/li>
+&lt;li>8名中级开发人员（每人每天成本600元）&lt;/li>
+&lt;li>10名初级开发人员（每人每天成本400元）&lt;/li>
+&lt;/ul>
+&lt;h3 id="项目需求">项目需求
+&lt;/h3>&lt;ol>
+&lt;li>项目A：需要100人天,至少需要2名高级开发人员&lt;/li>
+&lt;li>项目B：需要150人天,至少需要1名高级开发人员和3名中级开发人员&lt;/li>
+&lt;li>项目C：需要200人天,对开发人员级别没有特殊要求&lt;/li>
+&lt;li>所有项目需要在30个工作日内完成。&lt;/li>
+&lt;/ol>
+&lt;h3 id="使用excel解决问题">使用Excel解决问题
+&lt;/h3>&lt;h4 id="步骤1设置初始数据表格">步骤1：设置初始数据表格
+&lt;/h4>&lt;p>创建一个表格,列出所有开发人员类型、每日成本和可用数量。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">开发人员类型&lt;/th>
+&lt;th style="text-align: left">每日成本&lt;/th>
+&lt;th style="text-align: left">可用数量&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">高级&lt;/td>
+&lt;td style="text-align: left">1000&lt;/td>
+&lt;td style="text-align: left">5&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">中级&lt;/td>
+&lt;td style="text-align: left">600&lt;/td>
+&lt;td style="text-align: left">8&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">初级&lt;/td>
+&lt;td style="text-align: left">400&lt;/td>
+&lt;td style="text-align: left">10&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="步骤2创建项目需求表格">步骤2：创建项目需求表格
+&lt;/h4>&lt;p>列出每个项目的总人天需求和特殊要求。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">项目&lt;/th>
+&lt;th style="text-align: left">总人天&lt;/th>
+&lt;th style="text-align: left">特殊要求&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">A&lt;/td>
+&lt;td style="text-align: left">100&lt;/td>
+&lt;td style="text-align: left">至少2名高级&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">B&lt;/td>
+&lt;td style="text-align: left">150&lt;/td>
+&lt;td style="text-align: left">至少1名高级,3名中级&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">C&lt;/td>
+&lt;td style="text-align: left">200&lt;/td>
+&lt;td style="text-align: left">无&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="步骤3创建分配矩阵">步骤3：创建分配矩阵
+&lt;/h4>&lt;p>创建一个矩阵,行为开发人员类型,列为项目。&lt;/p>
+&lt;h4 id="步骤4设置约束条件">步骤4：设置约束条件
+&lt;/h4>&lt;p>使用Excel公式设置各种约束,如总人天、特定技能需求等。&lt;/p>
+&lt;h4 id="步骤5设置目标函数">步骤5：设置目标函数
+&lt;/h4>&lt;p>创建一个单元格计算总成本。&lt;/p>
+&lt;h4 id="步骤6使用excel求解器">步骤6：使用Excel求解器
+&lt;/h4>&lt;p>设置目标函数、变量单元格和约束条件。&lt;/p>
+&lt;h4 id="步骤7运行求解器并分析结果">步骤7：运行求解器并分析结果
+&lt;/h4>&lt;h3 id="最终解决方案">最终解决方案
+&lt;/h3>&lt;p>最优分配结果：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">开发人员类型&lt;/th>
+&lt;th style="text-align: left">项目A&lt;/th>
+&lt;th style="text-align: left">项目B&lt;/th>
+&lt;th style="text-align: left">项目C&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">高级&lt;/td>
+&lt;td style="text-align: left">60&lt;/td>
+&lt;td style="text-align: left">60&lt;/td>
+&lt;td style="text-align: left">30&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">中级&lt;/td>
+&lt;td style="text-align: left">40&lt;/td>
+&lt;td style="text-align: left">90&lt;/td>
+&lt;td style="text-align: left">90&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">初级&lt;/td>
+&lt;td style="text-align: left">0&lt;/td>
+&lt;td style="text-align: left">0&lt;/td>
+&lt;td style="text-align: left">80&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>每个项目的人员分配：&lt;/p>
+&lt;ul>
+&lt;li>项目A：2名高级(30天),2名中级(20天)&lt;/li>
+&lt;li>项目B：2名高级(30天),3名中级(30天)&lt;/li>
+&lt;li>项目C：1名高级(30天),3名中级(30天),8名初级(10天)&lt;/li>
+&lt;/ul>
+&lt;p>总成本计算：
+(60 + 60 + 30) * 1000 + (40 + 90 + 90) * 600 + 80 * 400 = 302,000元&lt;/p>
+&lt;p>约束条件验证：&lt;/p>
+&lt;ul>
+&lt;li>所有项目完成总人天：150 + 150 + 200 = 500 &amp;gt; 450(需求)&lt;/li>
+&lt;li>项目A至少2名高级：满足(2名)&lt;/li>
+&lt;li>项目B至少1名高级,3名中级：满足(2名高级,3名中级)&lt;/li>
+&lt;li>总工期不超过30天：满足&lt;/li>
+&lt;li>所有开发人员数量在可用范围内&lt;/li>
+&lt;/ul>
+&lt;h2 id="结论">结论
+&lt;/h2>&lt;p>通过应用最小费用最大流的原理并利用Excel求解器,我们成功地为XYZ软件公司制定了一个最优的资源分配方案。这个方案不仅满足了所有项目的需求和约束条件,还将总成本控制在了最低水平。&lt;/p>
+&lt;p>这个例子展示了最小费用最大流理论在实际项目管理中的强大应用价值。通过合理分配资源,企业可以在保证项目质量的同时,显著提高资源利用效率,降低运营成本。&lt;/p>
+&lt;p>对于项目经理和资源规划人员来说,掌握这种优化技术可以极大地提升决策质量。而Excel等常用工具的支持,更使得这种复杂的优化过程变得触手可及。&lt;/p>
+&lt;p>在未来的项目管理实践中,我们建议:&lt;/p>
+&lt;ol>
+&lt;li>充分利用数据和分析工具进行资源规划&lt;/li>
+&lt;li>定期review和调整资源分配方案&lt;/li>
+&lt;li>培养团队的跨项目协作能力&lt;/li>
+&lt;li>建立灵活的资源池,以应对项目需求的变化&lt;/li>
+&lt;/ol>
+&lt;p>通过不断实践和优化,相信每个组织都能在资源管理这个永恒的主题上取得显著进步,为企业创造更大的价值。&lt;/p></description></item><item><title>握项目管理的关键：深入理解关键路径法和浮动时间计算</title><link>https://buaa-mba.pages.dev/p/%E6%8F%A1%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%9A%84%E5%85%B3%E9%94%AE%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84%E6%B3%95%E5%92%8C%E6%B5%AE%E5%8A%A8%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97/</link><pubDate>Tue, 30 Jul 2024 14:16:16 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E6%8F%A1%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%9A%84%E5%85%B3%E9%94%AE%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84%E6%B3%95%E5%92%8C%E6%B5%AE%E5%8A%A8%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97/</guid><description>&lt;p>在项目管理中，准确估算时间和资源是确保项目成功的关键因素。关键路径法（Critical Path Method, CPM）和浮动时间计算是两个强大的工具，能帮助项目经理有效规划和控制项目进度。本文将深入探讨这两个概念，解释它们的计算方法及其在项目管理中的重要性。&lt;/p>
+&lt;h2 id="关键路径法eseflslf的计算">关键路径法：ES、EF、LS、LF的计算
+&lt;/h2>&lt;p>关键路径法是一种网络计划技术，用于确定项目中最长的活动序列，即关键路径。它涉及四个关键时间点的计算：最早开始时间（ES）、最早完成时间（EF）、最晚开始时间（LS）和最晚完成时间（LF）。&lt;/p>
+&lt;h3 id="前推法计算es和ef">前推法（计算ES和EF）
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>ES (最早开始时间):&lt;/p>
+&lt;ul>
+&lt;li>对于起始活动：ES = 项目开始时间（通常为0）&lt;/li>
+&lt;li>对于其他活动：ES = 所有紧前活动中最大的EF值&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>EF (最早完成时间):
+EF = ES + 活动持续时间&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="后推法计算ls和lf">后推法（计算LS和LF）
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>LF (最晚完成时间):&lt;/p>
+&lt;ul>
+&lt;li>对于终止活动：LF = 项目的计划完成时间&lt;/li>
+&lt;li>对于其他活动：LF = 所有紧后活动中最小的LS值&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>LS (最晚开始时间):
+LS = LF - 活动持续时间&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="浮动时间的计算及其重要性">浮动时间的计算及其重要性
+&lt;/h2>&lt;p>浮动时间表示一个活动可以推迟的时间而不影响整个项目的完成时间。理解和管理浮动时间对于优化项目进度和资源分配至关重要。&lt;/p>
+&lt;h3 id="总浮动时间-total-float-tf">总浮动时间 (Total Float, TF)
+&lt;/h3>&lt;p>总浮动时间是一个活动可以推迟的最大时间，而不影响整个项目的完成日期。&lt;/p>
+&lt;p>计算方法：
+TF = LS - ES 或 TF = LF - EF&lt;/p>
+&lt;h3 id="自由浮动时间-free-float-ff">自由浮动时间 (Free Float, FF)
+&lt;/h3>&lt;p>自由浮动时间是一个活动可以推迟的时间，而不影响任何后续活动的最早开始时间。&lt;/p>
+&lt;p>计算方法：
+FF = 紧后活动的最早开始时间 - 当前活动的最早完成时间
+或
+FF = MIN(紧后活动的ES) - EF&lt;/p>
+&lt;h2 id="应用这些概念的步骤">应用这些概念的步骤
+&lt;/h2>&lt;ol>
+&lt;li>从项目开始到结束，使用前推法计算每个活动的ES和EF。&lt;/li>
+&lt;li>从项目结束到开始，使用后推法计算每个活动的LF和LS。&lt;/li>
+&lt;li>计算总浮动时间和自由浮动时间。&lt;/li>
+&lt;li>识别关键路径：总浮动时间为0的活动序列即为关键路径。&lt;/li>
+&lt;/ol>
+&lt;h2 id="这些概念的重要性">这些概念的重要性
+&lt;/h2>&lt;ol>
+&lt;li>识别关键活动和非关键活动&lt;/li>
+&lt;li>优化资源分配&lt;/li>
+&lt;li>评估项目风险&lt;/li>
+&lt;li>制定应急计划&lt;/li>
+&lt;/ol>
+&lt;p>通过掌握关键路径法和浮动时间计算，项目经理可以：&lt;/p>
+&lt;ul>
+&lt;li>准确预测项目完成时间&lt;/li>
+&lt;li>识别需要特别关注的关键活动&lt;/li>
+&lt;li>合理分配资源，优化项目进度&lt;/li>
+&lt;li>及时发现潜在的进度问题并采取相应措施&lt;/li>
+&lt;/ul>
+&lt;p>虽然现代项目管理软件可以自动执行这些计算，但深入理解这些概念的原理对于做出明智的项目决策至关重要。通过熟练运用这些工具，项目经理可以更好地控制项目进度，提高项目成功的可能性。&lt;/p></description></item><item><title>正态分布和标准差</title><link>https://buaa-mba.pages.dev/p/%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E5%92%8C%E6%A0%87%E5%87%86%E5%B7%AE/</link><pubDate>Mon, 29 Jul 2024 18:58:40 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E5%92%8C%E6%A0%87%E5%87%86%E5%B7%AE/</guid><description>&lt;p>正态分布（也称为高斯分布）是统计学中非常重要的一种概率分布，其特征是呈钟形曲线。正态分布的形状由其均值（μ）和标准差（σ）决定。以下是正态分布和标准差之间的关系：&lt;/p>
+&lt;h3 id="1-定义">1. 定义：
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>均值（μ）&lt;/strong>：正态分布的中心，表示数据的平均值。&lt;/li>
+&lt;li>&lt;strong>标准差（σ）&lt;/strong>：表示数据点与均值之间的离散程度或波动性。标准差越大，数据的分布越宽，曲线越平坦；标准差越小，数据分布越窄，曲线越陡。&lt;/li>
+&lt;/ul>
+&lt;h3 id="2-正态分布的概率密度函数">2. 正态分布的概率密度函数：
+&lt;/h3>&lt;p>正态分布的概率密度函数（PDF）可以表示为：
+&lt;/p>
+\[
+f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}
+\]&lt;p>
+其中：&lt;/p>
+&lt;ul>
+&lt;li>\( f(x) \) 是在某个特定值 \( x \) 处的概率密度。&lt;/li>
+&lt;li>\( e \) 是自然对数的底数。&lt;/li>
+&lt;li>\( \pi \) 是圆周率。&lt;/li>
+&lt;/ul>
+&lt;h3 id="3-标准差与曲线形状的关系">3. 标准差与曲线形状的关系：
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>68-95-99.7规则&lt;/strong>：在正态分布中，大约68%的数据位于均值±1个标准差（μ±σ）之间，约95%的数据位于均值±2个标准差（μ±2σ）之间，约99.7%的数据位于均值±3个标准差（μ±3σ）之间。这一性质使得标准差在理解数据分布的范围和集中程度上极为重要。&lt;/li>
+&lt;/ul>
+&lt;p>所以当知道一个概率之后，想推算如果想达到某一个概率需要把期望移动到哪个区间，就是基于这个原理。&lt;/p>
+&lt;h3 id="4-应用">4. 应用：
+&lt;/h3>&lt;p>标准差在许多统计分析中扮演着重要角色，尤其是在进行假设检验、控制图和其他数据分析方法时。它帮助我们理解数据的可靠性和变异性。&lt;/p>
+&lt;h3 id="总结">总结：
+&lt;/h3>&lt;p>正态分布的形状和特性直接与标准差相关。标准差不仅影响分布的宽度和高度，还在数据分析和解释中起着关键作用。了解两者之间的关系，有助于我们更好地分析和理解数据。&lt;/p></description></item></channel></rss>

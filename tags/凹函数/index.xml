@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>凹函数 on MBA学习记录</title><link>https://buaa-mba.pages.dev/tags/%E5%87%B9%E5%87%BD%E6%95%B0/</link><description>Recent content in 凹函数 on MBA学习记录</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 08 Sep 2024 21:35:07 +0800</lastBuildDate><atom:link href="https://buaa-mba.pages.dev/tags/%E5%87%B9%E5%87%BD%E6%95%B0/index.xml" rel="self" type="application/rss+xml"/><item><title>凸函数和凹函数的概念及其应用</title><link>https://buaa-mba.pages.dev/p/%E5%87%B8%E5%87%BD%E6%95%B0%E5%92%8C%E5%87%B9%E5%87%BD%E6%95%B0%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/</link><pubDate>Sun, 08 Sep 2024 21:35:07 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E5%87%B8%E5%87%BD%E6%95%B0%E5%92%8C%E5%87%B9%E5%87%BD%E6%95%B0%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/</guid><description>&lt;blockquote>
+&lt;p>注意：关于凸函数和凹函数的定义国内外有争议，且定义完全相反，本文写的内容是国外通行的说法。国内以同济大学为代表的数学教材和本文描述的内容是相反的。&lt;/p>
+&lt;p>考证1：&lt;a class="link" href="https://carmamaths.org/resources/jon/Preprints/Books/CUP/CUPold/np-convex.pdf" target="_blank" rel="noopener"
+>CONVEX FUNCTIONS AND THEIR APPLICATIONS A contemporary approach&lt;/a>&lt;/p>
+&lt;p>考证2：&lt;a class="link" href="https://zh.wikipedia.org/wiki/%E5%87%B9%E5%87%BD%E6%95%B0" target="_blank" rel="noopener"
+>维基百科：凹函数&lt;/a>&lt;/p>
+&lt;p>考证3: &lt;img src="https://buaa-mba.pages.dev/images/math/%e5%9b%bd%e5%86%85%e6%95%99%e6%9d%90%e5%87%b9%e5%87%b8%e5%87%bd%e6%95%b0.jpeg"
+loading="lazy"
+alt="国内教材凹凸函数"
+>&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="引言">引言
+&lt;/h2>&lt;p>在数学分析和最优化理论中,凸函数和凹函数是两个非常重要的概念。它们具有一些独特的性质,在许多领域都有广泛的应用,包括运筹学、经济学和机器学习等。本文将详细介绍凸函数和凹函数的定义、特性以及一些典型的例子,并探讨它们在实际问题中的应用。&lt;/p>
+&lt;h2 id="定义">定义
+&lt;/h2>&lt;h3 id="凸函数">凸函数
+&lt;/h3>&lt;p>如果一个函数 $f(x)$ 在定义域内的任意两点 $x_1$ 和 $x_2$ 之间的线段都位于函数图像的上方或恰好在函数图像上,那么这个函数就是凸函数。数学表达式如下:&lt;/p>
+&lt;p>对于定义域内的任意两点 $x_1$ 和 $x_2$,以及 $0 \leq \theta \leq 1$,有:&lt;/p>
+$$f(\theta x_1 + (1-\theta)x_2) \leq \theta f(x_1) + (1-\theta)f(x_2)$$&lt;h3 id="凹函数">凹函数
+&lt;/h3>&lt;p>如果一个函数的相反数是凸函数,那么这个函数就是凹函数。也可以这样定义:如果一个函数 $f(x)$ 在定义域内的任意两点 $x_1$ 和 $x_2$ 之间的线段都位于函数图像的下方或恰好在函数图像上,那么这个函数就是凹函数。数学表达式如下:&lt;/p>
+&lt;p>对于定义域内的任意两点 $x_1$ 和 $x_2$,以及 $0 \leq \theta \leq 1$,有:&lt;/p>
+$$f(\theta x_1 + (1-\theta)x_2) \geq \theta f(x_1) + (1-\theta)f(x_2)$$&lt;h2 id="典型例子">典型例子
+&lt;/h2>&lt;h3 id="凸函数例子">凸函数例子
+&lt;/h3>&lt;p>一些常见的凸函数包括:&lt;/p>
+&lt;ul>
+&lt;li>二次函数: $f(x) = x^2$&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/math/004.png"
+loading="lazy"
+>&lt;/p>
+&lt;ul>
+&lt;li>指数函数: $f(x) = e^x$&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/math/005.png"
+loading="lazy"
+>&lt;/p>
+&lt;ul>
+&lt;li>绝对值函数: $f(x) = |x|$&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/math/006.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="凹函数例子">凹函数例子
+&lt;/h3>&lt;p>一些常见的凹函数包括:&lt;/p>
+&lt;ul>
+&lt;li>对数函数: $f(x) = \log x$
+&lt;img src="https://buaa-mba.pages.dev/images/math/007.png"
+loading="lazy"
+>&lt;/li>
+&lt;li>负指数函数: $f(x) = -e^x$
+&lt;img src="https://buaa-mba.pages.dev/images/math/008.png"
+loading="lazy"
+>&lt;/li>
+&lt;li>平方根函数: $f(x) = \sqrt{x}$
+&lt;img src="https://buaa-mba.pages.dev/images/math/009.png"
+loading="lazy"
+>&lt;/li>
+&lt;/ul>
+&lt;h2 id="凸函数和凹函数的性质">凸函数和凹函数的性质
+&lt;/h2>&lt;p>凸函数和凹函数具有一些重要的性质,这些性质在分析和优化问题中非常有用。&lt;/p>
+&lt;h3 id="凸函数的性质">凸函数的性质
+&lt;/h3>&lt;ul>
+&lt;li>凸函数在其定义域内是连续的。&lt;/li>
+&lt;li>凸函数在其定义域内的任何区间上都是仿射函数的上界。&lt;/li>
+&lt;li>凸函数的一阶导数(如果存在)在其定义域内是单调递增的。&lt;/li>
+&lt;li>凸函数的二阶导数(如果存在)在其定义域内是非负的。&lt;/li>
+&lt;/ul>
+&lt;h3 id="凹函数的性质">凹函数的性质
+&lt;/h3>&lt;ul>
+&lt;li>凹函数在其定义域内是连续的。&lt;/li>
+&lt;li>凹函数在其定义域内的任何区间上都是仿射函数的下界。&lt;/li>
+&lt;li>凹函数的一阶导数(如果存在)在其定义域内是单调递减的。&lt;/li>
+&lt;li>凹函数的二阶导数(如果存在)在其定义域内是非正的。&lt;/li>
+&lt;/ul>
+&lt;h2 id="凸函数和凹函数在优化问题中的应用">凸函数和凹函数在优化问题中的应用
+&lt;/h2>&lt;p>由于凸函数和凹函数具有良好的数学性质,它们在优化问题中扮演着重要的角色。&lt;/p>
+&lt;h3 id="凸优化问题">凸优化问题
+&lt;/h3>&lt;p>如果目标函数是凸函数,且约束条件也是凸集,那么这个优化问题就是一个凸优化问题。凸优化问题具有全局最优解,并且可以使用高效的算法求解,例如内点法、椭球法等。&lt;/p>
+&lt;h3 id="凹优化问题">凹优化问题
+&lt;/h3>&lt;p>如果目标函数是凹函数,且约束条件也是凸集,那么这个优化问题就是一个凹优化问题。凹优化问题的目标是最大化目标函数,而不是最小化。与凸优化问题类似,凹优化问题也具有全局最优解,并且可以使用类似的算法求解。&lt;/p>
+&lt;h3 id="应用举例">应用举例
+&lt;/h3>&lt;p>凸优化和凹优化在许多领域都有广泛的应用,例如:&lt;/p>
+&lt;ul>
+&lt;li>机器学习中的支持向量机、逻辑回归等模型涉及凸优化问题。&lt;/li>
+&lt;li>组合优化问题中的一些特殊情况可以转化为凸优化问题。&lt;/li>
+&lt;li>金融投资组合优化中需要求解凸优化问题。&lt;/li>
+&lt;li>通信系统中的功率控制和资源分配问题可以建模为凸优化问题。&lt;/li>
+&lt;/ul>
+&lt;h2 id="结论">结论
+&lt;/h2>&lt;p>凸函数和凹函数是非常重要的数学概念,它们具有许多良好的性质,在优化理论和实际应用中扮演着关键角色。通过掌握凸函数和凹函数的定义、性质以及在优化问题中的应用,我们可以更好地理解和解决一些复杂的优化问题。&lt;/p></description></item></channel></rss>
