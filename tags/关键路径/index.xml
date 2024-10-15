@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>关键路径 on MBA学习记录</title><link>https://buaa-mba.pages.dev/tags/%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84/</link><description>Recent content in 关键路径 on MBA学习记录</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Tue, 30 Jul 2024 14:16:16 +0800</lastBuildDate><atom:link href="https://buaa-mba.pages.dev/tags/%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84/index.xml" rel="self" type="application/rss+xml"/><item><title>握项目管理的关键：深入理解关键路径法和浮动时间计算</title><link>https://buaa-mba.pages.dev/p/%E6%8F%A1%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%9A%84%E5%85%B3%E9%94%AE%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84%E6%B3%95%E5%92%8C%E6%B5%AE%E5%8A%A8%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97/</link><pubDate>Tue, 30 Jul 2024 14:16:16 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E6%8F%A1%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%9A%84%E5%85%B3%E9%94%AE%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84%E6%B3%95%E5%92%8C%E6%B5%AE%E5%8A%A8%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97/</guid><description>&lt;p>在项目管理中，准确估算时间和资源是确保项目成功的关键因素。关键路径法（Critical Path Method, CPM）和浮动时间计算是两个强大的工具，能帮助项目经理有效规划和控制项目进度。本文将深入探讨这两个概念，解释它们的计算方法及其在项目管理中的重要性。&lt;/p>
+&lt;h2 id="关键路径法eseflslf的计算">关键路径法：ES、EF、LS、LF的计算
+&lt;/h2>&lt;p>关键路径法是一种网络计划技术，用于确定项目中最长的活动序列，即关键路径。它涉及四个关键时间点的计算：最早开始时间（ES）、最早完成时间（EF）、最晚开始时间（LS）和最晚完成时间（LF）。&lt;/p>
+&lt;h3 id="前推法计算es和ef">前推法（计算ES和EF）
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>ES (最早开始时间):&lt;/p>
+&lt;ul>
+&lt;li>对于起始活动：ES = 项目开始时间（通常为0）&lt;/li>
+&lt;li>对于其他活动：ES = 所有紧前活动中最大的EF值&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>EF (最早完成时间):
+EF = ES + 活动持续时间&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="后推法计算ls和lf">后推法（计算LS和LF）
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>LF (最晚完成时间):&lt;/p>
+&lt;ul>
+&lt;li>对于终止活动：LF = 项目的计划完成时间&lt;/li>
+&lt;li>对于其他活动：LF = 所有紧后活动中最小的LS值&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>LS (最晚开始时间):
+LS = LF - 活动持续时间&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="浮动时间的计算及其重要性">浮动时间的计算及其重要性
+&lt;/h2>&lt;p>浮动时间表示一个活动可以推迟的时间而不影响整个项目的完成时间。理解和管理浮动时间对于优化项目进度和资源分配至关重要。&lt;/p>
+&lt;h3 id="总浮动时间-total-float-tf">总浮动时间 (Total Float, TF)
+&lt;/h3>&lt;p>总浮动时间是一个活动可以推迟的最大时间，而不影响整个项目的完成日期。&lt;/p>
+&lt;p>计算方法：
+TF = LS - ES 或 TF = LF - EF&lt;/p>
+&lt;h3 id="自由浮动时间-free-float-ff">自由浮动时间 (Free Float, FF)
+&lt;/h3>&lt;p>自由浮动时间是一个活动可以推迟的时间，而不影响任何后续活动的最早开始时间。&lt;/p>
+&lt;p>计算方法：
+FF = 紧后活动的最早开始时间 - 当前活动的最早完成时间
+或
+FF = MIN(紧后活动的ES) - EF&lt;/p>
+&lt;h2 id="应用这些概念的步骤">应用这些概念的步骤
+&lt;/h2>&lt;ol>
+&lt;li>从项目开始到结束，使用前推法计算每个活动的ES和EF。&lt;/li>
+&lt;li>从项目结束到开始，使用后推法计算每个活动的LF和LS。&lt;/li>
+&lt;li>计算总浮动时间和自由浮动时间。&lt;/li>
+&lt;li>识别关键路径：总浮动时间为0的活动序列即为关键路径。&lt;/li>
+&lt;/ol>
+&lt;h2 id="这些概念的重要性">这些概念的重要性
+&lt;/h2>&lt;ol>
+&lt;li>识别关键活动和非关键活动&lt;/li>
+&lt;li>优化资源分配&lt;/li>
+&lt;li>评估项目风险&lt;/li>
+&lt;li>制定应急计划&lt;/li>
+&lt;/ol>
+&lt;p>通过掌握关键路径法和浮动时间计算，项目经理可以：&lt;/p>
+&lt;ul>
+&lt;li>准确预测项目完成时间&lt;/li>
+&lt;li>识别需要特别关注的关键活动&lt;/li>
+&lt;li>合理分配资源，优化项目进度&lt;/li>
+&lt;li>及时发现潜在的进度问题并采取相应措施&lt;/li>
+&lt;/ul>
+&lt;p>虽然现代项目管理软件可以自动执行这些计算，但深入理解这些概念的原理对于做出明智的项目决策至关重要。通过熟练运用这些工具，项目经理可以更好地控制项目进度，提高项目成功的可能性。&lt;/p></description></item></channel></rss>

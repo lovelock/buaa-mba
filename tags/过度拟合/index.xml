@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>过度拟合 on MBA学习记录</title><link>https://buaa-mba.pages.dev/tags/%E8%BF%87%E5%BA%A6%E6%8B%9F%E5%90%88/</link><description>Recent content in 过度拟合 on MBA学习记录</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 12 Oct 2024 16:26:02 +0800</lastBuildDate><atom:link href="https://buaa-mba.pages.dev/tags/%E8%BF%87%E5%BA%A6%E6%8B%9F%E5%90%88/index.xml" rel="self" type="application/rss+xml"/><item><title>过度拟合</title><link>https://buaa-mba.pages.dev/p/%E8%BF%87%E5%BA%A6%E6%8B%9F%E5%90%88/</link><pubDate>Sat, 12 Oct 2024 16:26:02 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E8%BF%87%E5%BA%A6%E6%8B%9F%E5%90%88/</guid><description>&lt;p>过拟合（Overfitting）是机器学习和统计建模中的一个常见问题，指的是模型在训练数据上表现得很好，但在新数据（测试数据）上表现不佳的情况。&lt;/p>
+&lt;h3 id="过拟合的特征">过拟合的特征
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>复杂模型&lt;/strong>：过拟合通常发生在模型复杂度过高的情况下，比如使用了过多的特征、参数或高阶多项式。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>训练与测试性能差异&lt;/strong>：在训练集上，过拟合模型的表现通常非常好，误差很小；而在验证集或测试集上，误差较大，模型泛化能力差。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>捕捉噪声&lt;/strong>：过拟合的模型不仅捕捉到了数据中真实的模式，还捕捉到了数据中的噪声和随机波动，从而导致模型在新数据上表现不佳。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="过拟合的例子">过拟合的例子
+&lt;/h3>&lt;p>想象一下，你用多项式回归来拟合一组数据：&lt;/p>
+&lt;ul>
+&lt;li>如果你选择一个低阶多项式（比如线性回归），模型可能无法很好地拟合数据的真实趋势（欠拟合）。&lt;/li>
+&lt;li>如果选择一个非常高阶的多项式，模型可能会完美通过每一个数据点，但在新数据上表现不佳，这就是过拟合。&lt;/li>
+&lt;/ul>
+&lt;h3 id="如何防止过拟合">如何防止过拟合
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>简化模型&lt;/strong>：选择较简单的模型，避免过多的特征和复杂的结构。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>使用正则化&lt;/strong>：通过正则化技术（如L1或L2正则化）来 penalize 模型的复杂性，从而减少过拟合的风险。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>交叉验证&lt;/strong>：使用交叉验证方法评估模型性能，确保模型能够在多个数据划分上表现良好。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>训练更多数据&lt;/strong>：增加训练数据量可以帮助模型捕捉到更一般的模式，而不是噪声。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>早停法（Early Stopping）&lt;/strong>：在训练过程中监测模型在验证集上的性能，当其不再提升时停止训练。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="总结">总结
+&lt;/h3>&lt;p>过拟合是一个需要关注的重要问题，尤其是在创建复杂模型时。通过采取适当的措施，可以提高模型的泛化能力，使其在未见数据上也能够表现良好。&lt;/p></description></item></channel></rss>

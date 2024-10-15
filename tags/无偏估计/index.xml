@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>无偏估计 on MBA学习记录</title><link>https://buaa-mba.pages.dev/tags/%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1/</link><description>Recent content in 无偏估计 on MBA学习记录</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 11 Sep 2024 09:12:17 +0800</lastBuildDate><atom:link href="https://buaa-mba.pages.dev/tags/%E6%97%A0%E5%81%8F%E4%BC%B0%E8%AE%A1/index.xml" rel="self" type="application/rss+xml"/><item><title>理解样本方差和总体方差</title><link>https://buaa-mba.pages.dev/p/%E7%90%86%E8%A7%A3%E6%A0%B7%E6%9C%AC%E6%96%B9%E5%B7%AE%E5%92%8C%E6%80%BB%E4%BD%93%E6%96%B9%E5%B7%AE/</link><pubDate>Wed, 11 Sep 2024 09:12:17 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E7%90%86%E8%A7%A3%E6%A0%B7%E6%9C%AC%E6%96%B9%E5%B7%AE%E5%92%8C%E6%80%BB%E4%BD%93%E6%96%B9%E5%B7%AE/</guid><description>&lt;p>在管理统计课上提到了样本方差和总体方差，在之前的运筹与决策课上也提到过，但都没有讲推导的过程，尤其是为什么总体方差公式里最后是除以样本总数$n$，而样本方法最后却是除以样本总数减1$n-1$，本文就这个问题展开，并会讨论无偏估计、期望等统计学中常用的概念。&lt;/p>
+&lt;h2 id="理论背景">理论背景
+&lt;/h2>&lt;p>&lt;a class="link" href="https://zh.wikipedia.org/wiki/%E6%96%B9%E5%B7%AE" target="_blank" rel="noopener"
+>方差&lt;/a>（Variance）又称变异数、变方，在概率论及统计学中，描述的是一个随机变量的离散程度，即一组数字与其平均值之间的距离的度量，是随机变量与其总体均值或样本均值的离差的平方的期望。方差在统计中有非常核心的地位，其应用领域包括描述统计学、推论统计学、假设检验、度量拟合优度，以及蒙特卡洛采样。由于科学分析经常涉及统计，方差也是重要的科研工具。&lt;/p>
+&lt;h3 id="总体方差">总体方差
+&lt;/h3>&lt;p>总体均值一般使用\(\mu\)来表示，当总体的数量已知且可统计的情况下，总体方差(\(\sigma^2\))的定义为：&lt;/p>
+\[
+\sigma^2 = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu)^2
+\]&lt;h3 id="样本方差">样本方差
+&lt;/h3>&lt;p>样本均值一般使用\(\bar{x}\)来表示，当总体数量过大无法进行全部统计时，可使用样本均值\(\bar{x}\)来估计总体均值\(\mu\)。样本方差的定义为：&lt;/p>
+\[
+s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2
+\]&lt;h3 id="样本均值方差">样本均值方差
+&lt;/h3>&lt;p>样本均值的方差是指多个独立样本的均值的方差。当你从总体中抽取多个样本，并计算每个样本的均值时，这些样本均值的变异程度就是样本均值的方差。&lt;/p>
+&lt;p>对于独立同分布的随机变量 \(x_1, x_2, \ldots, x_n\) 来说，样本均值 \(\bar{x}\) 的方差为 \(\frac{\sigma^2}{n}\)，其中 \(\sigma^2\) 是单个样本的方差，\(n\) 是样本大小。&lt;/p>
+&lt;h3 id="方差的性质">方差的性质
+&lt;/h3>&lt;h4 id="非负性">非负性
+&lt;/h4>&lt;p>方差总是大于或等于零，因为平方的结果总是非负的&lt;/p>
+\[
+\sigma^2 \geq 0 \quad \text{和} \quad s^2 \geq 0
+\]&lt;h4 id="单位">单位
+&lt;/h4>&lt;p>方差的单位是数据单位的平方。例如，如果数据是以米为单位的，方差的单位将是平方米。&lt;/p>
+&lt;h4 id="线性变换">线性变换
+&lt;/h4>&lt;p>如果我们对数据进行线性变换（例如，乘以一个常数并加上一个常数），方差的变化情况如下：&lt;/p>
+&lt;ul>
+&lt;li>如果 \(Y = aX + b\)（其中 \(a\) 和 \(b\) 是常数），则：&lt;/li>
+&lt;/ul>
+\[
+Var(Y) = a^2 Var(X)
+\]&lt;ul>
+&lt;li>这表明加上常数 \(b\) 不会影响方差，而乘以常数 \(a\) 会影响方差，具体为平方该常数。&lt;/li>
+&lt;/ul>
+&lt;h4 id="独立性">独立性
+&lt;/h4>&lt;p>如果随机变量 \(X\) 和 \(Y\) 是独立的，那么它们的方差计算为：&lt;/p>
+\[
+Var(X + Y) = Var(X) + Var(Y)
+\]&lt;h2 id="疑问和解答">疑问和解答
+&lt;/h2>&lt;p>为什么上面两个公式一个是除以$n$一个是除以$n-1$呢？&lt;/p>
+&lt;p>样本方差的计算中使用样本均值 \(\bar{x}\) 代替总体均值 \(\mu\)。使用样本均值进行计算时，样本方差 \(s^2\) 可能低估总体方差。这是因为样本均值是从样本中计算得出的，样本中的每个数据点与样本均值的偏差通常比与总体均值的偏差小。&lt;/p>
+&lt;p>这是通过经验和统计理论得到的，是不需要证明的。使用$n-1$的原因是&lt;/p>
+&lt;ol>
+&lt;li>自由度考虑：计算\(\bar{x}\)使用了一个自由度，因此剩下$n-1$个独立的数据点来估计方差&lt;/li>
+&lt;li>无偏估计：使样本方差成为总体方差的无偏估计，即\(E[s^2]=\sigma^2\)&lt;/li>
+&lt;/ol>
+&lt;p>那么什么是自由度呢？&lt;/p>
+&lt;p>自由度（Degrees of Freedom）是统计学中的一个概念，指的是数据集中的独立信息数量。当你计算统计量时，某些值被固定或约束，限制了独立变化的数量。自由度是可以自由变化的数据点的数量。&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>样本均值 \(\bar{x}\)&lt;/strong>：计算样本均值时，你使用了所有 \(n\) 个数据点的信息。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>约束&lt;/strong>：计算方差时，已经用掉一个自由度来求样本均值 \(\bar{x}\)，因为 \(n\) 个数据点的和必须等于 \(n\bar{x}\)。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>自由度&lt;/strong>：这导致只有 \(n-1\) 个数据点可以自由变化，其余一个是由均值固定的。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>因此，样本方差的计算使用 \(n-1\) 作为分母，以确保方差估计的无偏性。&lt;/p></description></item><item><title>证明样本方差的期望等于总体方差</title><link>https://buaa-mba.pages.dev/p/%E8%AF%81%E6%98%8E%E6%A0%B7%E6%9C%AC%E6%96%B9%E5%B7%AE%E7%9A%84%E6%9C%9F%E6%9C%9B%E7%AD%89%E4%BA%8E%E6%80%BB%E4%BD%93%E6%96%B9%E5%B7%AE/</link><pubDate>Wed, 11 Sep 2024 09:12:17 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E8%AF%81%E6%98%8E%E6%A0%B7%E6%9C%AC%E6%96%B9%E5%B7%AE%E7%9A%84%E6%9C%9F%E6%9C%9B%E7%AD%89%E4%BA%8E%E6%80%BB%E4%BD%93%E6%96%B9%E5%B7%AE/</guid><description>&lt;h2 id="总方差的定义">总方差的定义
+&lt;/h2>&lt;p>\(S\)是总方差：&lt;/p>
+\[
+S = \sum_{i=1}^{n} (x_i - \bar{x})^2
+\]&lt;p>根据均值的定义，可以展开&lt;/p>
+\[
+S = \sum_{i=1}^{n} (x_i^2 - 2x_i\bar{x} + \bar{x}^2)
+\]\[
+= \sum_{i=1}^{n} x_i^2 - 2\bar{x}\sum_{i=1}^{n} x_i + n\bar{x}^2
+\]\[
+= \sum_{i=1}^{n} x_i^2 - 2n\bar{x}^2 + n\bar{x}^2
+\]\[
+= \sum_{i=1}^{n} x_i^2 - n\bar{x}^2
+\]&lt;h2 id="计算样本方法的期望es">计算样本方法的期望\(E[S]\)
+&lt;/h2>&lt;p>根据期望的线性性质，可以将期望运算符分开：&lt;/p>
+\[
+E[S] = E\left[\sum_{i=1}^{n} x_i^2 - n\bar{x}^2\right]
+\]\[
+= \sum_{i=1}^{n} E[x_i^2] - E[n\bar{x}^2]
+\]&lt;ul>
+&lt;li>&lt;strong>第一项&lt;/strong> \(E\left[\sum_{i=1}^{n} x_i^2\right]\)：&lt;/li>
+&lt;/ul>
+&lt;p>因为 \(x_i\) 是从总体中独立抽取的，所以可以写为：&lt;/p>
+\[
+E\left[\sum_{i=1}^{n} x_i^2\right] = nE[x_i^2]
+\]&lt;ul>
+&lt;li>&lt;strong>第二项&lt;/strong> \(E\left[n\bar{x}^2\right]\)：&lt;/li>
+&lt;/ul>
+\[
+Var(X) = E[(X - E[X])^2]
+\]&lt;p>展开得到：&lt;/p>
+\[
+Var(X) = E[X^2 - 2X \cdot E[X] + (E[X])^2]
+\]&lt;p>利用期望的线性性质，这可以分解为：&lt;/p>
+\[
+Var(X) = E[X^2] - 2E[X] \cdot E[X] + (E[X])^2
+\]&lt;p>简化为：&lt;/p>
+\[
+Var(X) = E[X^2] - (E[X])^2
+\]&lt;p>使用样本均值 \(\bar{x}\) 的定义，\(\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i\)，可以推导出：&lt;/p>
+\[
+E[\bar{x}^2] = Var(\bar{x}) + (E[\bar{x}])^2
+\]&lt;p>已知：&lt;/p>
+&lt;ul>
+&lt;li>\(E[\bar{x}] = \mu\)&lt;/li>
+&lt;li>\(Var(\bar{x}) = \frac{\sigma^2}{n}\)&lt;/li>
+&lt;/ul>
+&lt;p>所以：&lt;/p>
+\[
+E[\bar{x}^2] = \frac{\sigma^2}{n} + \mu^2
+\]&lt;p>将其代入 \(E[n\bar{x}^2]\) 中：&lt;/p>
+\[
+E[n\bar{x}^2] = n\left(\frac{\sigma^2}{n} + \mu^2\right) = \sigma^2 + n\mu^2
+\]&lt;h2 id="代入计算">代入计算
+&lt;/h2>&lt;p>现在将这两个期望值代入 \(E[S]\)：&lt;/p>
+\[
+E[S] = nE[x_i^2] - (\sigma^2 + n\mu^2)
+\]&lt;p>这里的 \(E[x_i^2]\) 可以通过总体方差的定义来计算，具体为：&lt;/p>
+\[
+E[x_i^2] = Var(X) + (E[X])^2 = \sigma^2 + \mu^2
+\]&lt;p>所以&lt;/p>
+\[
+E[S] = n(\sigma^2 + \mu^2) - (\sigma^2 + n\mu^2)
+=(n-1)\sigma^2
+\]&lt;p>而公式\(E[S]=(n-1)\sigma^2\)是一个验证无偏性的结果，所以对于\(s^2\)的定义采用\(\frac{1}{n-1}\)是合理的，所以&lt;/p>
+\[
+E[s^2]=E[\frac{S}{n-1}]=\frac{E[S]}{n-1}=\frac{(n-1)\sigma^2}{n-1} = \sigma^2
+\]</description></item></channel></rss>

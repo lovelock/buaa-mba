@@ -1,0 +1,1098 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Latex on MBA学习记录</title><link>https://buaa-mba.pages.dev/tags/latex/</link><description>Recent content in Latex on MBA学习记录</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 22 Aug 2024 14:09:04 +0800</lastBuildDate><atom:link href="https://buaa-mba.pages.dev/tags/latex/index.xml" rel="self" type="application/rss+xml"/><item><title>Markdown LaTeX Cheatsheet</title><link>https://buaa-mba.pages.dev/p/markdown-latex-cheatsheet/</link><pubDate>Thu, 22 Aug 2024 14:09:04 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/markdown-latex-cheatsheet/</guid><description>&lt;p>来自&lt;a class="link" href="https://github.com/robinchu/blog/blob/master/MarkDown%E4%B8%8B%E7%BC%96%E5%86%99LaTeX%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95.md" target="_blank" rel="noopener"
+>MarkDown下编写$\LaTeX$数学公式基本语法&lt;/a>&lt;/p>
+&lt;p>这些写法只有一个&lt;code>\hline&lt;/code>无法正确渲染，别的都是对的。&lt;/p>
+&lt;h3 id="前言">前言
+&lt;/h3>&lt;p>$\LaTeX$是一套非常优秀的排版系统， 通过它排版的图书和论文会变得非常漂亮和易读。 而$\LaTeX$在编写数学公式的易用性和通用性，使我对它产生了浓厚的兴趣。 这篇文章主要介绍了$\LaTeX$公式编辑在MarkDown下的使用语法和方法。
+以下的例子是在Sublime Text3上编写， 并测试的结果， 当然你也可以在任何引入$MathJax$的MarkDown编辑器上测试。&lt;/p>
+&lt;h3 id="1显示方法">1.显示方法
+&lt;/h3>&lt;ul>
+&lt;li>
+&lt;p>嵌入文字显示：&lt;code>$...$&lt;/code>
+eg: &lt;code>$\sum^n_{i=1}x^i=1$&lt;/code> ==&amp;gt; $\sum^n_{i=1}x^i=1$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>单行显示： &lt;code>$$...$$&lt;/code>
+eg: &lt;code>$ $\sum^n_{i=1}x^i=1$ $&lt;/code> ==&amp;gt; &lt;/p>
+$$\sum^n_{i=1}x^i=1$$&lt;/li>
+&lt;li>
+&lt;p>带序号显示：&lt;code>\begin{equation}...\end{equation}&lt;/code>
+eg:&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;code>\begin{equation}\sum^n_{i=1}x^i=1\end{equation}&lt;/code> ==&amp;gt;
+&lt;/p>
+$$
+\begin{equation}\sum^n_{i=1}x^i=1\end{equation}
+$$&lt;p>
+&lt;code>\begin{equation}\x+y=z\end{equation}&lt;/code> ==&amp;gt;
+&lt;/p>
+$$
+\begin{equation}x+y=z\end{equation}
+$$&lt;h3 id="2通用显示规则">2.通用显示规则
+&lt;/h3>&lt;ul>
+&lt;li>&lt;code>^&lt;/code> =&amp;gt; 上标&lt;/li>
+&lt;li>&lt;code>_&lt;/code> =&amp;gt; 下标&lt;/li>
+&lt;li>&lt;code>{}&lt;/code> =&amp;gt; 包括&lt;/li>
+&lt;li>&lt;code>~&lt;/code> =&amp;gt; 空格&lt;/li>
+&lt;li>&lt;code>\&lt;/code> =&amp;gt; 转移符号&lt;/li>
+&lt;/ul>
+&lt;h3 id="3增强型显示规则">3.增强型显示规则
+&lt;/h3>&lt;ul>
+&lt;li>
+&lt;p>&lt;code>\sqrt&lt;/code> 求根
+eg: &lt;code>$\sqrt{x+y}$&lt;/code>==&amp;gt; $\sqrt{x+y}$
+eg: &lt;code>$\sqrt[3]{x+y}$&lt;/code>==&amp;gt; $\sqrt[3]{x+y}$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>\frac \over&lt;/code> 分数形式
+eg: &lt;code>$\frac{a+1}{b+2}$&lt;/code> ==&amp;gt; $\frac{a+1}{b+2}$
+eg: &lt;code>${a+1}\over{b+2}$&lt;/code> ==&amp;gt; ${a+1}\over{b+2}$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>\sum&lt;/code> 求和
+eg: &lt;code>$\sum$&lt;/code>==&amp;gt; $\sum$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>\prod&lt;/code> 求积
+eg: &lt;code>$\prod^n_{i=1}i+1=1$&lt;/code> ==&amp;gt; $\prod^n_{i=1}i+1=1$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\int 求积分
+eg: &lt;code>$\int x+1$&lt;/code> ==&amp;gt; $\int x+1$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\iint 求积分
+eg: &lt;code>$\iint x+1$&lt;/code> ==&amp;gt; $\iint x+1$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\bigcup 并集
+eg: &lt;code>$A\bigcup B$&lt;/code> ==&amp;gt; $A\bigcup B$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\cup 并集
+eg: &lt;code>$A\cup B$&lt;/code> ==&amp;gt; $A\cup B$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\cap 交集
+eg: &lt;code>$A\cap B$&lt;/code> ==&amp;gt; $A\cap B$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\bigcap 交集
+eg: &lt;code>$A\bigcap B$&lt;/code> ==&amp;gt; $A\bigcap B$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\to 箭头
+eg: &lt;code>$A\to B$&lt;/code> ==&amp;gt; $A\to B$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\lim
+eg: &lt;code>$\lim_{0\to 100}$&lt;/code> ==&amp;gt; $\lim_{0\to 100}$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\ln
+eg: &lt;code>$\ln_{0\to 100}$&lt;/code> ==&amp;gt; $\ln_{0\to 100}$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\sin
+eg: &lt;code>$\sin x$&lt;/code> ==&amp;gt; $\sin x$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\cos
+eg: &lt;code>$\cos x$&lt;/code> ==&amp;gt; $\cos x$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\qquad 8m空格&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\quad 4m空格&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\times 乘号
+eg: &lt;code>$a \times b$&lt;/code>=$a \times b$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\div 除号
+eg: &lt;code>$a\div b$&lt;/code>=$a\div b$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\{\} 花括号显示
+eg: &lt;code>$\\{ hello \\}$&lt;/code> ==&amp;gt; $\{ hello \}$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>小括号增强
+eg: &lt;code>$\left( hello\right)$&lt;/code> ==&amp;gt; $\left( hello\right)$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>中括号增强
+eg: &lt;code>$\left[hello\right]$&lt;/code> ==&amp;gt; $\left[hello\right]$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>绝对值增强
+eg: &lt;code>$\left|hello\right|$&lt;/code> ==&amp;gt; $\left|hello\right|$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>尖括号
+eg: &lt;code>$\langle hello\rangle$&lt;/code> ==&amp;gt; $\langle hello\rangle$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>向上取整
+eg: &lt;code>$\lceil hello\rceil$&lt;/code> ==&amp;gt; $\lceil hello\rceil$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>向下取整
+eg: &lt;code>$\lfloor hllo\rfloor$&lt;/code> ==&amp;gt; $\lfloor hllo\rfloor$&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="4数学符号表一">4.数学符号表一
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">$\pm$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\pm&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\mp$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\mp&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\times$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\times&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\div$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\div&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\ast$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\ast&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\star$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\star&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\circ$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\circ&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\bullet$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bullet&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\cdot$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\cdot&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\oplus$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\oplus&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\oslash$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\oslash&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\dagger$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\dagger&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$+$&lt;/td>
+&lt;td style="text-align: left">&lt;code>+&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$-$&lt;/td>
+&lt;td style="text-align: left">&lt;code>-&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\cap$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\cap&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\cup$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\cup&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\ddagger$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\ddagger&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\diamond$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\diamond&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\uplus$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\uplus&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\sqcap$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sqcap&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\sqcup$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sqcup&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\vee$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\vee&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\wedge$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\wedge&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\setminus$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\setminus&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\wr$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\wr&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\ominus$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\ominus&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\odot$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\odot&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\bigtriangleup$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bigtriangleup&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\bigtriangledown$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bigtriangledown&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\triangleleft$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\triangleleft&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\triangleright$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\triangleright&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\lhd$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\lhd&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\rhd$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\rhd&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\unlhd$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\unlhd&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\unrhd$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\unrhd&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\otimes$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\otimes&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\bigcirc$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bigcirc&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\amalg$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\amalg&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\sum$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sum&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\prod$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\prod&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\coprod$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\coprod&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\int$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\int&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\oint$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\oint&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\bigcap$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bigcap&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\bigcup$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bigcup&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\bigsqcup$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bigsqcup&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\bigvee$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bigvee&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\bigwedge$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bigwedge&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\bigodot$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bigodot&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\bigotimes$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bigotimes&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\bigoplus$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bigoplus&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\biguplus$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\biguplus&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\leq$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\leq&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\geq$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\geq&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\equiv$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\equiv&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\prec$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\prec&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\succ$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\cucc&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\sim$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sim&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\preceq$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\preceq&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\succeq$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\succeq&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\simeq$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\simeq&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\ll$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\ll&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\gg$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\gg&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\asymp$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\asymp&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\subset$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\subset&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\supset$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\supset&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\approx$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\approx&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\subseteq$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\subseteq&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\supseteq$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\subseteq&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\cong$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\cong&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\sqsubset$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sqsubset&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\sqsupset$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sqsupset&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\neq$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\neq&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\sqsubseteq$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sqsubseteq&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\sqsupseteq$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sqsupseteq&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\doteq$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\doteq&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\in$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\in&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\ni$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\ni&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\notin$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\notin&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\vdash$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\vdash&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\dashv$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\dashv&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$:$&lt;/td>
+&lt;td style="text-align: left">&lt;code>:&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\models$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\models&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\perp$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\perp&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\mid$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\mid&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\parallel$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\parallel&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\bowtie$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bowtie&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\Join$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Join&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\smile$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\smile&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\frown$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\frown&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\propto$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\propto&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$&amp;lt;$&lt;/td>
+&lt;td style="text-align: left">&lt;code>&amp;lt;&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$&amp;gt;$&lt;/td>
+&lt;td style="text-align: left">&lt;code>&amp;gt;&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="5数学符号表二">5.数学符号表二
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">$\arccos$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\arccos&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\arcsin$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\arcsin&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\arctan$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\arctan&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\arg$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\arg&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\cos$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\cos&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\cosh$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\cosh&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\cot$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\cot&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\coth$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\coth&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\csc$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\csc&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\deg$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\deg&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\det$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\det&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\dim$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\dim&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\exp$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\exp&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\gcd$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\gcd&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\hom$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\hom&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\inf$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\inf&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\ker$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\ker&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\lg$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\lg&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\lim$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\lim&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\liminf$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\liminf&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\limsup$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\limsup&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\ln$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\ln&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\log$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\log&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\max$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\max&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\min$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\min&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Pr$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\pr&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\sec$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sec&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\sin$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sin&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\sinh$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sinh&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\sup$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sup&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\tan$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\tan&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\tanh$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\tanh&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="5箭头符号表">5.箭头符号表
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">$\leftarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\leftarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\longleftarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\longleftarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Leftarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Leftarrow&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\Longleftarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Longleftarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\rightarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\rightarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\longrightarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\longrightarrow&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\Rightarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Rightarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Longrightarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Longrightarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\leftrightarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\leftrightarrow&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\longleftrightarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\longleftrightarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Leftrightarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Leftrightarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Longleftrightarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Longleftrightarrow&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\mapsto$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\mapsto&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\longmapsto$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\longmapsto&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\hookleftarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\hookleftarrow&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\hookrightarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\hookrightarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\leftharpoonup$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\leftharpoonup&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\rightharpoonup$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\rightharpoonup&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\leftharpoondown$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\leftharpoondown&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\rightharpoondown$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\rightharpoondown&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\rightleftharpoons$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\rightleftharpoons&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\leadsto$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\leadsto&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\uparrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\uparrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\downarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\downarrow&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\Uparrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Uparrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Downarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Downarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\updownarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\updownarrow&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\Updownarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Updownarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\nwarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\nwarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\nearrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\nearrow&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\swarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\swarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\searrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\searrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="6特殊符号表">6.特殊符号表
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">$\S$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\S&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\aleph$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\aleph&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\LaTeX$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\LaTeX&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\ldots$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\ldots&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\ddots$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\ddots&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\cdots$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\cdots&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\vdots$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\vdots&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\imath$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\imath&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\jmath$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\jmath&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\ell$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\ell&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\wp$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\wp&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Re$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Re&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\Im$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Im&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Diamond$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Diamond&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\diamondsuit$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\diamondsuit&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\prime$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\prime&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\emptyset$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\emptyset&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\nabla$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\nabla&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\surd$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\surd&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\top$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\top&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\bot$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bot&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\backslash$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\backslash&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\partial$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\partial&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\infty$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\infty&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\triangle$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\triangle&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\heartsuit$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\heartsuit&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\circledS$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\circledS&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\hbar$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\hbar&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\forall$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\forall&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\exists$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\exists&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\neg$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\neg&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\flat$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\flat&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\natural$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\natural&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\sharp$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sharp&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\angle$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\angle&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\mho$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\mho&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\Box$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Box&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\clubsuit$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\clubsuits&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\spadesuit$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\spadesuit&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\mathrm{d}$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\mathrm{d}&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;/td>
+&lt;td style="text-align: left">&lt;/td>
+&lt;td style="text-align: left">&lt;/td>
+&lt;td style="text-align: left">&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="7希腊字母greek-letters显示表">7.希腊字母(Greek Letters)显示表
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">拉丁字母&lt;/th>
+&lt;th style="text-align: left">小写显示方法&lt;/th>
+&lt;th style="text-align: left">大写显示方法&lt;/th>
+&lt;th style="text-align: left">大写字母&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">$\alpha$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\alpha&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\beta$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\beta&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\gamma$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\gamma&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Gamma&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Gamma$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\delta$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\delta&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Delta&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Delta$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\epsilon$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\epsilon&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\zeta$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\zeta&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\eta$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\eta&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\theta$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\theta&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Theta&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Theta$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\iota$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\iota&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\kappa$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\kappa&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\lambda$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\lambda&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>\lambda&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\lambda$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\mu$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\mu&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\nu$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\nu&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\xi$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\xi&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Xi&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Xi$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\omicron$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\omicron&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\pi$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\pi&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Pi&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Pi$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\rho$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\rho&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\sigma$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sigma&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Sigma&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Sigma$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\tau$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\tau&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\upsilon$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\upsilon&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Upsilon&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Upsilon$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\phi$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\phi&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Phi&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Phi$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\chi$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\chi&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\psi$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\psi&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Psi&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Psi$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\omega$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\omega&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Omega&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Omega$&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;em>注意：将小写字母的首字母大写表示为大写拉丁字母&lt;/em>&lt;/p>
+&lt;h3 id="8常用结构例子">8.常用结构例子
+&lt;/h3>&lt;h4 id="例1">例1
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">\begin{align}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\sqrt{37} &lt;span class="err">&amp;amp;&lt;/span> = \sqrt{\frac{73^2-1}{12^2}} \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;amp;&lt;/span> = \sqrt{\frac{73^2}{12^2}\cdot\frac{73^2-1}{73^2}} \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;amp;&lt;/span> = \sqrt{\frac{73^2}{12^2}}\sqrt{\frac{73^2-1}{73^2}} \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;amp;&lt;/span> = \frac{73}{12}\sqrt{1 - \frac{1}{73^2}} \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;amp;&lt;/span> \approx \frac{73}{12}\left(1 - \frac{1}{2\cdot73^2}\right)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \end{align}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>$$
+\begin{align}
+\sqrt{37} &amp; = \sqrt{\frac{73^2-1}{12^2}} \\\
+&amp; = \sqrt{\frac{73^2}{12^2}\cdot\frac{73^2-1}{73^2}} \\\
+&amp; = \sqrt{\frac{73^2}{12^2}}\sqrt{\frac{73^2-1}{73^2}} \\\
+&amp; = \frac{73}{12}\sqrt{1 - \frac{1}{73^2}} \\\
+&amp; \approx \frac{73}{12}\left(1 - \frac{1}{2\cdot73^2}\right)
+\end{align}
+$$&lt;h4 id="例2">例2
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">\begin{matrix}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> x &lt;span class="err">&amp;amp;&lt;/span> x^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> y &lt;span class="err">&amp;amp;&lt;/span> y^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> z &lt;span class="err">&amp;amp;&lt;/span> z^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\end{matrix}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\begin{pmatrix}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> x &lt;span class="err">&amp;amp;&lt;/span> x^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> y &lt;span class="err">&amp;amp;&lt;/span> y^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> z &lt;span class="err">&amp;amp;&lt;/span> z^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\end{pmatrix}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\begin{bmatrix}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> x &lt;span class="err">&amp;amp;&lt;/span> x^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> y &lt;span class="err">&amp;amp;&lt;/span> y^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> z &lt;span class="err">&amp;amp;&lt;/span> z^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\end{bmatrix}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\begin{Bmatrix}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> x &lt;span class="err">&amp;amp;&lt;/span> x^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> y &lt;span class="err">&amp;amp;&lt;/span> y^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> z &lt;span class="err">&amp;amp;&lt;/span> z^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\end{Bmatrix}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\begin{vmatrix}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> x &lt;span class="err">&amp;amp;&lt;/span> x^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> y &lt;span class="err">&amp;amp;&lt;/span> y^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> z &lt;span class="err">&amp;amp;&lt;/span> z^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\end{vmatrix}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>$$
+\begin{matrix}
+1 &amp; x &amp; x^2 \\\
+1 &amp; y &amp; y^2 \\\
+1 &amp; z &amp; z^2
+\end{matrix}
+$$$$
+\begin{pmatrix}
+1 &amp; x &amp; x^2 \\\
+1 &amp; y &amp; y^2 \\\
+1 &amp; z &amp; z^2
+\end{pmatrix}
+$$$$
+\begin{bmatrix}
+1 &amp; x &amp; x^2 \\\
+1 &amp; y &amp; y^2 \\\
+1 &amp; z &amp; z^2
+\end{bmatrix}
+$$$$
+\begin{Bmatrix}
+1 &amp; x &amp; x^2 \\\
+1 &amp; y &amp; y^2 \\\
+1 &amp; z &amp; z^2
+\end{Bmatrix}
+$$$$
+\begin{vmatrix}
+1 &amp; x &amp; x^2 \\\
+1 &amp; y &amp; y^2 \\\
+1 &amp; z &amp; z^2
+\end{vmatrix}
+$$&lt;h4 id="例3">例3
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">\left[
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \begin{array}{cc|c}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1&lt;span class="err">&amp;amp;&lt;/span>2&lt;span class="err">&amp;amp;&lt;/span>3\\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 4&lt;span class="err">&amp;amp;&lt;/span>5&lt;span class="err">&amp;amp;&lt;/span>6
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \end{array}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\right]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>$$
+\left[
+\begin{array}{cc|c}
+1&amp;2&amp;3\\\
+4&amp;5&amp;6
+\end{array}
+\right]
+$$&lt;h4 id="例4">例4
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">f(n) =
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\begin{cases}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">n/2, &lt;span class="err">&amp;amp;&lt;/span> \text{if $n$ is even} \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">3n+1, &lt;span class="err">&amp;amp;&lt;/span> \text{if $n$ is odd}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\end{cases}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\begin{array}{c|lcr}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">n &lt;span class="err">&amp;amp;&lt;/span> \text{Left} &lt;span class="err">&amp;amp;&lt;/span> \text{Center} &lt;span class="err">&amp;amp;&lt;/span> \text{Right} \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\hline
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">1 &lt;span class="err">&amp;amp;&lt;/span> 0.24 &lt;span class="err">&amp;amp;&lt;/span> 1 &lt;span class="err">&amp;amp;&lt;/span> 125 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2 &lt;span class="err">&amp;amp;&lt;/span> -1 &lt;span class="err">&amp;amp;&lt;/span> 189 &lt;span class="err">&amp;amp;&lt;/span> -8 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">3 &lt;span class="err">&amp;amp;&lt;/span> -20 &lt;span class="err">&amp;amp;&lt;/span> 2000 &lt;span class="err">&amp;amp;&lt;/span> 1+10i
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\end{array}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>$$
+f(n) =
+\begin{cases}
+n/2, &amp; \text{if $n$ is even} \\\
+3n+1, &amp; \text{if $n$ is odd}
+\end{cases}
+$$$$
+\begin{array}{c|lcr}
+n &amp; \text{Left} &amp; \text{Center} &amp; \text{Right} \\\
+1 &amp; 0.24 &amp; 1 &amp; 125 \\\
+2 &amp; -1 &amp; 189 &amp; -8 \\\
+3 &amp; -20 &amp; 2000 &amp; 1+10i
+\end{array}
+$$&lt;h3 id="参考文献">参考文献
+&lt;/h3></description></item></channel></rss>

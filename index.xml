@@ -1,0 +1,3708 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MBA学习记录</title><link>https://buaa-mba.pages.dev/</link><description>Recent content on MBA学习记录</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 12 Oct 2024 16:26:02 +0800</lastBuildDate><atom:link href="https://buaa-mba.pages.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>过度拟合</title><link>https://buaa-mba.pages.dev/p/%E8%BF%87%E5%BA%A6%E6%8B%9F%E5%90%88/</link><pubDate>Sat, 12 Oct 2024 16:26:02 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E8%BF%87%E5%BA%A6%E6%8B%9F%E5%90%88/</guid><description>&lt;p>过拟合（Overfitting）是机器学习和统计建模中的一个常见问题，指的是模型在训练数据上表现得很好，但在新数据（测试数据）上表现不佳的情况。&lt;/p>
+&lt;h3 id="过拟合的特征">过拟合的特征
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>复杂模型&lt;/strong>：过拟合通常发生在模型复杂度过高的情况下，比如使用了过多的特征、参数或高阶多项式。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>训练与测试性能差异&lt;/strong>：在训练集上，过拟合模型的表现通常非常好，误差很小；而在验证集或测试集上，误差较大，模型泛化能力差。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>捕捉噪声&lt;/strong>：过拟合的模型不仅捕捉到了数据中真实的模式，还捕捉到了数据中的噪声和随机波动，从而导致模型在新数据上表现不佳。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="过拟合的例子">过拟合的例子
+&lt;/h3>&lt;p>想象一下，你用多项式回归来拟合一组数据：&lt;/p>
+&lt;ul>
+&lt;li>如果你选择一个低阶多项式（比如线性回归），模型可能无法很好地拟合数据的真实趋势（欠拟合）。&lt;/li>
+&lt;li>如果选择一个非常高阶的多项式，模型可能会完美通过每一个数据点，但在新数据上表现不佳，这就是过拟合。&lt;/li>
+&lt;/ul>
+&lt;h3 id="如何防止过拟合">如何防止过拟合
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>简化模型&lt;/strong>：选择较简单的模型，避免过多的特征和复杂的结构。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>使用正则化&lt;/strong>：通过正则化技术（如L1或L2正则化）来 penalize 模型的复杂性，从而减少过拟合的风险。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>交叉验证&lt;/strong>：使用交叉验证方法评估模型性能，确保模型能够在多个数据划分上表现良好。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>训练更多数据&lt;/strong>：增加训练数据量可以帮助模型捕捉到更一般的模式，而不是噪声。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>早停法（Early Stopping）&lt;/strong>：在训练过程中监测模型在验证集上的性能，当其不再提升时停止训练。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="总结">总结
+&lt;/h3>&lt;p>过拟合是一个需要关注的重要问题，尤其是在创建复杂模型时。通过采取适当的措施，可以提高模型的泛化能力，使其在未见数据上也能够表现良好。&lt;/p></description></item><item><title>特异点和高杠杆点</title><link>https://buaa-mba.pages.dev/p/%E7%89%B9%E5%BC%82%E7%82%B9%E5%92%8C%E9%AB%98%E6%9D%A0%E6%9D%86%E7%82%B9/</link><pubDate>Sat, 12 Oct 2024 13:14:17 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E7%89%B9%E5%BC%82%E7%82%B9%E5%92%8C%E9%AB%98%E6%9D%A0%E6%9D%86%E7%82%B9/</guid><description>&lt;p>特异点（outliers）和高杠杆点（high leverage points）是统计学和回归分析中两个重要的概念，它们在数据分析中具有不同的含义和影响。&lt;/p>
+&lt;h2 id="特异点outliers">特异点（Outliers）
+&lt;/h2>&lt;h3 id="定义">定义
+&lt;/h3>&lt;p>特异点是指在数据集中明显偏离其他观测值的点。这些点的值远离大多数数据，可能影响统计分析的结果。&lt;/p>
+&lt;h3 id="识别">识别
+&lt;/h3>&lt;p>特异点通常通过可视化方法（如箱线图、散点图）或计算方法（如Z-score、IQR法）来识别。例如，在正态分布中，Z-score大于3或小于-3的观测值通常被视为特异点。&lt;/p>
+&lt;h3 id="影响">影响
+&lt;/h3>&lt;p>特异点可能导致回归模型的参数估计偏差，降低模型的拟合效果。它们也可能影响均值、标准差等统计量的计算，因此在分析时需要特别关注。&lt;/p>
+&lt;h2 id="高杠杆点high-leverage-points">高杠杆点（High Leverage Points）
+&lt;/h2>&lt;h3 id="定义-1">定义
+&lt;/h3>&lt;p>高杠杆点是指在自变量空间中，与其他观测点距离较远的点。这些点在回归分析中具有较高的杠杆效应，能够对回归线的拟合产生较大影响。&lt;/p>
+&lt;h3 id="识别-1">识别
+&lt;/h3>&lt;p>高杠杆点的识别通常基于自变量的值，具体可以通过计算杠杆值（leverage）来判断。杠杆值通常由帽子矩阵（hat matrix）计算得出。一般来说，杠杆值高于平均水平（通常是 \( \frac{2p}{n} \)，其中 \( p \) 是自变量的数量，\( n \) 是样本大小）的点被认为是高杠杆点。&lt;/p>
+&lt;h3 id="影响-1">影响
+&lt;/h3>&lt;p>高杠杆点可以正常或不正常地影响回归模型的拟合。例如，如果它们位于数据的趋势线上，它们可能对回归结果做出积极贡献；如果它们偏离趋势线，则可能导致模型产生偏差。&lt;/p>
+&lt;h2 id="总结">总结
+&lt;/h2>&lt;ul>
+&lt;li>&lt;strong>特异点&lt;/strong>关注的是数据点的数值偏离程度。&lt;/li>
+&lt;li>&lt;strong>高杠杆点&lt;/strong>关注的是数据点在自变量空间中的位置，它们可能会对模型产生较大的影响。&lt;/li>
+&lt;/ul>
+&lt;p>在数据分析中，识别和处理特异点和高杠杆点是很重要的，因为它们可能会影响模型的稳定性和预测能力。&lt;/p></description></item><item><title>管理统计中的线性回归</title><link>https://buaa-mba.pages.dev/p/%E7%AE%A1%E7%90%86%E7%BB%9F%E8%AE%A1%E4%B8%AD%E7%9A%84%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</link><pubDate>Sat, 12 Oct 2024 12:33:37 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E7%AE%A1%E7%90%86%E7%BB%9F%E8%AE%A1%E4%B8%AD%E7%9A%84%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</guid><description>&lt;p>线性回归是管理统计这门课目前为止相对体系化的一个章节，本文希望能比较完整地介绍其中的知识点，以帮助笔者和读者形成较为完整的知识图谱。&lt;/p>
+&lt;h2 id="相关系数the-correlation-coefficient">相关系数（The Correlation Coefficient）
+&lt;/h2>&lt;p>在介绍具体的求解方法之前，先来看一下相关系数。&lt;/p>
+&lt;p>相关系数是用来衡量两个变量之间关系强度和方向的统计量，最常见的有以下3个。&lt;/p>
+&lt;h3 id="皮尔逊相关系数pearson-correlation-coefficient">皮尔逊相关系数（Pearson correlation coefficient）
+&lt;/h3>&lt;h4 id="定义">定义
+&lt;/h4>&lt;p>衡量两个变量之间的线性关系强度和方向&lt;/p>
+&lt;h4 id="计算方法">计算方法
+&lt;/h4>$$
+r(x, y) = \frac{\sum^n_{i=1}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum^n_{i=1}(x_i-\bar{x})^2}\sqrt{\sum^n_{i=1}(y_i-\bar{y})^2}}
+$$&lt;h4 id="取值范围">取值范围
+&lt;/h4>&lt;ol>
+&lt;li>$-1 \leq r \leq 1$&lt;/li>
+&lt;li>$0 &amp;lt; r \leq 1$ 正线性相关&lt;/li>
+&lt;li>$-1\leq r &amp;lt; 0$ 负线性相关&lt;/li>
+&lt;li>$r=0$ 线性无关&lt;/li>
+&lt;li>$r=1$ 完全正线性相关&lt;/li>
+&lt;li>$r=-1$ 完全负线性相关&lt;/li>
+&lt;/ol>
+&lt;h4 id="适用场景">适用场景
+&lt;/h4>&lt;p>适合于数据满足正态分布和线性关系的情况。&lt;/p>
+&lt;h3 id="斯皮尔曼秩相关系数spearmans-rank-correlation-coefficient">斯皮尔曼秩相关系数（Spearman&amp;rsquo;s rank correlation coefficient）
+&lt;/h3>&lt;h4 id="定义-1">定义
+&lt;/h4>&lt;p>衡量两个变量之间的单调关系，基于变量的排名。这也是为什么名字就叫“秩”相关系数的原因。&lt;/p>
+&lt;h4 id="计算方法-1">计算方法
+&lt;/h4>$$
+\rho(u,v) = \frac{\sum^n_{i=1}(u_i - \bar{u})(v_i - \bar{v})}{\sqrt{\sum^n_{i=1}(u_i-\bar{u})^2}\sqrt{\sum^n_{i=1}(v_i - \bar{v})^2}}
+$$&lt;p>注意：公式中使用的变量是原始数据排序之后得到的序号值，也就是秩，而不是原始的数据，抛开这个差异，它和Pearson相关系数的公式是一样的。&lt;/p>
+&lt;h4 id="取值范围-1">取值范围
+&lt;/h4>&lt;p>从 -1 到 +1。&lt;/p>
+&lt;ul>
+&lt;li>+1: 完全正相关&lt;/li>
+&lt;li>-1: 完全负相关&lt;/li>
+&lt;li>0: 无单调关系&lt;/li>
+&lt;/ul>
+&lt;p>注意： Spearman秩相关系数解决了Pearson相关系数在处理&lt;strong>非线性&lt;/strong>关系时存在的问题，在处理存在特异点的情形时有优势，比如存在&lt;a class="link" href="../%e7%89%b9%e5%bc%82%e7%82%b9%e5%92%8c%e9%ab%98%e6%9d%a0%e6%9d%86%e7%82%b9" >特异点和高杠杆点&lt;/a>时。&lt;/p>
+&lt;h4 id="适用场景-1">适用场景
+&lt;/h4>&lt;ul>
+&lt;li>单调关系（非常重要）&lt;/li>
+&lt;li>非线性关系&lt;/li>
+&lt;li>存在&lt;a class="link" href="../%e7%89%b9%e5%bc%82%e7%82%b9%e5%92%8c%e9%ab%98%e6%9d%a0%e6%9d%86%e7%82%b9" >特异点和高杠杆点&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="肯德尔tau相关系数kendall-tau-coefficient">肯德尔$\tau$相关系数（Kendall $\tau$ coefficient）
+&lt;/h3>&lt;h4 id="定义-2">定义
+&lt;/h4>&lt;p>衡量两个定序变量的协同性，仍然是基于序号（秩）的。&lt;/p>
+&lt;h4 id="计算方法-2">计算方法
+&lt;/h4>&lt;p>对于n个样本点对：$(x_1,y_1),(x_2,y_2),&amp;hellip;(x_n,y_n)$&lt;/p>
+&lt;p>$\forall{j&amp;gt;i; i,j = 1,2,&amp;hellip;,n}$&lt;/p>
+&lt;p>$(x_i,y_i)$与$(x_j,y_j)$的秩方向相同：$(x_j-x_i)(y_j-y_i) &amp;gt; 0$
+$(x_i,y_i)$与$(x_j,y_j)$的秩方向相反：$(x_j-x_i)(y_j-y_i) &amp;lt; 0$&lt;/p>
+&lt;p>全部数据所有可能的样本点对共有&lt;/p>
+\[
+\binom{n}{2} = \frac{n!}{2!(n-2)!} = \frac{n(n-1)}{2}
+\]&lt;p>用$N_c$表示同向数对的个数，用$N_d$表示反向数对的个数，则有&lt;/p>
+$$
+\tau = \frac{N_c - N_d}{n(n-1)/2}
+$$&lt;h4 id="取值范围-2">取值范围
+&lt;/h4>&lt;p>从 -1 到 +1。&lt;/p>
+&lt;ul>
+&lt;li>+1: 完全一致的顺序&lt;/li>
+&lt;li>-1: 完全不一致的顺序&lt;/li>
+&lt;li>0: 无一致性&lt;/li>
+&lt;/ul>
+&lt;h4 id="适用场景-2">适用场景
+&lt;/h4>&lt;p>适合于小样本或有较多重复值的数据，通常被认为比斯皮尔曼更稳健。比如多个评委对多个选手的打分场景，可以用于评判对一个选手的评判是否公平。&lt;/p>
+&lt;h2 id="线性回归">线性回归
+&lt;/h2>&lt;p>所谓线性回归，就是要用&lt;strong>线性函数&lt;/strong>来&lt;strong>拟合&lt;/strong>数据，从而希望用来预测新样本数据的&lt;strong>预测&lt;/strong>的过程。那么相应的，非线性回归用的就是非线性函数。&lt;/p>
+&lt;p>线性函数就是形如$y=b+ax$这样的函数，自变量和因变量之间是线性关系。&lt;/p>
+&lt;h3 id="一元线性回归和多元线性回归">一元线性回归和多元线性回归
+&lt;/h3>&lt;p>所谓一元就是一个自变量，多元就是多个自变量，一元是多元的一个特例，所以这里就放在一起说了。&lt;/p>
+&lt;p>对于总体数据，存在&lt;/p>
+$$
+y_i = \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + ... + \beta_kx_{ik} + \epsilon_i
+$$&lt;ul>
+&lt;li>$y_i$是因变量Y在第$i$个样本点上的取值&lt;/li>
+&lt;li>$\beta_0,\beta_1,&amp;hellip;\beta_k$是未知的总体参数&lt;/li>
+&lt;li>$x_{ij}$是自变量$X_j$在第$i$个样本点上的取值&lt;/li>
+&lt;li>$\epsilon_i$是第$i$个随机误差项的取值&lt;/li>
+&lt;/ul>
+&lt;p>那么，回归建模要解决的问题就是求出$\beta_0,\beta_1,&amp;hellip;\beta_k$。&lt;/p>
+&lt;h2 id="求解方法">求解方法
+&lt;/h2>&lt;h3 id="最小二乘法">最小二乘法
+&lt;/h3>&lt;p>关于最小二乘法的具体操作可查看&lt;a class="link" href="../%e6%9c%80%e5%b0%8f%e4%ba%8c%e4%b9%98%e6%b3%95%e8%af%a6%e8%a7%a3%e4%b8%8e%e6%8b%89%e6%a0%bc%e6%9c%97%e6%97%a5%e6%b1%82%e8%a7%a3%e8%bf%87%e7%a8%8b/" >最小二乘法详解与拉格朗日求解过程&lt;/a>&lt;/p>
+&lt;h3 id="模型评估方法">模型评估方法
+&lt;/h3>&lt;p>通过最小二乘法得到了回归函数的系数了，但这个函数真的能很好地解释自变量和因变量的变化规律吗？所以就要引出对模型质量的评估方法了。有如下几个指标&lt;/p>
+&lt;h4 id="拟合优度goodness-of-fit">拟合优度（Goodness of Fit）
+&lt;/h4>&lt;p>判定系数是$R^2$（Coefficient of Determination）&lt;/p>
+$$
+R^2 = \frac{\sum^n_{i=1}(\hat{y}-\bar{y})^2}{\sum^n_{i=1}(y_i-\bar{y})^2}
+=\frac{用回归模型可解释的变异量}{总变异量}
+$$&lt;p>从定义来看，$R^2$越接近1，表示拟合优度越高，但实际并不是完全正相关的，需要具体问题具体分析。（有时过高的拟合优度可能代表&lt;a class="link" href="../%e8%bf%87%e5%ba%a6%e6%8b%9f%e5%90%88" >过度拟合&lt;/a>）。&lt;/p>
+&lt;p>$R^2$的性质：&lt;/p>
+&lt;ol>
+&lt;li>$0 &amp;lt;= R^2 &amp;lt;= 1$&lt;/li>
+&lt;li>当$R^2=1$时，表示模型解释了所有的变异，说明模型的拟合效果非常好&lt;/li>
+&lt;li>当$R^2=0$时，表示模型没有解释任何变异，说明模型的拟合效果很差&lt;/li>
+&lt;li>$\left|r(x,y)\right|=\sqrt{R^2}$，$r(x,y)$的符号取决于$b_1$的符号&lt;/li>
+&lt;li>增加更多的自变量通常不会减少$R^2$的值，但即使这些变量与因变量无关，$R^2$也可能增加，这可能导致过度拟合的问题&lt;/li>
+&lt;li>$R^2$只适用于线性回归模型，对于非线性模型不一定有效。它不能用来判断模型是否合适，模型的残差分析同样重要&lt;/li>
+&lt;/ol>
+&lt;h5 id="调整后的测定系数">调整后的测定系数
+&lt;/h5>&lt;p>为了解决增加自变量导致的$R^2$的问题，通常使用调整后的$R^2$（$\bar{R}^2$）。&lt;/p>
+$$
+\bar{R}^2 = 1 - (1-R^2) \cdot \frac{n-1}{n-p-1}
+$$&lt;p>其中，\( n \) 是样本大小，\( p \) 是自变量的数量。调整后的 \( R^2 \) 会惩罚增加不相关的自变量。&lt;/p>
+&lt;p>关于&lt;a class="link" href="../%e6%a8%a1%e5%9e%8b%e8%af%84%e4%bc%b0%e4%b8%ad%e7%9a%84f%e6%a3%80%e9%aa%8c%e5%92%8ct%e6%a3%80%e9%aa%8c" >F检验和t检验&lt;/a>，但这篇文章只介绍了二者的定义，而没有介绍它在模型评估中的作用。&lt;/p>
+&lt;h4 id="f-test">F-test
+&lt;/h4>&lt;p>F-test用来检验回归模型的线性关系，即自变量和因变量之间是否存在线性关系。&lt;/p>
+&lt;p>举例：
+$y_i = \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + &amp;hellip; + \beta_kx_{ik} + \epsilon_i$&lt;/p>
+&lt;p>F检验是用来验证$\forall_{i &amp;gt;= 1;} \beta_i \ne 0$&lt;/p>
+&lt;ul>
+&lt;li>零假设 ($H_0$​)：所有自变量的系数都等于零，即模型没有解释力。&lt;/li>
+&lt;li>备择假设 ($H_1$​)：至少有一个自变量的系数不等于零，意味着模型有解释力。&lt;/li>
+&lt;/ul>
+&lt;p>所以对于一个多元线性模型，只需要做一次F检验。&lt;/p>
+&lt;p>计算F值后，与临界值进行比较，或使用p值进行判断。如果F值大于临界值或&lt;strong>p值小于显著性水平（通常为0.05）&lt;/strong>，则拒绝零假设，表明模型具有统计显著性。&lt;/p>
+&lt;p>如果是非线性模型，F检验的结果可能不可靠。&lt;/p>
+&lt;h4 id="t-test">t-test
+&lt;/h4>&lt;p>t-test用来检验回归系数的显著性，即&lt;strong>某个&lt;/strong>自变量对因变量是否有解释作用，所以有$n$个自变量的多元线性回归函数，就要进行$n$次t检验。同样是判断p值是否小于显著性水平。&lt;/p>
+&lt;blockquote>
+&lt;p>显著性水平在Excel里是在P-value列，但在SPSS里是Sig.F&lt;/p>
+&lt;/blockquote>
+&lt;h4 id="交叉验证">交叉验证
+&lt;/h4>&lt;p>泛化能力（Generalization Ability）是模型对新样本的预测能力。&lt;/p>
+&lt;p>前面提到了过度拟合，它指的是对训练样本的拟合能力，过度拟合带来的后果可能就是泛化能力不足，光顾着满足训练样本了，无法预测新样本。&lt;/p>
+&lt;p>那么，一个直观的想法就是把已有的数据集分成两部分，一部分作为训练集，用来建立模型，另一部分作为测试集，将测试集数据代入模型，验证模型的表现。&lt;/p>
+&lt;p>模型的预测精度可以用验证集的均方误差(PRESS, predicted Error Sum of Squares)来测量&lt;/p>
+$$
+PRESS = \sum^{n_2}_{i=1}(y_i-\hat{y}_i)^2
+$$&lt;p>但是，很多实际情况下数据集并不足以拆分成两个足够大的训练集和测试集，这时候就要用到留一交叉验证法了。&lt;/p>
+&lt;p>简单来说就是依次从数据集中抽出一个作为测试集，用其他的作为训练集，第i个样本上的预测误差: $e^{\star}_i = y_i - \hat{y}_i$。那么模型的预测均方误差的估计值就是&lt;/p>
+$$
+PRESS = \sum^n_{i=1}(e^{\star}_i)^2 = \sum^n_{i=1}(y_i-\hat{y}_i)^2
+$$&lt;h3 id="变量筛选方法">变量筛选方法
+&lt;/h3>&lt;p>接上面讲的t-test，有时我们会发现一些变量的P-value并不满足要求，即它对模型的解释性不显著，需要考虑把这种自变量剔除出模型，这就要用到变量筛选方法。&lt;/p>
+&lt;h4 id="向后筛选法backward-elimination">向后筛选法(Backward Elimination)
+&lt;/h4>&lt;p>这是最直接的方法，在用所有自变量生成的模型中，先把P-value大于0.05中的最大值对应的自变量去掉重新生成模型，如果还有大于0.05的就继续这一步操作，直到所有的P-value都小于0.05。&lt;/p>
+&lt;h4 id="向前选择法forward-selection">向前选择法(Forward Selection)
+&lt;/h4>&lt;p>反过来操作就是先计算因变量与每个自变量的一元回归模型，再从中找到P-value最小(且满足&amp;lt;0.05)的进入模型，然后在保留这个自变量的前提下再继续添加别的自变量。&lt;/p>
+&lt;h4 id="逐步回归法stepwise-regression">逐步回归法(Stepwise Regression)
+&lt;/h4>&lt;p>但不管是向后筛选还是向前选择都有问题:&lt;/p>
+&lt;p>向后筛选法的问题是一旦一个自变量被剔除了，它就没机会再进入了，但随着其他自变量被删除，它的作用可能会显著起来。&lt;/p>
+&lt;p>向前选择法的问题是一旦一个自变量被加进来，它就不会再被剔出去了，但随着其他自变量的引入，一些先进入模型的变量的作用可能会变得不再显著。&lt;/p>
+&lt;p>总的来说就是没有考虑自变量之间的互相影响，这就需要逐步回归法来解决了。&lt;/p>
+&lt;p>方法：边进边退&lt;/p>
+&lt;p>起始：同前进法
+结束：模型外的所有变量均不能通过t-检验&lt;/p>
+&lt;p>这个过程比较复杂，稍后用R语言的计算过程来演示。&lt;/p>
+&lt;h2 id="r语言实战">R语言实战
+&lt;/h2>&lt;p>Excel无法实现变量筛选的自动化，SPSS用是能用，但是商用软件而且启动速度太慢了，所以这里用R语言来演示这个过程。&lt;/p>
+&lt;p>R Studio的安装非常简单，这里不再赘述，可以先看一篇非常优秀的文章：&lt;a class="link" href="https://www.geeksforgeeks.org/stepwise-regression-in-r/" target="_blank" rel="noopener"
+>Stepwise Regression in R&lt;/a>。&lt;/p>
+&lt;p>我们重点关注逐步回归法。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;span class="lnt">53
+&lt;/span>&lt;span class="lnt">54
+&lt;/span>&lt;span class="lnt">55
+&lt;/span>&lt;span class="lnt">56
+&lt;/span>&lt;span class="lnt">57
+&lt;/span>&lt;span class="lnt">58
+&lt;/span>&lt;span class="lnt">59
+&lt;/span>&lt;span class="lnt">60
+&lt;/span>&lt;span class="lnt">61
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">Start: AIC=-33.22
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Employed ~ GNP.deflator + GNP + Unemployed + Armed.Forces + Population +
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Year
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Df Sum of Sq RSS AIC
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- GNP.deflator 1 0.00292 0.83935 -35.163
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- Population 1 0.00475 0.84117 -35.129
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- GNP 1 0.10631 0.94273 -33.305
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;lt;none&amp;gt; 0.83642 -33.219
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- Year 1 1.49881 2.33524 -18.792
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- Unemployed 1 1.59014 2.42656 -18.178
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- Armed.Forces 1 2.16091 2.99733 -14.798
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Step: AIC=-35.16
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Employed ~ GNP + Unemployed + Armed.Forces + Population + Year
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Df Sum of Sq RSS AIC
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- Population 1 0.01933 0.8587 -36.799
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;lt;none&amp;gt; 0.8393 -35.163
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- GNP 1 0.14637 0.9857 -34.592
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">+ GNP.deflator 1 0.00292 0.8364 -33.219
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- Year 1 1.52725 2.3666 -20.578
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- Unemployed 1 2.18989 3.0292 -16.628
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- Armed.Forces 1 2.39752 3.2369 -15.568
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Step: AIC=-36.8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Employed ~ GNP + Unemployed + Armed.Forces + Year
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Df Sum of Sq RSS AIC
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;lt;none&amp;gt; 0.8587 -36.799
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">+ Population 1 0.0193 0.8393 -35.163
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">+ GNP.deflator 1 0.0175 0.8412 -35.129
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- GNP 1 0.4647 1.3234 -31.879
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- Year 1 1.8980 2.7567 -20.137
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- Armed.Forces 1 2.3806 3.2393 -17.556
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- Unemployed 1 4.0491 4.9077 -10.908
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;gt; # Print the summary of the selected model
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;gt; summary(stepwise_model)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Call:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lm(formula = Employed ~ GNP + Unemployed + Armed.Forces + Year,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> data = longley)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Residuals:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Min 1Q Median 3Q Max
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-0.42165 -0.12457 -0.02416 0.08369 0.45268
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Coefficients:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Estimate Std. Error t value Pr(&amp;gt;|t|)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">(Intercept) -3.599e+03 7.406e+02 -4.859 0.000503 ***
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">GNP -4.019e-02 1.647e-02 -2.440 0.032833 *
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Unemployed -2.088e-02 2.900e-03 -7.202 1.75e-05 ***
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Armed.Forces -1.015e-02 1.837e-03 -5.522 0.000180 ***
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Year 1.887e+00 3.828e-01 4.931 0.000449 ***
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">---
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Signif. codes: 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Residual standard error: 0.2794 on 11 degrees of freedom
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Multiple R-squared: 0.9954, Adjusted R-squared: 0.9937
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">F-statistic: 589.8 on 4 and 11 DF, p-value: 9.5e-13
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>可以看到，最终的模型带$\star$的都是满足要求的，把相关的系数代进去就是回归函数了。&lt;/p>
+&lt;p>那么，AIC是什么？&lt;/p>
+&lt;p>在R语言的逐步回归过程中，AIC（赤池信息量准则）和BIC（贝叶斯信息量准则）是两个常用的模型选择标准，用于评估和比较不同的统计模型。它们的主要作用是帮助选择合适的模型，同时考虑模型的复杂性和拟合优度。&lt;/p>
+&lt;h3 id="aic赤池信息量准则">AIC（赤池信息量准则）
+&lt;/h3>&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>定义&lt;/strong>：AIC是基于信息论的模型选择标准，其公式为：
+&lt;/p>
+\[
+\text{AIC} = 2k - 2\ln(L)
+\]&lt;p>
+其中，\(k\)是模型中参数的数量，\(L\)是模型的似然函数。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>作用&lt;/strong>：AIC试图在拟合优度和模型复杂性之间取得平衡。较小的AIC值表示更优的模型。AIC倾向于选择较复杂的模型，因为它的惩罚力度相对较小。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="bic贝叶斯信息量准则">BIC（贝叶斯信息量准则）
+&lt;/h3>&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>定义&lt;/strong>：BIC是基于贝叶斯理论的模型选择标准，其公式为：
+&lt;/p>
+\[
+\text{BIC} = \ln(n)k - 2\ln(L)
+\]&lt;p>
+其中，\(n\)是样本数量，\(k\)是模型中参数的数量，\(L\)是模型的似然函数。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>作用&lt;/strong>：BIC也用于平衡模型的复杂性和拟合优度，但相较于AIC，它对模型复杂性的惩罚更为严格。BIC倾向于选择较简单的模型，尤其是在样本量较大时。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="aic与bic的比较">AIC与BIC的比较
+&lt;/h3>&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>惩罚力度&lt;/strong>：AIC的惩罚与参数数量成线性关系，而BIC的惩罚与样本量\(n\)相关，因此BIC对复杂模型的惩罚更大。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>使用场景&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>AIC&lt;/strong>：在样本量较小或对模型复杂性不太敏感的情况下，AIC可能更适用。&lt;/li>
+&lt;li>&lt;strong>BIC&lt;/strong>：在样本量较大时，BIC倾向于选择更简单的模型，适合于更关注模型的解释性的场景。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="回到julia">回到Julia
+&lt;/h3>&lt;p>如果你看过我之前的文章可能会发现在学习运筹与决策时，我是更倾向于用Julia的，但这里我选择了R语言，这是因为在处理回归问题时，R语言比Julia优势明显，一个&lt;code>step()&lt;/code>方法够Julia喝一壶的了，所以工具合适最重要，Julia的优势在于更加工程化、性能好，而R语言的优势在于包多，功能多。&lt;/p>
+&lt;h2 id="自变量的多重相关性问题">自变量的多重相关性问题
+&lt;/h2>&lt;p>前面提到了自变量之间的相互影响，这要怎么理解呢？&lt;/p>
+&lt;p>自变量的多重相关性（Multicollinearity）是指在回归分析中，自变量之间存在较强的线性关系。这种现象可能导致一些问题，影响模型的稳定性和解释能力。以下是关于多重相关性的一些重要点：&lt;/p>
+&lt;h3 id="多重相关性的影响">多重相关性的影响
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>不稳定的回归系数&lt;/strong>：当自变量之间高度相关时，回归系数的估计可能变得不稳定，导致对自变量的影响不准确。&lt;/li>
+&lt;li>&lt;strong>标准误差增大&lt;/strong>：多重共线性会导致标准误差增大，从而影响t检验的结果，导致无法显著区分自变量的影响。&lt;/li>
+&lt;li>&lt;strong>模型解释困难&lt;/strong>：由于自变量之间的相互关系，难以确定哪个自变量真正对因变量有影响。&lt;/li>
+&lt;/ul>
+&lt;h3 id="识别多重相关性">识别多重相关性
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>相关矩阵&lt;/strong>：计算自变量之间的相关系数矩阵，查看哪些自变量之间的相关性较高。&lt;/li>
+&lt;li>&lt;strong>方差膨胀因子（VIF）&lt;/strong>：
+&lt;ul>
+&lt;li>VIF是一个常用的度量指标，用于检测多重相关性。VIF值越高，表示自变量的多重相关性越强。&lt;/li>
+&lt;li>通常，VIF值大于10被认为有较强的多重共线性。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>条件数&lt;/strong>：条件数（Condition Number）也是检测多重相关性的一种方法，值越大，表示共线性越严重。&lt;/li>
+&lt;/ul>
+&lt;h3 id="解决多重相关性的方法">解决多重相关性的方法
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>删除变量&lt;/strong>：根据相关性分析，删除一些自变量，以减少多重共线性。&lt;/li>
+&lt;li>&lt;strong>合并变量&lt;/strong>：将相关性强的变量合并为一个新的变量，例如通过主成分分析（PCA）。&lt;/li>
+&lt;li>&lt;strong>正则化方法&lt;/strong>：采用正则化回归（如Lasso回归、Ridge回归等），这些方法能够减小多重共线性带来的影响。&lt;/li>
+&lt;li>&lt;strong>增加样本量&lt;/strong>：在某些情况下，增加样本量可能会减轻多重共线性的问题。&lt;/li>
+&lt;/ul>
+&lt;h3 id="注意事项">注意事项
+&lt;/h3>&lt;ul>
+&lt;li>在某些情况下，多重相关性本身并不影响模型的预测能力，但仍然需要注意模型的解释性。&lt;/li>
+&lt;li>在建立模型时，理解自变量之间的关系，可以帮助研究人员做出更好的决策。&lt;/li>
+&lt;/ul>
+&lt;p>多重相关性是回归分析中常见的问题，会影响模型的稳定性和解释能力。通过识别和解决多重相关性，可以提高模型的可靠性和准确性。&lt;/p>
+&lt;h2 id="非线性回归模型">非线性回归模型
+&lt;/h2>&lt;p>上面主要讲了线性回归模型，但有些非线性回归模型可以通过某些变换转化为线性回归模型，从而利用线性回归方法进行分析。以下是一些常见的例子：&lt;/p>
+&lt;h3 id="指数回归模型">指数回归模型
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>非线性模型&lt;/strong>：\( y = a e^{bx} \)&lt;/li>
+&lt;li>&lt;strong>线性化&lt;/strong>：取自然对数，两边取对数：
+\[
+\ln(y) = \ln(a) + bx
+\]&lt;/li>
+&lt;li>&lt;strong>线性回归形式&lt;/strong>：可以将其视为线性回归模型，其中 \( Y = \ln(y) \) 和 \( X = x \)。&lt;/li>
+&lt;/ul>
+&lt;h3 id="幂律回归模型">幂律回归模型
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>非线性模型&lt;/strong>：\( y = ax^b \)&lt;/li>
+&lt;li>&lt;strong>线性化&lt;/strong>：对两边取对数：
+\[
+\ln(y) = \ln(a) + b \ln(x)
+\]&lt;/li>
+&lt;li>&lt;strong>线性回归形式&lt;/strong>：可以将其视为线性回归模型，其中 \( Y = \ln(y) \) 和 \( X = \ln(x) \)。&lt;/li>
+&lt;/ul>
+&lt;h3 id="逻辑回归模型">逻辑回归模型
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>非线性模型&lt;/strong>：\( P(y=1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x)}} \)&lt;/li>
+&lt;li>&lt;strong>线性化&lt;/strong>：通过逻辑斯蒂变换：
+\[
+\ln\left(\frac{P}{1-P}\right) = \beta_0 + \beta_1 x
+\]&lt;/li>
+&lt;li>&lt;strong>线性回归形式&lt;/strong>：将对数比视为因变量，使用线性回归进行分析。&lt;/li>
+&lt;/ul>
+&lt;h3 id="二次回归模型">二次回归模型
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>非线性模型&lt;/strong>：\( y = ax^2 + bx + c \)&lt;/li>
+&lt;li>&lt;strong>线性化&lt;/strong>：可以重写为：
+\[
+y = c + b x + a x^2
+\]&lt;/li>
+&lt;li>&lt;strong>线性回归形式&lt;/strong>：将 \( x^2 \) 作为一个新的自变量，形成多元线性回归模型。&lt;/li>
+&lt;/ul>
+&lt;h3 id="平方根回归">平方根回归
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>非线性模型&lt;/strong>：\( y = a + b\sqrt{x} \)&lt;/li>
+&lt;li>&lt;strong>线性化&lt;/strong>：定义新的自变量 \( z = \sqrt{x} \)，则方程变为：
+\[
+y = a + bz
+\]&lt;/li>
+&lt;li>&lt;strong>线性回归形式&lt;/strong>：用 \( z \) 作为自变量进行线性回归。&lt;/li>
+&lt;/ul>
+&lt;p>通过对非线性模型进行适当的变换，可以将其转化为线性回归模型。这种方法使得我们能够利用线性回归的强大工具和技术来分析和预测数据。&lt;/p>
+&lt;h2 id="总结">总结
+&lt;/h2>&lt;p>本文整体讲了线性回归模型中的一些概念和问题，包括相关系数、模型计算和检验、拟合优度、变量筛选（R语言为例）以及非线性回归模型转换成线性模型的例子，希望能对线性回归的学习有所帮助。&lt;/p></description></item><item><title>有监督学习与无监督学习简介</title><link>https://buaa-mba.pages.dev/p/%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/</link><pubDate>Wed, 25 Sep 2024 10:41:11 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/</guid><description>&lt;p>在机器学习的领域中，学习模型的方式主要分为两种：有监督学习和无监督学习。这两种方法各自有其独特的应用场景和优势，理解它们的不同之处对于选择合适的模型训练方法至关重要。&lt;/p>
+&lt;h2 id="有监督学习">有监督学习
+&lt;/h2>&lt;p>&lt;strong>定义&lt;/strong>&lt;br>
+有监督学习是在训练过程中使用带标签的数据。每个训练样本都有一个对应的目标输出（标签），模型的任务是学习输入与输出之间的映射关系。&lt;/p>
+&lt;p>&lt;strong>特点&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>数据集&lt;/strong>：使用包含输入数据和对应标签的数据集。&lt;/li>
+&lt;li>&lt;strong>目标&lt;/strong>：通过最小化模型的预测输出与真实标签之间的差异（通常使用损失函数来衡量）来进行训练。&lt;/li>
+&lt;li>&lt;strong>应用&lt;/strong>：广泛应用于分类、回归等任务，常见的例子包括图像识别、文本分类等。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>示例&lt;/strong>&lt;br>
+假设你有一个包含猫和狗图片的数据集，每张图片都有一个标签指示它是“猫”还是“狗”。通过训练模型，模型将学习识别图像的特征，并能够在新的、未见过的图像上进行分类。&lt;/p>
+&lt;h2 id="无监督学习">无监督学习
+&lt;/h2>&lt;p>&lt;strong>定义&lt;/strong>&lt;br>
+无监督学习是在训练过程中使用不带标签的数据。模型的任务是从数据中发现潜在的结构或模式，而不依赖于预先定义的标签。&lt;/p>
+&lt;p>&lt;strong>特点&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>数据集&lt;/strong>：仅包含输入数据，没有目标输出（标签）。&lt;/li>
+&lt;li>&lt;strong>目标&lt;/strong>：发现数据的内在结构，例如聚类、降维等。&lt;/li>
+&lt;li>&lt;strong>应用&lt;/strong>：常用于聚类、关联分析、降维等任务，具体应用包括市场细分、图像压缩等。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>示例&lt;/strong>&lt;br>
+假设你有一个包含不同形状的图像的数据集，但没有任何标签。通过无监督学习，模型可能会识别出图像的不同组（例如，圆形、方形等），而无需知道每个图像的具体类别。&lt;/p>
+&lt;h2 id="总结">总结
+&lt;/h2>&lt;p>有监督学习和无监督学习在机器学习中各具特色。选择哪种学习方式取决于可用的数据类型和特定应用的需求。了解这两种学习方式的不同之处，将有助于在实际应用中做出更明智的选择。&lt;/p></description></item><item><title>从管理经济学角度分析商品涨价背后的动机与结果</title><link>https://buaa-mba.pages.dev/p/%E4%BB%8E%E7%AE%A1%E7%90%86%E7%BB%8F%E6%B5%8E%E5%AD%A6%E8%A7%92%E5%BA%A6%E5%88%86%E6%9E%90%E5%95%86%E5%93%81%E6%B6%A8%E4%BB%B7%E8%83%8C%E5%90%8E%E7%9A%84%E5%8A%A8%E6%9C%BA%E4%B8%8E%E7%BB%93%E6%9E%9C/</link><pubDate>Tue, 24 Sep 2024 11:17:29 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E4%BB%8E%E7%AE%A1%E7%90%86%E7%BB%8F%E6%B5%8E%E5%AD%A6%E8%A7%92%E5%BA%A6%E5%88%86%E6%9E%90%E5%95%86%E5%93%81%E6%B6%A8%E4%BB%B7%E8%83%8C%E5%90%8E%E7%9A%84%E5%8A%A8%E6%9C%BA%E4%B8%8E%E7%BB%93%E6%9E%9C/</guid><description>&lt;p>最近&lt;a class="link" href="https://www.sohu.com/a/810990772_183083" target="_blank" rel="noopener"
+>BMW重新加入价格战&lt;/a>的消息又甚嚣尘上了，和2个月前&lt;a class="link" href="https://wallstreetcn.com/articles/3719823" target="_blank" rel="noopener"
+>BMW宣布退出价格战&lt;/a>的消息如出一辙。&lt;/p>
+&lt;p>宝马不算是平价商品，优衣库和迪卡侬才是，这两位也在最近一年改变了品牌定位，决定走高端路线了，二者面对的问题也是类似的。正好近期学习了管理经济学，我就手痒想用刚刚学习的理论知识来分析这背后的商业决策。&lt;/p>
+&lt;h2 id="大背景">大背景
+&lt;/h2>&lt;p>疫情以来普通人的生活质量可以说是肉眼可见地降低了，很多行业都艰难度日，路边待出租的旺铺也越来越多，很多店铺开不到一个月就关门大吉了。&lt;/p>
+&lt;p>从这个最直观的现象就能得出一个结论，普通人的收入水平下降了。&lt;/p>
+&lt;p>管理经济学中有一个无差别曲线，表示横轴和纵轴的2个商品可以互相补偿，通过改变两种商品的比例可以达到相同的“效用”，也就是俗称的爽感，比如我们可以画一条用&lt;strong>拼多多9.9包邮&lt;/strong>的商品和&lt;strong>优衣库&lt;/strong>的商品做组合可以得到的一条无差异曲线。
+&lt;img src="https://buaa-mba.pages.dev/images/2024-09-24-18-37-21.png"
+loading="lazy"
+alt="无差别曲线"
+>&lt;/p>
+&lt;p>它实际上是有约束的，一个最明显的约束就是消费者的收入。假设初始状态消费者的需求曲线是图中的绿色曲线，它对应的收入约束如下图所示。&lt;/p>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/2024-09-24-18-37-51.png"
+loading="lazy"
+alt="带收入约束的需求曲线"
+>&lt;/p>
+&lt;p>从上图可以看到，消费者的收入可以购买8件拼多多9.9或者4件优衣库（当然实际优衣库原来的价格肯定也不是这样，这里为了图形展示不那么夸张做了一些简化），而收入约束线与绿色曲线的切点就是消费者可以用这些收入获得的最大的&lt;strong>效用&lt;/strong>。&lt;/p>
+&lt;p>那么现在是什么情况呢？收入减少了，对应的这条收入约束线会向左平移，如下图所示。&lt;/p>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/2024-09-24-18-40-25.png"
+loading="lazy"
+alt="收入降低后的约束"
+>&lt;/p>
+&lt;p>上图中的黑色线就是收入降低后的收入约束，明显在这个约束下能买到的两种商品都变少了，相应的需求曲线也发生了下移——表示消费者能够获得的效用已经明显变少了。&lt;/p>
+&lt;p>而这也影响到了优衣库/迪卡侬这些企业的营收，表现为市场整体的萎缩。&lt;/p>
+&lt;h2 id="优衣库和迪卡侬的品牌定位">优衣库和迪卡侬的品牌定位
+&lt;/h2>&lt;p>假如你现在是优衣库的CEO，你发现品牌的销量下降了，你会面临两个选择：&lt;/p>
+&lt;ol>
+&lt;li>以价换量&lt;/li>
+&lt;li>提升客单价&lt;/li>
+&lt;/ol>
+&lt;p>如果是个小作坊，对品牌价值没有执念的话，肯定会选降价，短期一定会提升销量，销量和营收的变化关系如下。
+R: Revenue，营收
+P: Price，价格
+Q: Quantity，销量&lt;/p>
+\[
+R=P \times Q
+\]\[
+\mathrm{d}R=\mathrm{d}P \times Q + P \times \mathrm{d}Q
+\]\[
+\frac{\mathrm{d}R}{\mathrm{d}P} = Q + P \times \frac{\mathrm{d}Q}{\mathrm{d}P} \
+=Q \times [1 + \frac{\mathrm{d}Q/Q}{\mathrm{d}P/P}]
+\]&lt;p>
+而$\frac{\mathrm{d}Q/Q}{\mathrm{d}P/P}$正是需求的价格弹性$E$，它是一个负数，只有当弹性大于-1即商品缺乏弹性时，营收和价格的变化才是同向的，即涨价可以增加营收。 但营收增加了利润是否也会跟着增加就不好说了。&lt;/p>
+&lt;p>作为优衣库这种全球化的公司CEO，你要考虑的问题可就多了：价格降低了会在消费者心里形成锚定效应，品牌形象就会一直下行了。但迪卡侬的CEO要考虑的问题就简单多了，因为它已经没有降价的空间了。。。&lt;/p>
+&lt;p>所以这时候你就只有一个选择了——涨价。&lt;/p>
+&lt;p>这时又面临管理经济学里学到的另一个概念：弹性。&lt;/p>
+&lt;h3 id="价格弹性price-elasticity-of-demand">价格弹性（Price Elasticity of Demand）
+&lt;/h3>&lt;p>价格弹性是指当商品的价格发生变化时，消费者对该商品的需求量变化的程度。它可以用以下公式表示：&lt;/p>
+\[
+\text{价格弹性} (E_d) = \frac{\%\text{需求量的变化}}{\%\text{价格的变化}}
+\]&lt;ul>
+&lt;li>&lt;strong>弹性大于1（E_d &amp;gt; 1）&lt;/strong>：需求是弹性的，意味着价格上涨会导致需求量大幅下降，反之亦然。&lt;/li>
+&lt;li>&lt;strong>弹性等于1（E_d = 1）&lt;/strong>：需求是单位弹性的，意味着价格变化与需求量变化成比例。&lt;/li>
+&lt;li>&lt;strong>弹性小于1（E_d &amp;lt; 1）&lt;/strong>：需求是缺乏弹性的，意味着价格变化对需求量的影响较小。&lt;/li>
+&lt;/ul>
+&lt;p>优衣库作为一个小资品牌，对比9.9包邮的商品肯定弹性肯定是比较大的，也就意味着价格上涨一定会导致需求量的下降。通俗地说，消费者选择你是因为你便宜，而不是喜欢你这个品牌，如果这时有一个新品牌质量和你差不多而价格比你低，你的客户群会毫不犹豫地离你而去。&lt;/p>
+&lt;h3 id="收入弹性income-elasticity-of-demand">收入弹性（Income Elasticity of Demand）
+&lt;/h3>&lt;p>收入弹性是指当消费者的收入发生变化时，对某种商品的需求量变化的程度。其公式为：&lt;/p>
+\[
+\text{收入弹性} (E_y) = \frac{\%\text{需求量的变化}}{\%\text{收入的变化}}
+\]&lt;ul>
+&lt;li>&lt;strong>弹性大于1（E_y &amp;gt; 1）&lt;/strong>：该商品是奢侈品，需求随着收入的增加而大幅增加。&lt;/li>
+&lt;li>&lt;strong>弹性等于1（E_y = 1）&lt;/strong>：该商品是正常品，需求量的变化与收入变化成比例。&lt;/li>
+&lt;li>&lt;strong>弹性小于1（E_y &amp;lt; 1）&lt;/strong>：该商品是劣等品，需求随着收入的增加而减少。&lt;/li>
+&lt;/ul>
+&lt;h3 id="交叉弹性cross-elasticity-of-demand">交叉弹性（Cross Elasticity of Demand）
+&lt;/h3>&lt;p>交叉弹性是指一种商品的需求量对另一种商品价格变化的反应程度。其公式为：&lt;/p>
+\[
+\text{交叉弹性} (E_{xy}) = \frac{\%\text{商品A需求量的变化}}{\%\text{商品B价格的变化}}
+\]&lt;ul>
+&lt;li>&lt;strong>正值&lt;/strong>：表示两种商品是替代品，价格上涨会导致需求增加。&lt;/li>
+&lt;li>&lt;strong>负值&lt;/strong>：表示两种商品是互补品，价格上涨会导致需求减少。&lt;/li>
+&lt;/ul>
+&lt;p>我相信作为CEO的你肯定是想到了这一层的，所以你想在涨价的同时也留住原来的客户群体，所以你创立了新的子品牌GU，来填补优衣库涨价后留下的空白，但目前看起来这个行动还是比较迟缓，截至2024年6月，也才开了5家店，离形成气候还非常遥远。所以我们看到的就是优衣库的销量还在下降。&lt;/p>
+&lt;p>我们继续看需求曲线，当优衣库的价格上涨时，收入约束就会顺着需求曲线向右滑动，表现为优衣库的消费减少而9.9包邮的消费增加。&lt;/p>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/2024-09-24-19-21-40.png"
+loading="lazy"
+alt="收入约束滑动"
+>&lt;/p>
+&lt;h2 id="bba的困境">BBA的困境
+&lt;/h2>&lt;p>如果说优衣库还是很多人都能消费得起的平价品牌，那么BBA对绝大部分人就是遥不可及的梦想了。在多种原因（楼市低迷、新能源汽车的强势增长、消费市场低迷）的影响下，众多的豪华品牌也和国产品牌一样卷入了价格战。这其实也是当代主力消费群体的消费观念转变的体现，在口袋里的钱没那么充足的情况下，还是过好眼下的日子比较实在，至于品牌力，以后再说吧。&lt;/p>
+&lt;p>下图是BBA近3年单车价格走势图，&lt;a class="link" href="https://www.21jingji.com/article/20240715/herald/f1cb2b5c76324dc78254dd7c5ff8521e.html" target="_blank" rel="noopener"
+>图片来源&lt;/a>。&lt;/p>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/2024-09-24-19-07-05.png"
+loading="lazy"
+alt="BBA近3年单车价格走势"
+>&lt;/p>
+&lt;p>可以看到随着价格的走低，销量却没有变高。原因还是收入（预期）降低，大家不愿意加杠杆买豪车了。&lt;/p>
+&lt;p>我们知道，豪车的&lt;strong>价格&lt;/strong>本身也是商品的一部分，属于社交属性。换句话说，买豪车的人要买的是一辆XX万元的车，而不是某个型号的车，毕竟屌丝才懂车，土豪直接买。&lt;/p>
+&lt;p>但是，当人们看到豪车的价格也崩盘时，“豪华”的光环也就没那么亮了。这时这些品牌发现降价也换不来销量，索性就再把自己的优势&lt;strong>价格&lt;/strong>拉起来，把社交属性捡回来，就像开头提到的BMW高调宣布退出价格战。&lt;/p>
+&lt;p>但现实却给了它一记响亮的耳光——降价容易涨价难啊，如果已经锚定的形象这么容易被拉回来，7折虎5折豹就不会这么深入人心了。&lt;/p>
+&lt;p>现在BMW又灰溜溜地宣布继续加入价格战，对在“退出价格战”期间选择购买的消费者的打击不可谓不大，对自身品牌力的打击也不可谓不大了。&lt;/p>
+&lt;h2 id="结语">结语
+&lt;/h2>&lt;p>目前只是很简单地学了几节管理经济学，所以仅仅能从需求曲线和价格弹性这些方面来讨论这个问题，如果站在一个绝对理性人的角度来思考解决方案，绝对不会是逆势而行，但这些商界精英们却走了一条让普通人看来很难理解的道路，这其实也变相证明了做决策时并不是“绝对理性人”，如果再顺着这个方向思考下去就到了组织行为学的范畴了，等有时间再谈一下。&lt;/p></description></item><item><title>模型评估中的F检验和t检验</title><link>https://buaa-mba.pages.dev/p/%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0%E4%B8%AD%E7%9A%84f%E6%A3%80%E9%AA%8C%E5%92%8Ct%E6%A3%80%E9%AA%8C/</link><pubDate>Sun, 22 Sep 2024 22:01:26 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0%E4%B8%AD%E7%9A%84f%E6%A3%80%E9%AA%8C%E5%92%8Ct%E6%A3%80%E9%AA%8C/</guid><description>&lt;p>F检验和t检验是两种常用的统计检验方法，用于比较样本均值或方差。下面详细解释这两种检验的算法及其适用场景。&lt;/p>
+&lt;h3 id="t检验">t检验
+&lt;/h3>&lt;p>t检验主要用于比较两组样本均值是否存在显著差异。根据样本的特性，t检验可以分为三种类型：&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>独立样本t检验&lt;/strong>：用于比较两组独立样本的均值。&lt;/li>
+&lt;li>&lt;strong>配对样本t检验&lt;/strong>：用于比较同一组样本在不同条件下的均值。&lt;/li>
+&lt;li>&lt;strong>单样本t检验&lt;/strong>：用于比较一个样本的均值与已知的总体均值。&lt;/li>
+&lt;/ol>
+&lt;h4 id="独立样本t检验算法">独立样本t检验算法
+&lt;/h4>&lt;p>假设我们有两个独立样本 \(X_1, X_2, \ldots, X_n\) 和 \(Y_1, Y_2, \ldots, Y_m\)。&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>计算样本均值和样本方差&lt;/strong>：
+&lt;/p>
+\[
+\bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i, \quad S_X^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^2
+\]\[
+\bar{Y} = \frac{1}{m} \sum_{j=1}^{m} Y_j, \quad S_Y^2 = \frac{1}{m-1} \sum_{j=1}^{m} (Y_j - \bar{Y})^2
+\]&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>计算t统计量&lt;/strong>：
+&lt;/p>
+\[
+t = \frac{\bar{X} - \bar{Y}}{\sqrt{\frac{S_X^2}{n} + \frac{S_Y^2}{m}}}
+\]&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>确定自由度&lt;/strong>：
+自由度 \(df\) 可以用以下公式计算：
+&lt;/p>
+\[
+df = n + m - 2
+\]&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>查找临界值&lt;/strong>：
+根据显著性水平 \(\alpha\) 和自由度，从t分布表中查找临界值。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>作出决策&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>如果 \(|t| > t_{\text{临界值}}\)，拒绝原假设（两组均值相等）。&lt;/li>
+&lt;li>如果 \(|t| \leq t_{\text{临界值}}\)，不拒绝原假设。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h4 id="查t分布表的步骤">查t分布表的步骤
+&lt;/h4>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>确定显著性水平 (\(\alpha\))&lt;/strong>：
+通常选择 \(\alpha = 0.05\)（95%置信水平），在某些情况下可以选择 \(\alpha = 0.01\) 或 \(\alpha = 0.10\)。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>计算自由度 (\(df\))&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>对于独立样本 t 检验，\(df = n_1 + n_2 - 2\)，其中 \(n_1\) 和 \(n_2\) 是两个样本的大小。&lt;/li>
+&lt;li>对于配对样本 t 检验，\(df = n - 1\)，其中 \(n\) 是配对样本的数量。&lt;/li>
+&lt;li>对于单样本 t 检验，\(df = n - 1\)。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>查找 t 分布表&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>单尾或双尾&lt;/strong>：确定检验类型是单尾检验还是双尾检验。
+&lt;ul>
+&lt;li>单尾检验：只关注一个方向的显著性。&lt;/li>
+&lt;li>双尾检验：关注两个方向的显著性，\(\alpha\) 需除以 2。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>在 t 分布表中找到对应的自由度列，找到对应的显著性水平行。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>获取临界值&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>交叉点即为所需的 t 临界值。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>示例&lt;/strong>：&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>假设我们计算得出自由度 \(df = 10\)，并且选择显著性水平 \(\alpha = 0.05\)，进行双尾检验。查找&lt;a class="link" href="https://www.tdistributiontable.com/" target="_blank" rel="noopener"
+> t 分布表&lt;/a>，找到 \(df = 10\) 行和 \(\alpha = 0.025\)（因为双尾）列交点，得到 \(t_{\text{临界值}} \approx 2.228\)。&lt;/p>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/math/t-table.png"
+loading="lazy"
+alt="t-table"
+>&lt;/p>
+&lt;h3 id="f检验">F检验
+&lt;/h3>&lt;p>F检验主要用于比较两个样本的方差是否相等，或用于多组均值的方差分析（ANOVA）。&lt;/p>
+&lt;h4 id="f检验算法">F检验算法
+&lt;/h4>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>计算样本方差&lt;/strong>：
+假设有两个独立样本 \(X_1, X_2, \ldots, X_n\) 和 \(Y_1, Y_2, \ldots, Y_m\)。
+&lt;/p>
+\[
+S_X^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^2
+\]\[
+S_Y^2 = \frac{1}{m-1} \sum_{j=1}^{m} (Y_j - \bar{Y})^2
+\]&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>计算F统计量&lt;/strong>：
+&lt;/p>
+\[
+F = \frac{S_X^2}{S_Y^2}
+\]&lt;ul>
+&lt;li>通常将样本方差较大的放在分子中，以确保F统计量 \(\geq 1\)。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>确定自由度&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>自由度 \(df_1 = n - 1\)（分子自由度）&lt;/li>
+&lt;li>自由度 \(df_2 = m - 1\)（分母自由度）&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>查找临界值&lt;/strong>：
+根据显著性水平 \(\alpha\) 和自由度 \(df_1\) 和 \(df_2\)，从F分布表中查找临界值。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>作出决策&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>如果 \(F > F_{\text{临界值}}\)，拒绝原假设（方差不相等）。&lt;/li>
+&lt;li>如果 \(F \leq F_{\text{临界值}}\)，不拒绝原假设。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h4 id="查f分布表的步骤">查F分布表的步骤
+&lt;/h4>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>确定显著性水平 (\(\alpha\))&lt;/strong>：
+同样，选择 \(\alpha = 0.05\) 或其他水平。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>计算自由度&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>分子自由度 \(df_1\) 和分母自由度 \(df_2\)。&lt;/li>
+&lt;li>例如，若有两个样本，\(df_1 = n_1 - 1\) 和 \(df_2 = n_2 - 1\)。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>查找 F 分布表&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>在 F 分布表中，通常需要找到 \(df_1\) 和 \(df_2\) 的行和列。&lt;/li>
+&lt;li>确定显著性水平 \(\alpha\)，直接查找对应的交点。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>获取临界值&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>交叉点即为所需的 F 临界值。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>示例&lt;/strong>：&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>假设分子自由度 \(df_1 = 3\) 和分母自由度 \(df_2 = 5\)，并选择显著性水平 \(\alpha = 0.05\)。查找&lt;a class="link" href="https://openpress.usask.ca/app/uploads/sites/76/2020/05/F-Distribution-Table.pdf" target="_blank" rel="noopener"
+>F 分布表&lt;/a>，找到 \(df_1 = 3\) 对应的行和 \(df_2 = 5\) 对应的列，交点可能是 \(F_{\text{临界值}} \approx 5.207\)。&lt;/p>
+&lt;h3 id="总结">总结
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>t检验&lt;/strong>：用于比较两个样本均值，适用于小样本或样本方差未知的情况。&lt;/li>
+&lt;li>&lt;strong>F检验&lt;/strong>：用于比较样本方差，常用于方差分析（ANOVA）等多组比较。&lt;/li>
+&lt;/ul>
+&lt;p>这两种检验在统计分析中具有广泛的应用，理解其算法和适用场景有助于正确地进行数据分析和推断。&lt;/p></description></item><item><title>最小二乘法详解与拉格朗日求解过程</title><link>https://buaa-mba.pages.dev/p/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95%E8%AF%A6%E8%A7%A3%E4%B8%8E%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E6%B1%82%E8%A7%A3%E8%BF%87%E7%A8%8B/</link><pubDate>Sun, 22 Sep 2024 21:19:15 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95%E8%AF%A6%E8%A7%A3%E4%B8%8E%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E6%B1%82%E8%A7%A3%E8%BF%87%E7%A8%8B/</guid><description>&lt;h2 id="引言">引言
+&lt;/h2>&lt;p>最小二乘法是一种广泛应用于数据拟合和统计建模的数学优化技术。它的基本思想是通过最小化误差的平方和，找到最佳的参数估计，以使得模型最符合观测数据。本文将详细介绍最小二乘法的原理、应用及其通过拉格朗日乘数法求解的过程。&lt;/p>
+&lt;h2 id="一最小二乘法的基本原理">一、最小二乘法的基本原理
+&lt;/h2>&lt;p>在最小二乘法中，我们希望通过建立一个数学模型来描述自变量与因变量之间的关系。假设我们有 n 个观测数据点，数据点的形式为 \((x_i, y_i)\)（其中 \(i = 1, 2, \ldots, n\)），我们希望找到一个函数 \(f(x)\) 来拟合这些数据。&lt;/p>
+&lt;h3 id="1-目标函数">1. 目标函数
+&lt;/h3>&lt;p>最小二乘法的目标是最小化残差平方和（RSS），即：&lt;/p>
+\[
+RSS = \sum_{i=1}^{n} (y_i - f(x_i))^2
+\]&lt;p>通常情况下，我们假设 \(f(x)\) 是线性函数，形式为：&lt;/p>
+\[
+f(x) = \beta_0 + \beta_1 x
+\]&lt;p>其中，\(\beta_0\) 和 \(\beta_1\) 是我们需要估计的参数。&lt;/p>
+&lt;blockquote>
+&lt;p>上面的RSS全称Residual Sum of Squares，和SSE(Sum of Squares for Error)是同一个概念，在某些情况下SSE可能会用在更广泛的上下文中，包括多种误差度量，而RSS特指基于残差的平方和。&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="2-残差">2. 残差
+&lt;/h3>&lt;p>残差 \(e_i\) 定义为观测值与预测值之间的差异：&lt;/p>
+\[
+e_i = y_i - (\beta_0 + \beta_1 x_i)
+\]&lt;p>因此，残差平方和可以表示为：&lt;/p>
+\[
+RSS(\beta_0, \beta_1) = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y_i - (\beta_0 + \beta_1 x_i))^2
+\]&lt;h2 id="二拉格朗日乘数法求解">二、拉格朗日乘数法求解
+&lt;/h2>&lt;p>为了找到使得残差平方和最小的参数 \(\beta_0\) 和 \(\beta_1\)，我们可以使用拉格朗日乘数法。这种方法在约束优化中非常有效。&lt;/p>
+&lt;h3 id="1-构建拉格朗日函数">1. 构建拉格朗日函数
+&lt;/h3>&lt;p>在最小二乘法中，我们没有约束条件，因此我们可以直接对目标函数进行求导。我们定义拉格朗日函数 \(L\) 为：&lt;/p>
+\[
+L(\beta_0, \beta_1) = \sum_{i=1}^{n} (y_i - (\beta_0 + \beta_1 x_i))^2
+\]&lt;h3 id="2-求导数并设置为零">2. 求导数并设置为零
+&lt;/h3>&lt;p>为了找到最优解，我们需要对 \(L\) 分别对 \(\beta_0\) 和 \(\beta_1\) 进行求导，并将导数设置为零。&lt;/p>
+&lt;h4 id="a-对-beta_0-的导数">a. 对 \(\beta_0\) 的导数
+&lt;/h4>\[
+\frac{\partial L}{\partial \beta_0} = -2 \sum_{i=1}^{n} (y_i - (\beta_0 + \beta_1 x_i))
+\]&lt;p>设置为零：&lt;/p>
+\[
+\sum_{i=1}^{n} (y_i - (\beta_0 + \beta_1 x_i)) = 0
+\]&lt;h4 id="b-对-beta_1-的导数">b. 对 \(\beta_1\) 的导数
+&lt;/h4>\[
+\frac{\partial L}{\partial \beta_1} = -2 \sum_{i=1}^{n} (y_i - (\beta_0 + \beta_1 x_i)) x_i
+\]&lt;p>设置为零：&lt;/p>
+\[
+\sum_{i=1}^{n} (y_i - (\beta_0 + \beta_1 x_i)) x_i = 0
+\]&lt;h3 id="3-联立方程求解">3. 联立方程求解
+&lt;/h3>&lt;p>通过上述两个方程，我们可以得到一组关于 \(\beta_0\) 和 \(\beta_1\) 的线性方程组。对这两个方程进行求解可以得到参数的最优估计。&lt;/p>
+&lt;h4 id="a-方程一对-beta_0-的方程">a. 方程一（对 \(\beta_0\) 的方程）：
+&lt;/h4>\[
+n\bar{y} = n\beta_0 + \beta_1 \sum_{i=1}^{n} x_i
+\]&lt;h4 id="b-方程二对-beta_1-的方程">b. 方程二（对 \(\beta_1\) 的方程）：
+&lt;/h4>\[
+\sum_{i=1}^{n} y_i x_i = \beta_0 \sum_{i=1}^{n} x_i + \beta_1 \sum_{i=1}^{n} x_i^2
+\]&lt;p>这里，\(\bar{y}\) 是 \(y_i\) 的平均值。&lt;/p>
+&lt;h3 id="4-解的最终表达式">4. 解的最终表达式
+&lt;/h3>&lt;p>通过解这两个方程，我们可以得到 \(\beta_0\) 和 \(\beta_1\) 的具体值：&lt;/p>
+\[
+\beta_1 = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^{n} (x_i - \bar{x})^2}
+\]\[
+\beta_0 = \bar{y} - \beta_1 \bar{x}
+\]&lt;p>其中，\(\bar{x}\) 是 \(x_i\) 的平均值。&lt;/p>
+&lt;h2 id="三总结">三、总结
+&lt;/h2>&lt;p>最小二乘法是一种有效的数据拟合方法，广泛应用于回归分析中。通过最小化残差平方和，可以找到最佳的参数估计。在具体求解过程中，拉格朗日乘数法为我们提供了一种系统化的方法，使得求解过程清晰且高效。理解最小二乘法的原理和求解方法，对于数据分析和建模具有重要的理论和实践价值。&lt;/p></description></item><item><title>多元线性回归中的 R-square 和Ajusted R-square 评判关系</title><link>https://buaa-mba.pages.dev/p/%E5%A4%9A%E5%85%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E4%B8%AD%E7%9A%84-r-square-%E5%92%8Cajusted-r-square-%E8%AF%84%E5%88%A4%E5%85%B3%E7%B3%BB/</link><pubDate>Sun, 22 Sep 2024 20:34:51 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E5%A4%9A%E5%85%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E4%B8%AD%E7%9A%84-r-square-%E5%92%8Cajusted-r-square-%E8%AF%84%E5%88%A4%E5%85%B3%E7%B3%BB/</guid><description>&lt;p>多元线性回归是一种用于分析多个自变量与因变量之间关系的统计方法。在这类分析中，评估模型的拟合优度是至关重要的，通常使用决定系数 \( R^2 \) 和调整后的 \( R^2 \) 来进行评估。本文将深入探讨这两个指标的定义、评判关系及其在模型选择中的应用。&lt;/p>
+&lt;h2 id="基础公式">基础公式
+&lt;/h2>\[
+\sum_{i=1}^n(y_i-\bar{y})^2 = \sum_{i=1}^n(\hat{y}-\bar{y})^2 + \sum_{i=1}^n(y_i-\hat{y_i})^2
+\]&lt;ul>
+&lt;li>$\sum_{i=1}^n(y_i-\bar{y})^2$也叫SST，Sum of Squares of Total。&lt;/li>
+&lt;li>$\sum_{i=1}^n(\hat{y}-\bar{y})^2$也叫SSR，Sum of Squares of Regression。&lt;/li>
+&lt;li>$\sum_{i=1}^n(y_i-\hat{y_i})^2$也叫SSE，Sum of Squares of Error。&lt;/li>
+&lt;/ul>
+&lt;h2 id="-r2--的定义与特性">\( R^2 \) 的定义与特性
+&lt;/h2>&lt;p>\( R^2 \)（决定系数）表示自变量对因变量方差的解释比例，其值范围在 0 到 1 之间。\( R^2 \) 越接近 1，说明模型对数据的拟合效果越好。计算公式为：&lt;/p>
+\[
+R^2 = 1 - \frac{SSE}{SST}
+\]&lt;p>其中，\( SSE \) 是残差平方和，\( SST \) 是总平方和。&lt;/p>
+&lt;p>从上面的基础公式也可以得到&lt;/p>
+\[
+R^2 = \frac{SST-SSE}{SST} \
+=\frac{SSR}{SST}
+\]&lt;p>SSR这部分其实是&lt;strong>可用线性关系解释的自变量占的权重&lt;/strong>，那么相应的残差就是不能解释的，所以可解释的部分占比越高，$R^2$就越大。&lt;/p>
+&lt;p>尽管 \( R^2 \) 是一个直观且易于理解的指标，但它有一个重要的缺陷：随着自变量数目的增加，\( R^2 \) 总是不会减少。即使新增的自变量对因变量没有实际贡献，\( R^2 \) 也可能会增加，这会导致模型过拟合。&lt;/p>
+&lt;h2 id="调整后的--r2--的定义与优势">调整后的 \( R^2 \) 的定义与优势
+&lt;/h2>&lt;p>为了解决 \( R^2 \) 的不足，引入了调整后的 \( R^2 \)（Adjusted \( R^2 \)）。它不仅考虑了模型的拟合优度，还惩罚模型中自变量的数量。调整后的 \( R^2 \) 的计算公式为：&lt;/p>
+\[
+\text{Adjusted } R^2 = 1 - (1 - R^2) \frac{n-1}{n-p-1}
+\]&lt;p>其中，\( n \) 是样本大小，\( p \) 是自变量的数量。调整后的 \( R^2 \) 使得在增加不必要的自变量时，\( R^2 \) 可能上升但调整后的 \( R^2 \) 可能下降，从而更真实地反映模型的解释能力。&lt;/p>
+&lt;h2 id="-r2--和调整后的--r2--的评判关系">\( R^2 \) 和调整后的 \( R^2 \) 的评判关系
+&lt;/h2>&lt;p>在多元线性回归中，\( R^2 \) 和调整后的 \( R^2 \) 之间的评判关系可以归纳为以下几点：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>评估模型的整体表现&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>在比较不同模型时，如果调整后的 \( R^2 \) 增加，通常表明新自变量对模型有显著贡献。这意味着新自变量不仅提高了拟合优度，而且带来了更合理的模型解释。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>避免过拟合&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>当增加新的自变量时，若 \( R^2 \) 增加而调整后的 \( R^2 \) 下降，则暗示新自变量可能并不有用，甚至会导致模型的复杂度增加，从而降低模型的解释能力。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>模型选择的依据&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>通常在选择最佳模型时，更倾向于使用调整后的 \( R^2 \)，因为它对模型复杂度进行了修正，提供了更为保守和合理的评估。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="总结">总结
+&lt;/h2>&lt;p>在多元线性回归分析中，\( R^2 \) 和调整后的 \( R^2 \) 是评估模型拟合优度的重要指标。虽然 \( R^2 \) 提供了对模型解释能力的直接测量，但由于其易受自变量数量影响而可能导致过拟合，调整后的 \( R^2 \) 则提供了更为可靠的评估标准。通过合理使用这两个指标，研究者可以更有效地构建和选择适当的回归模型，从而提高分析的准确性与可靠性。&lt;/p></description></item><item><title>短期分析——利润最大化问题</title><link>https://buaa-mba.pages.dev/p/%E7%9F%AD%E6%9C%9F%E5%88%86%E6%9E%90%E5%88%A9%E6%B6%A6%E6%9C%80%E5%A4%A7%E5%8C%96%E9%97%AE%E9%A2%98/</link><pubDate>Sat, 21 Sep 2024 22:23:44 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E7%9F%AD%E6%9C%9F%E5%88%86%E6%9E%90%E5%88%A9%E6%B6%A6%E6%9C%80%E5%A4%A7%E5%8C%96%E9%97%AE%E9%A2%98/</guid><description>&lt;p>在微观经济学中，利润最大化是企业经营的核心目标之一。本文将探讨在短期分析中，如何通过考虑单位劳动力成本来实现利润的最大化。&lt;/p>
+&lt;h2 id="利润的基本概念">利润的基本概念
+&lt;/h2>&lt;p>利润（π）是企业总收入（TR）与总成本（TC）之间的差额，简化表达为：&lt;/p>
+\[
+\pi = TR - TC
+\]&lt;p>在短期内，我们可以将总成本分为可变成本（VC）和固定成本（FC）。但在短期分析中，固定成本通常是不可变的，因此我们可以忽略固定成本，专注于可变成本与收入之间的关系。&lt;/p>
+&lt;h2 id="总收入与总成本">总收入与总成本
+&lt;/h2>&lt;p>总收入可以表示为市场价格（P）与产量（Q）的乘积：&lt;/p>
+\[
+TR = P \cdot Q
+\]&lt;p>总可变成本与单位劳动力成本（w）和劳动投入（L）有关，表示为：&lt;/p>
+\[
+TC = VC = w \cdot L
+\]&lt;p>结合这两部分，我们可以将利润表达为：&lt;/p>
+\[
+\pi = P \cdot Q - w \cdot L
+\]&lt;h2 id="利润最大化的一阶条件">利润最大化的一阶条件
+&lt;/h2>&lt;p>为了找到利润最大化的产量 \( Q^* \)，我们需要对利润函数求导，并设置导数等于零（即一阶条件）：&lt;/p>
+\[
+\frac{d\pi}{dQ} = \frac{d(TR)}{dQ} - \frac{d(TC)}{dQ} = 0
+\]&lt;p>通过求导，我们可以得到：&lt;/p>
+\[
+\frac{d(TR)}{dQ} = P \quad \text{和} \quad \frac{d(TC)}{dQ} = MC
+\]&lt;p>因此，利润最大化的条件可以简化为：&lt;/p>
+\[
+P = MC
+\]&lt;h2 id="边际成本的计算">边际成本的计算
+&lt;/h2>&lt;p>在短期内，边际成本（MC）不仅与生产的变化有关，还与劳动力成本息息相关。边际成本可以表示为：&lt;/p>
+\[
+MC = \frac{d(TC)}{dQ} = \frac{d(w \cdot L)}{dQ}
+\]&lt;p>为更清晰地理解边际成本与产量之间的关系，我们还需要考虑产量 \( Q \) 与劳动投入 \( L \) 之间的关系，这通常通过生产函数来描述：&lt;/p>
+\[
+Q = f(L)
+\]&lt;p>因此，边际成本可以通过劳动的边际产出（\( MPL \)）来表示：&lt;/p>
+\[
+MC = \frac{w}{MPL}
+\]&lt;h2 id="利润最大化的一阶条件的深入理解">利润最大化的一阶条件的深入理解
+&lt;/h2>&lt;p>结合以上内容，我们可以将利润最大化的一阶条件进一步表达为：&lt;/p>
+\[
+P = MC = \frac{w}{MPL}
+\]&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>价格与边际成本的平衡&lt;/strong>：这一条件表明，利润最大化的产量发生在价格等于边际成本的点。若价格高于边际成本，企业可以通过增加产量来提升利润；反之，若价格低于边际成本，企业应考虑减少产量。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>单位劳动力成本的影响&lt;/strong>：当单位劳动力成本 \( w \) 上升时，边际成本 \( MC \) 也会随之上升。这意味着，若要实现利润最大化，企业需谨慎调整产量，可能需要寻找提高劳动生产率的方法。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>边际产出的重要性&lt;/strong>：边际产出的提高（例如通过技术创新或管理优化）能够降低边际成本，从而使企业实现更高的利润。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="总结">总结
+&lt;/h2>&lt;p>在短期利润最大化的分析中，考虑单位劳动力成本是至关重要的。利润最大化的一阶条件 \( P = \frac{w}{MPL} \) 不仅揭示了价格、劳动力成本和劳动生产率之间的关系，还为企业在快速变化的市场环境中做出决策提供了重要依据。通过理解这些概念，企业能够更有效地管理资源，优化生产，最终实现利润的最大化。&lt;/p></description></item><item><title>理解样本方差和总体方差</title><link>https://buaa-mba.pages.dev/p/%E7%90%86%E8%A7%A3%E6%A0%B7%E6%9C%AC%E6%96%B9%E5%B7%AE%E5%92%8C%E6%80%BB%E4%BD%93%E6%96%B9%E5%B7%AE/</link><pubDate>Wed, 11 Sep 2024 09:12:17 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E7%90%86%E8%A7%A3%E6%A0%B7%E6%9C%AC%E6%96%B9%E5%B7%AE%E5%92%8C%E6%80%BB%E4%BD%93%E6%96%B9%E5%B7%AE/</guid><description>&lt;p>在管理统计课上提到了样本方差和总体方差，在之前的运筹与决策课上也提到过，但都没有讲推导的过程，尤其是为什么总体方差公式里最后是除以样本总数$n$，而样本方法最后却是除以样本总数减1$n-1$，本文就这个问题展开，并会讨论无偏估计、期望等统计学中常用的概念。&lt;/p>
+&lt;h2 id="理论背景">理论背景
+&lt;/h2>&lt;p>&lt;a class="link" href="https://zh.wikipedia.org/wiki/%E6%96%B9%E5%B7%AE" target="_blank" rel="noopener"
+>方差&lt;/a>（Variance）又称变异数、变方，在概率论及统计学中，描述的是一个随机变量的离散程度，即一组数字与其平均值之间的距离的度量，是随机变量与其总体均值或样本均值的离差的平方的期望。方差在统计中有非常核心的地位，其应用领域包括描述统计学、推论统计学、假设检验、度量拟合优度，以及蒙特卡洛采样。由于科学分析经常涉及统计，方差也是重要的科研工具。&lt;/p>
+&lt;h3 id="总体方差">总体方差
+&lt;/h3>&lt;p>总体均值一般使用\(\mu\)来表示，当总体的数量已知且可统计的情况下，总体方差(\(\sigma^2\))的定义为：&lt;/p>
+\[
+\sigma^2 = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu)^2
+\]&lt;h3 id="样本方差">样本方差
+&lt;/h3>&lt;p>样本均值一般使用\(\bar{x}\)来表示，当总体数量过大无法进行全部统计时，可使用样本均值\(\bar{x}\)来估计总体均值\(\mu\)。样本方差的定义为：&lt;/p>
+\[
+s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2
+\]&lt;h3 id="样本均值方差">样本均值方差
+&lt;/h3>&lt;p>样本均值的方差是指多个独立样本的均值的方差。当你从总体中抽取多个样本，并计算每个样本的均值时，这些样本均值的变异程度就是样本均值的方差。&lt;/p>
+&lt;p>对于独立同分布的随机变量 \(x_1, x_2, \ldots, x_n\) 来说，样本均值 \(\bar{x}\) 的方差为 \(\frac{\sigma^2}{n}\)，其中 \(\sigma^2\) 是单个样本的方差，\(n\) 是样本大小。&lt;/p>
+&lt;h3 id="方差的性质">方差的性质
+&lt;/h3>&lt;h4 id="非负性">非负性
+&lt;/h4>&lt;p>方差总是大于或等于零，因为平方的结果总是非负的&lt;/p>
+\[
+\sigma^2 \geq 0 \quad \text{和} \quad s^2 \geq 0
+\]&lt;h4 id="单位">单位
+&lt;/h4>&lt;p>方差的单位是数据单位的平方。例如，如果数据是以米为单位的，方差的单位将是平方米。&lt;/p>
+&lt;h4 id="线性变换">线性变换
+&lt;/h4>&lt;p>如果我们对数据进行线性变换（例如，乘以一个常数并加上一个常数），方差的变化情况如下：&lt;/p>
+&lt;ul>
+&lt;li>如果 \(Y = aX + b\)（其中 \(a\) 和 \(b\) 是常数），则：&lt;/li>
+&lt;/ul>
+\[
+Var(Y) = a^2 Var(X)
+\]&lt;ul>
+&lt;li>这表明加上常数 \(b\) 不会影响方差，而乘以常数 \(a\) 会影响方差，具体为平方该常数。&lt;/li>
+&lt;/ul>
+&lt;h4 id="独立性">独立性
+&lt;/h4>&lt;p>如果随机变量 \(X\) 和 \(Y\) 是独立的，那么它们的方差计算为：&lt;/p>
+\[
+Var(X + Y) = Var(X) + Var(Y)
+\]&lt;h2 id="疑问和解答">疑问和解答
+&lt;/h2>&lt;p>为什么上面两个公式一个是除以$n$一个是除以$n-1$呢？&lt;/p>
+&lt;p>样本方差的计算中使用样本均值 \(\bar{x}\) 代替总体均值 \(\mu\)。使用样本均值进行计算时，样本方差 \(s^2\) 可能低估总体方差。这是因为样本均值是从样本中计算得出的，样本中的每个数据点与样本均值的偏差通常比与总体均值的偏差小。&lt;/p>
+&lt;p>这是通过经验和统计理论得到的，是不需要证明的。使用$n-1$的原因是&lt;/p>
+&lt;ol>
+&lt;li>自由度考虑：计算\(\bar{x}\)使用了一个自由度，因此剩下$n-1$个独立的数据点来估计方差&lt;/li>
+&lt;li>无偏估计：使样本方差成为总体方差的无偏估计，即\(E[s^2]=\sigma^2\)&lt;/li>
+&lt;/ol>
+&lt;p>那么什么是自由度呢？&lt;/p>
+&lt;p>自由度（Degrees of Freedom）是统计学中的一个概念，指的是数据集中的独立信息数量。当你计算统计量时，某些值被固定或约束，限制了独立变化的数量。自由度是可以自由变化的数据点的数量。&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>样本均值 \(\bar{x}\)&lt;/strong>：计算样本均值时，你使用了所有 \(n\) 个数据点的信息。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>约束&lt;/strong>：计算方差时，已经用掉一个自由度来求样本均值 \(\bar{x}\)，因为 \(n\) 个数据点的和必须等于 \(n\bar{x}\)。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>自由度&lt;/strong>：这导致只有 \(n-1\) 个数据点可以自由变化，其余一个是由均值固定的。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>因此，样本方差的计算使用 \(n-1\) 作为分母，以确保方差估计的无偏性。&lt;/p></description></item><item><title>证明样本方差的期望等于总体方差</title><link>https://buaa-mba.pages.dev/p/%E8%AF%81%E6%98%8E%E6%A0%B7%E6%9C%AC%E6%96%B9%E5%B7%AE%E7%9A%84%E6%9C%9F%E6%9C%9B%E7%AD%89%E4%BA%8E%E6%80%BB%E4%BD%93%E6%96%B9%E5%B7%AE/</link><pubDate>Wed, 11 Sep 2024 09:12:17 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E8%AF%81%E6%98%8E%E6%A0%B7%E6%9C%AC%E6%96%B9%E5%B7%AE%E7%9A%84%E6%9C%9F%E6%9C%9B%E7%AD%89%E4%BA%8E%E6%80%BB%E4%BD%93%E6%96%B9%E5%B7%AE/</guid><description>&lt;h2 id="总方差的定义">总方差的定义
+&lt;/h2>&lt;p>\(S\)是总方差：&lt;/p>
+\[
+S = \sum_{i=1}^{n} (x_i - \bar{x})^2
+\]&lt;p>根据均值的定义，可以展开&lt;/p>
+\[
+S = \sum_{i=1}^{n} (x_i^2 - 2x_i\bar{x} + \bar{x}^2)
+\]\[
+= \sum_{i=1}^{n} x_i^2 - 2\bar{x}\sum_{i=1}^{n} x_i + n\bar{x}^2
+\]\[
+= \sum_{i=1}^{n} x_i^2 - 2n\bar{x}^2 + n\bar{x}^2
+\]\[
+= \sum_{i=1}^{n} x_i^2 - n\bar{x}^2
+\]&lt;h2 id="计算样本方法的期望es">计算样本方法的期望\(E[S]\)
+&lt;/h2>&lt;p>根据期望的线性性质，可以将期望运算符分开：&lt;/p>
+\[
+E[S] = E\left[\sum_{i=1}^{n} x_i^2 - n\bar{x}^2\right]
+\]\[
+= \sum_{i=1}^{n} E[x_i^2] - E[n\bar{x}^2]
+\]&lt;ul>
+&lt;li>&lt;strong>第一项&lt;/strong> \(E\left[\sum_{i=1}^{n} x_i^2\right]\)：&lt;/li>
+&lt;/ul>
+&lt;p>因为 \(x_i\) 是从总体中独立抽取的，所以可以写为：&lt;/p>
+\[
+E\left[\sum_{i=1}^{n} x_i^2\right] = nE[x_i^2]
+\]&lt;ul>
+&lt;li>&lt;strong>第二项&lt;/strong> \(E\left[n\bar{x}^2\right]\)：&lt;/li>
+&lt;/ul>
+\[
+Var(X) = E[(X - E[X])^2]
+\]&lt;p>展开得到：&lt;/p>
+\[
+Var(X) = E[X^2 - 2X \cdot E[X] + (E[X])^2]
+\]&lt;p>利用期望的线性性质，这可以分解为：&lt;/p>
+\[
+Var(X) = E[X^2] - 2E[X] \cdot E[X] + (E[X])^2
+\]&lt;p>简化为：&lt;/p>
+\[
+Var(X) = E[X^2] - (E[X])^2
+\]&lt;p>使用样本均值 \(\bar{x}\) 的定义，\(\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i\)，可以推导出：&lt;/p>
+\[
+E[\bar{x}^2] = Var(\bar{x}) + (E[\bar{x}])^2
+\]&lt;p>已知：&lt;/p>
+&lt;ul>
+&lt;li>\(E[\bar{x}] = \mu\)&lt;/li>
+&lt;li>\(Var(\bar{x}) = \frac{\sigma^2}{n}\)&lt;/li>
+&lt;/ul>
+&lt;p>所以：&lt;/p>
+\[
+E[\bar{x}^2] = \frac{\sigma^2}{n} + \mu^2
+\]&lt;p>将其代入 \(E[n\bar{x}^2]\) 中：&lt;/p>
+\[
+E[n\bar{x}^2] = n\left(\frac{\sigma^2}{n} + \mu^2\right) = \sigma^2 + n\mu^2
+\]&lt;h2 id="代入计算">代入计算
+&lt;/h2>&lt;p>现在将这两个期望值代入 \(E[S]\)：&lt;/p>
+\[
+E[S] = nE[x_i^2] - (\sigma^2 + n\mu^2)
+\]&lt;p>这里的 \(E[x_i^2]\) 可以通过总体方差的定义来计算，具体为：&lt;/p>
+\[
+E[x_i^2] = Var(X) + (E[X])^2 = \sigma^2 + \mu^2
+\]&lt;p>所以&lt;/p>
+\[
+E[S] = n(\sigma^2 + \mu^2) - (\sigma^2 + n\mu^2)
+=(n-1)\sigma^2
+\]&lt;p>而公式\(E[S]=(n-1)\sigma^2\)是一个验证无偏性的结果，所以对于\(s^2\)的定义采用\(\frac{1}{n-1}\)是合理的，所以&lt;/p>
+\[
+E[s^2]=E[\frac{S}{n-1}]=\frac{E[S]}{n-1}=\frac{(n-1)\sigma^2}{n-1} = \sigma^2
+\]</description></item><item><title>凸函数和凹函数的概念及其应用</title><link>https://buaa-mba.pages.dev/p/%E5%87%B8%E5%87%BD%E6%95%B0%E5%92%8C%E5%87%B9%E5%87%BD%E6%95%B0%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/</link><pubDate>Sun, 08 Sep 2024 21:35:07 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E5%87%B8%E5%87%BD%E6%95%B0%E5%92%8C%E5%87%B9%E5%87%BD%E6%95%B0%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/</guid><description>&lt;blockquote>
+&lt;p>注意：关于凸函数和凹函数的定义国内外有争议，且定义完全相反，本文写的内容是国外通行的说法。国内以同济大学为代表的数学教材和本文描述的内容是相反的。&lt;/p>
+&lt;p>考证1：&lt;a class="link" href="https://carmamaths.org/resources/jon/Preprints/Books/CUP/CUPold/np-convex.pdf" target="_blank" rel="noopener"
+>CONVEX FUNCTIONS AND THEIR APPLICATIONS A contemporary approach&lt;/a>&lt;/p>
+&lt;p>考证2：&lt;a class="link" href="https://zh.wikipedia.org/wiki/%E5%87%B9%E5%87%BD%E6%95%B0" target="_blank" rel="noopener"
+>维基百科：凹函数&lt;/a>&lt;/p>
+&lt;p>考证3: &lt;img src="https://buaa-mba.pages.dev/images/math/%e5%9b%bd%e5%86%85%e6%95%99%e6%9d%90%e5%87%b9%e5%87%b8%e5%87%bd%e6%95%b0.jpeg"
+loading="lazy"
+alt="国内教材凹凸函数"
+>&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="引言">引言
+&lt;/h2>&lt;p>在数学分析和最优化理论中,凸函数和凹函数是两个非常重要的概念。它们具有一些独特的性质,在许多领域都有广泛的应用,包括运筹学、经济学和机器学习等。本文将详细介绍凸函数和凹函数的定义、特性以及一些典型的例子,并探讨它们在实际问题中的应用。&lt;/p>
+&lt;h2 id="定义">定义
+&lt;/h2>&lt;h3 id="凸函数">凸函数
+&lt;/h3>&lt;p>如果一个函数 $f(x)$ 在定义域内的任意两点 $x_1$ 和 $x_2$ 之间的线段都位于函数图像的上方或恰好在函数图像上,那么这个函数就是凸函数。数学表达式如下:&lt;/p>
+&lt;p>对于定义域内的任意两点 $x_1$ 和 $x_2$,以及 $0 \leq \theta \leq 1$,有:&lt;/p>
+$$f(\theta x_1 + (1-\theta)x_2) \leq \theta f(x_1) + (1-\theta)f(x_2)$$&lt;h3 id="凹函数">凹函数
+&lt;/h3>&lt;p>如果一个函数的相反数是凸函数,那么这个函数就是凹函数。也可以这样定义:如果一个函数 $f(x)$ 在定义域内的任意两点 $x_1$ 和 $x_2$ 之间的线段都位于函数图像的下方或恰好在函数图像上,那么这个函数就是凹函数。数学表达式如下:&lt;/p>
+&lt;p>对于定义域内的任意两点 $x_1$ 和 $x_2$,以及 $0 \leq \theta \leq 1$,有:&lt;/p>
+$$f(\theta x_1 + (1-\theta)x_2) \geq \theta f(x_1) + (1-\theta)f(x_2)$$&lt;h2 id="典型例子">典型例子
+&lt;/h2>&lt;h3 id="凸函数例子">凸函数例子
+&lt;/h3>&lt;p>一些常见的凸函数包括:&lt;/p>
+&lt;ul>
+&lt;li>二次函数: $f(x) = x^2$&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/math/004.png"
+loading="lazy"
+>&lt;/p>
+&lt;ul>
+&lt;li>指数函数: $f(x) = e^x$&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/math/005.png"
+loading="lazy"
+>&lt;/p>
+&lt;ul>
+&lt;li>绝对值函数: $f(x) = |x|$&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/math/006.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="凹函数例子">凹函数例子
+&lt;/h3>&lt;p>一些常见的凹函数包括:&lt;/p>
+&lt;ul>
+&lt;li>对数函数: $f(x) = \log x$
+&lt;img src="https://buaa-mba.pages.dev/images/math/007.png"
+loading="lazy"
+>&lt;/li>
+&lt;li>负指数函数: $f(x) = -e^x$
+&lt;img src="https://buaa-mba.pages.dev/images/math/008.png"
+loading="lazy"
+>&lt;/li>
+&lt;li>平方根函数: $f(x) = \sqrt{x}$
+&lt;img src="https://buaa-mba.pages.dev/images/math/009.png"
+loading="lazy"
+>&lt;/li>
+&lt;/ul>
+&lt;h2 id="凸函数和凹函数的性质">凸函数和凹函数的性质
+&lt;/h2>&lt;p>凸函数和凹函数具有一些重要的性质,这些性质在分析和优化问题中非常有用。&lt;/p>
+&lt;h3 id="凸函数的性质">凸函数的性质
+&lt;/h3>&lt;ul>
+&lt;li>凸函数在其定义域内是连续的。&lt;/li>
+&lt;li>凸函数在其定义域内的任何区间上都是仿射函数的上界。&lt;/li>
+&lt;li>凸函数的一阶导数(如果存在)在其定义域内是单调递增的。&lt;/li>
+&lt;li>凸函数的二阶导数(如果存在)在其定义域内是非负的。&lt;/li>
+&lt;/ul>
+&lt;h3 id="凹函数的性质">凹函数的性质
+&lt;/h3>&lt;ul>
+&lt;li>凹函数在其定义域内是连续的。&lt;/li>
+&lt;li>凹函数在其定义域内的任何区间上都是仿射函数的下界。&lt;/li>
+&lt;li>凹函数的一阶导数(如果存在)在其定义域内是单调递减的。&lt;/li>
+&lt;li>凹函数的二阶导数(如果存在)在其定义域内是非正的。&lt;/li>
+&lt;/ul>
+&lt;h2 id="凸函数和凹函数在优化问题中的应用">凸函数和凹函数在优化问题中的应用
+&lt;/h2>&lt;p>由于凸函数和凹函数具有良好的数学性质,它们在优化问题中扮演着重要的角色。&lt;/p>
+&lt;h3 id="凸优化问题">凸优化问题
+&lt;/h3>&lt;p>如果目标函数是凸函数,且约束条件也是凸集,那么这个优化问题就是一个凸优化问题。凸优化问题具有全局最优解,并且可以使用高效的算法求解,例如内点法、椭球法等。&lt;/p>
+&lt;h3 id="凹优化问题">凹优化问题
+&lt;/h3>&lt;p>如果目标函数是凹函数,且约束条件也是凸集,那么这个优化问题就是一个凹优化问题。凹优化问题的目标是最大化目标函数,而不是最小化。与凸优化问题类似,凹优化问题也具有全局最优解,并且可以使用类似的算法求解。&lt;/p>
+&lt;h3 id="应用举例">应用举例
+&lt;/h3>&lt;p>凸优化和凹优化在许多领域都有广泛的应用,例如:&lt;/p>
+&lt;ul>
+&lt;li>机器学习中的支持向量机、逻辑回归等模型涉及凸优化问题。&lt;/li>
+&lt;li>组合优化问题中的一些特殊情况可以转化为凸优化问题。&lt;/li>
+&lt;li>金融投资组合优化中需要求解凸优化问题。&lt;/li>
+&lt;li>通信系统中的功率控制和资源分配问题可以建模为凸优化问题。&lt;/li>
+&lt;/ul>
+&lt;h2 id="结论">结论
+&lt;/h2>&lt;p>凸函数和凹函数是非常重要的数学概念,它们具有许多良好的性质,在优化理论和实际应用中扮演着关键角色。通过掌握凸函数和凹函数的定义、性质以及在优化问题中的应用,我们可以更好地理解和解决一些复杂的优化问题。&lt;/p></description></item><item><title>导数快速入门</title><link>https://buaa-mba.pages.dev/p/%E5%AF%BC%E6%95%B0%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</link><pubDate>Sat, 07 Sep 2024 23:25:13 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E5%AF%BC%E6%95%B0%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</guid><description>&lt;p>导数是微积分中一个重要的概念，它在数学和物理学等领域中起着重要的作用。在本篇博客中，我们将深入探讨导数的概念，解释其意义，并给出一些常用的导数的对照表，帮助读者更好地理解和应用导数。&lt;/p>
+&lt;h2 id="概念">概念
+&lt;/h2>&lt;h3 id="什么是导数">什么是导数？
+&lt;/h3>&lt;p>导数描述了函数在某一点上的变化率。它可以看作是函数在该点上的斜率，表示函数的瞬时变化率。具体而言，对于函数 \( f(x) \)，其在某一点 \( x_0 \) 处的导数表示为 \( f'(x_0) \) 或 \( \frac{dy}{dx} \bigg|_{x=x_0} \)。&lt;/p>
+&lt;h3 id="数学定义">数学定义
+&lt;/h3>&lt;p>函数 $f(x)$ 在点 $x_0$ 处的导数定义为:&lt;/p>
+$$f'(x_0) = \lim_{h \to 0} \frac{f(x_0 + h) - f(x_0)}{h}$$&lt;p>这个极限如果存在，我们就说函数 $f(x)$ 在点 $x_0$ 处可导。&lt;/p>
+&lt;h3 id="导数的意义">导数的意义
+&lt;/h3>&lt;p>导数在数学和物理学中有着广泛的应用，它可以帮助我们理解函数的特性和变化过程。以下是导数的几个重要意义：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>瞬时变化率：导数告诉我们函数在某一点上的瞬时变化率。例如，对于位移函数，导数告诉我们物体在某一时刻的瞬时速度。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>斜率：导数也可以看作是函数图像上某一点处的切线的斜率。这个概念在曲线绘制、最优化、物理学等领域中都有重要的应用。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>最值和极值：通过求导，我们可以找到函数的最大值和最小值，以及函数的极值点。这对于优化问题和最优化算法非常重要。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="常见函数的导数推导">常见函数的导数推导
+&lt;/h2>&lt;h3 id="幂函数-fx--xn">幂函数 $f(x) = x^n$
+&lt;/h3>&lt;h4 id="一阶导数">一阶导数
+&lt;/h4>$$\begin{aligned}
+f'(x) &amp;= \lim_{h \to 0} \frac{(x+h)^n - x^n}{h} \\
+&amp;= \lim_{h \to 0} \frac{x^n + nx^{n-1}h + \frac{n(n-1)}{2}x^{n-2}h^2 + ... - x^n}{h} \\
+&amp;= \lim_{h \to 0} (nx^{n-1} + \frac{n(n-1)}{2}x^{n-2}h + ...) \\
+&amp;= nx^{n-1}
+\end{aligned}$$&lt;h4 id="二阶导数">二阶导数
+&lt;/h4>$$f''(x) = n(n-1)x^{n-2}$$&lt;h3 id="指数函数-fx--ex">指数函数 $f(x) = e^x$
+&lt;/h3>&lt;h4 id="一阶导数-1">一阶导数
+&lt;/h4>$$\begin{aligned}
+f'(x) &amp;= \lim_{h \to 0} \frac{e^{x+h} - e^x}{h} \\
+&amp;= \lim_{h \to 0} \frac{e^x(e^h - 1)}{h} \\
+&amp;= e^x \lim_{h \to 0} \frac{e^h - 1}{h} \\
+&amp;= e^x
+\end{aligned}$$&lt;h4 id="二阶导数-1">二阶导数
+&lt;/h4>$$f''(x) = e^x$$&lt;h3 id="对数函数-fx--ln-x">对数函数 $f(x) = \ln x$
+&lt;/h3>&lt;h4 id="一阶导数-2">一阶导数
+&lt;/h4>$$\begin{aligned}
+f'(x) &amp;= \lim_{h \to 0} \frac{\ln(x+h) - \ln x}{h} \\
+&amp;= \lim_{h \to 0} \frac{1}{h} \ln(\frac{x+h}{x}) \\
+&amp;= \lim_{h \to 0} \frac{1}{h} \ln(1 + \frac{h}{x}) \\
+&amp;= \frac{1}{x}
+\end{aligned}$$&lt;h4 id="二阶导数-2">二阶导数
+&lt;/h4>$$f''(x) = -\frac{1}{x^2}$$&lt;h2 id="常用导数的对照表">常用导数的对照表
+&lt;/h2>&lt;p>下面是一些常见函数的导数对照表，它们是求导常用的公式和规则：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>常数函数导数：
+\( f(x) = c \)
+\( f'(x) = 0 \)
+例如：\( f(x) = 5, f'(x) = 0 \)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>幂函数导数：
+\( f(x) = x^n \)
+\( f'(x) = nx^{n-1} \)
+例如：\( f(x) = x^3, f'(x) = 3x^2 \)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>指数函数导数：
+\( f(x) = e^x \)
+\( f'(x) = e^x \)
+例如：\( f(x) = e^2, f'(x) = e^2 \)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>对数函数导数：
+\( f(x) = \log_a{x} \)
+\( f'(x) = \frac{1}{x \ln{a}} \)
+例如：\( f(x) = \log_2{x}, f'(x) = \frac{1}{x \ln{2}} \)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>三角函数导数：
+\( f(x) = \sin{x} \)
+\( f'(x) = \cos{x} \)
+\( f(x) = \cos{x} \)
+\( f'(x) = -\sin{x} \)
+例如：\( f(x) = \sin{2x}, f'(x) = 2\cos{2x} \)&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="常见函数的导数图形">常见函数的导数图形
+&lt;/h2>&lt;h3 id="幂函数yx3">幂函数$y=x^3$
+&lt;/h3>&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/math/001.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="幂函数yx2">幂函数$y=x^2$
+&lt;/h3>&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/math/002.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>这时你可能发现，在$x=2$的位置，两条线相交了！&lt;/p>
+&lt;p>不是说好的是相切的吗？&lt;/p>
+&lt;p>这是由于导数的几何意义是切线的斜率，而不是切线本身。&lt;/p>
+&lt;p>具体来说,函数 $y=x^2$ 在 $x=2$ 时的切线方程为:&lt;/p>
+$$y - y_0 = f'(x_0)(x - x_0)$$$$y - 4 = 2(x - 2)$$$$y = 2x$$&lt;p>所以函数 $y=x^2$ 在 $x=2$ 处的切线方程是 $y=2x$。但是,这个切线方程并不代表整个导数函数 $y=2x$,而只是在 $x=2$ 这一点上与原函数相切。&lt;/p>
+&lt;p>导数函数 $y=2x$ 实际上是函数 $y=x^2$ 在每一个点处的切线斜率的集合。因此,在 $x=2$ 处,它们相交而不是相切是正常的。&lt;/p>
+&lt;h3 id="三角函数-ysinx">三角函数 $y=\sin(x)$
+&lt;/h3>&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/math/003.png"
+loading="lazy"
+>&lt;/p></description></item><item><title>Markdown LaTeX Cheatsheet</title><link>https://buaa-mba.pages.dev/p/markdown-latex-cheatsheet/</link><pubDate>Thu, 22 Aug 2024 14:09:04 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/markdown-latex-cheatsheet/</guid><description>&lt;p>来自&lt;a class="link" href="https://github.com/robinchu/blog/blob/master/MarkDown%E4%B8%8B%E7%BC%96%E5%86%99LaTeX%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95.md" target="_blank" rel="noopener"
+>MarkDown下编写$\LaTeX$数学公式基本语法&lt;/a>&lt;/p>
+&lt;p>这些写法只有一个&lt;code>\hline&lt;/code>无法正确渲染，别的都是对的。&lt;/p>
+&lt;h3 id="前言">前言
+&lt;/h3>&lt;p>$\LaTeX$是一套非常优秀的排版系统， 通过它排版的图书和论文会变得非常漂亮和易读。 而$\LaTeX$在编写数学公式的易用性和通用性，使我对它产生了浓厚的兴趣。 这篇文章主要介绍了$\LaTeX$公式编辑在MarkDown下的使用语法和方法。
+以下的例子是在Sublime Text3上编写， 并测试的结果， 当然你也可以在任何引入$MathJax$的MarkDown编辑器上测试。&lt;/p>
+&lt;h3 id="1显示方法">1.显示方法
+&lt;/h3>&lt;ul>
+&lt;li>
+&lt;p>嵌入文字显示：&lt;code>$...$&lt;/code>
+eg: &lt;code>$\sum^n_{i=1}x^i=1$&lt;/code> ==&amp;gt; $\sum^n_{i=1}x^i=1$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>单行显示： &lt;code>$$...$$&lt;/code>
+eg: &lt;code>$ $\sum^n_{i=1}x^i=1$ $&lt;/code> ==&amp;gt; &lt;/p>
+$$\sum^n_{i=1}x^i=1$$&lt;/li>
+&lt;li>
+&lt;p>带序号显示：&lt;code>\begin{equation}...\end{equation}&lt;/code>
+eg:&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;code>\begin{equation}\sum^n_{i=1}x^i=1\end{equation}&lt;/code> ==&amp;gt;
+&lt;/p>
+$$
+\begin{equation}\sum^n_{i=1}x^i=1\end{equation}
+$$&lt;p>
+&lt;code>\begin{equation}\x+y=z\end{equation}&lt;/code> ==&amp;gt;
+&lt;/p>
+$$
+\begin{equation}x+y=z\end{equation}
+$$&lt;h3 id="2通用显示规则">2.通用显示规则
+&lt;/h3>&lt;ul>
+&lt;li>&lt;code>^&lt;/code> =&amp;gt; 上标&lt;/li>
+&lt;li>&lt;code>_&lt;/code> =&amp;gt; 下标&lt;/li>
+&lt;li>&lt;code>{}&lt;/code> =&amp;gt; 包括&lt;/li>
+&lt;li>&lt;code>~&lt;/code> =&amp;gt; 空格&lt;/li>
+&lt;li>&lt;code>\&lt;/code> =&amp;gt; 转移符号&lt;/li>
+&lt;/ul>
+&lt;h3 id="3增强型显示规则">3.增强型显示规则
+&lt;/h3>&lt;ul>
+&lt;li>
+&lt;p>&lt;code>\sqrt&lt;/code> 求根
+eg: &lt;code>$\sqrt{x+y}$&lt;/code>==&amp;gt; $\sqrt{x+y}$
+eg: &lt;code>$\sqrt[3]{x+y}$&lt;/code>==&amp;gt; $\sqrt[3]{x+y}$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>\frac \over&lt;/code> 分数形式
+eg: &lt;code>$\frac{a+1}{b+2}$&lt;/code> ==&amp;gt; $\frac{a+1}{b+2}$
+eg: &lt;code>${a+1}\over{b+2}$&lt;/code> ==&amp;gt; ${a+1}\over{b+2}$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>\sum&lt;/code> 求和
+eg: &lt;code>$\sum$&lt;/code>==&amp;gt; $\sum$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>\prod&lt;/code> 求积
+eg: &lt;code>$\prod^n_{i=1}i+1=1$&lt;/code> ==&amp;gt; $\prod^n_{i=1}i+1=1$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\int 求积分
+eg: &lt;code>$\int x+1$&lt;/code> ==&amp;gt; $\int x+1$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\iint 求积分
+eg: &lt;code>$\iint x+1$&lt;/code> ==&amp;gt; $\iint x+1$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\bigcup 并集
+eg: &lt;code>$A\bigcup B$&lt;/code> ==&amp;gt; $A\bigcup B$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\cup 并集
+eg: &lt;code>$A\cup B$&lt;/code> ==&amp;gt; $A\cup B$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\cap 交集
+eg: &lt;code>$A\cap B$&lt;/code> ==&amp;gt; $A\cap B$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\bigcap 交集
+eg: &lt;code>$A\bigcap B$&lt;/code> ==&amp;gt; $A\bigcap B$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\to 箭头
+eg: &lt;code>$A\to B$&lt;/code> ==&amp;gt; $A\to B$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\lim
+eg: &lt;code>$\lim_{0\to 100}$&lt;/code> ==&amp;gt; $\lim_{0\to 100}$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\ln
+eg: &lt;code>$\ln_{0\to 100}$&lt;/code> ==&amp;gt; $\ln_{0\to 100}$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\sin
+eg: &lt;code>$\sin x$&lt;/code> ==&amp;gt; $\sin x$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\cos
+eg: &lt;code>$\cos x$&lt;/code> ==&amp;gt; $\cos x$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\qquad 8m空格&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\quad 4m空格&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\times 乘号
+eg: &lt;code>$a \times b$&lt;/code>=$a \times b$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\div 除号
+eg: &lt;code>$a\div b$&lt;/code>=$a\div b$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>\{\} 花括号显示
+eg: &lt;code>$\\{ hello \\}$&lt;/code> ==&amp;gt; $\{ hello \}$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>小括号增强
+eg: &lt;code>$\left( hello\right)$&lt;/code> ==&amp;gt; $\left( hello\right)$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>中括号增强
+eg: &lt;code>$\left[hello\right]$&lt;/code> ==&amp;gt; $\left[hello\right]$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>绝对值增强
+eg: &lt;code>$\left|hello\right|$&lt;/code> ==&amp;gt; $\left|hello\right|$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>尖括号
+eg: &lt;code>$\langle hello\rangle$&lt;/code> ==&amp;gt; $\langle hello\rangle$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>向上取整
+eg: &lt;code>$\lceil hello\rceil$&lt;/code> ==&amp;gt; $\lceil hello\rceil$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>向下取整
+eg: &lt;code>$\lfloor hllo\rfloor$&lt;/code> ==&amp;gt; $\lfloor hllo\rfloor$&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="4数学符号表一">4.数学符号表一
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">$\pm$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\pm&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\mp$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\mp&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\times$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\times&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\div$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\div&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\ast$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\ast&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\star$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\star&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\circ$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\circ&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\bullet$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bullet&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\cdot$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\cdot&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\oplus$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\oplus&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\oslash$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\oslash&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\dagger$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\dagger&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$+$&lt;/td>
+&lt;td style="text-align: left">&lt;code>+&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$-$&lt;/td>
+&lt;td style="text-align: left">&lt;code>-&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\cap$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\cap&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\cup$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\cup&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\ddagger$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\ddagger&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\diamond$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\diamond&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\uplus$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\uplus&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\sqcap$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sqcap&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\sqcup$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sqcup&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\vee$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\vee&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\wedge$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\wedge&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\setminus$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\setminus&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\wr$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\wr&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\ominus$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\ominus&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\odot$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\odot&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\bigtriangleup$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bigtriangleup&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\bigtriangledown$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bigtriangledown&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\triangleleft$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\triangleleft&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\triangleright$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\triangleright&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\lhd$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\lhd&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\rhd$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\rhd&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\unlhd$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\unlhd&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\unrhd$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\unrhd&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\otimes$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\otimes&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\bigcirc$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bigcirc&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\amalg$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\amalg&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\sum$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sum&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\prod$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\prod&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\coprod$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\coprod&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\int$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\int&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\oint$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\oint&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\bigcap$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bigcap&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\bigcup$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bigcup&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\bigsqcup$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bigsqcup&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\bigvee$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bigvee&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\bigwedge$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bigwedge&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\bigodot$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bigodot&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\bigotimes$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bigotimes&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\bigoplus$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bigoplus&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\biguplus$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\biguplus&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\leq$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\leq&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\geq$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\geq&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\equiv$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\equiv&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\prec$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\prec&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\succ$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\cucc&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\sim$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sim&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\preceq$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\preceq&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\succeq$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\succeq&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\simeq$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\simeq&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\ll$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\ll&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\gg$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\gg&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\asymp$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\asymp&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\subset$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\subset&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\supset$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\supset&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\approx$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\approx&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\subseteq$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\subseteq&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\supseteq$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\subseteq&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\cong$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\cong&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\sqsubset$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sqsubset&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\sqsupset$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sqsupset&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\neq$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\neq&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\sqsubseteq$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sqsubseteq&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\sqsupseteq$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sqsupseteq&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\doteq$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\doteq&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\in$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\in&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\ni$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\ni&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\notin$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\notin&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\vdash$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\vdash&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\dashv$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\dashv&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$:$&lt;/td>
+&lt;td style="text-align: left">&lt;code>:&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\models$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\models&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\perp$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\perp&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\mid$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\mid&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\parallel$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\parallel&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\bowtie$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bowtie&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\Join$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Join&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\smile$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\smile&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\frown$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\frown&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\propto$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\propto&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$&amp;lt;$&lt;/td>
+&lt;td style="text-align: left">&lt;code>&amp;lt;&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$&amp;gt;$&lt;/td>
+&lt;td style="text-align: left">&lt;code>&amp;gt;&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="5数学符号表二">5.数学符号表二
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">$\arccos$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\arccos&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\arcsin$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\arcsin&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\arctan$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\arctan&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\arg$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\arg&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\cos$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\cos&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\cosh$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\cosh&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\cot$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\cot&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\coth$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\coth&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\csc$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\csc&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\deg$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\deg&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\det$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\det&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\dim$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\dim&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\exp$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\exp&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\gcd$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\gcd&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\hom$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\hom&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\inf$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\inf&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\ker$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\ker&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\lg$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\lg&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\lim$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\lim&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\liminf$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\liminf&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\limsup$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\limsup&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\ln$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\ln&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\log$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\log&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\max$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\max&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\min$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\min&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Pr$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\pr&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\sec$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sec&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\sin$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sin&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\sinh$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sinh&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\sup$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sup&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\tan$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\tan&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\tanh$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\tanh&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="5箭头符号表">5.箭头符号表
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">$\leftarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\leftarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\longleftarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\longleftarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Leftarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Leftarrow&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\Longleftarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Longleftarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\rightarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\rightarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\longrightarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\longrightarrow&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\Rightarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Rightarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Longrightarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Longrightarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\leftrightarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\leftrightarrow&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\longleftrightarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\longleftrightarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Leftrightarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Leftrightarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Longleftrightarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Longleftrightarrow&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\mapsto$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\mapsto&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\longmapsto$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\longmapsto&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\hookleftarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\hookleftarrow&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\hookrightarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\hookrightarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\leftharpoonup$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\leftharpoonup&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\rightharpoonup$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\rightharpoonup&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\leftharpoondown$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\leftharpoondown&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\rightharpoondown$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\rightharpoondown&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\rightleftharpoons$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\rightleftharpoons&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\leadsto$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\leadsto&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\uparrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\uparrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\downarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\downarrow&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\Uparrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Uparrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Downarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Downarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\updownarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\updownarrow&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\Updownarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Updownarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\nwarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\nwarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\nearrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\nearrow&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\swarrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\swarrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\searrow$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\searrow&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="6特殊符号表">6.特殊符号表
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;th style="text-align: left">符号&lt;/th>
+&lt;th style="text-align: left">显示方法&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">$\S$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\S&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\aleph$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\aleph&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\LaTeX$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\LaTeX&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\ldots$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\ldots&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\ddots$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\ddots&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\cdots$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\cdots&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\vdots$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\vdots&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\imath$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\imath&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\jmath$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\jmath&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\ell$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\ell&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\wp$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\wp&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Re$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Re&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\Im$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Im&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Diamond$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Diamond&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\diamondsuit$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\diamondsuit&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\prime$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\prime&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\emptyset$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\emptyset&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\nabla$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\nabla&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\surd$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\surd&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\top$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\top&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\bot$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\bot&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\backslash$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\backslash&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\partial$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\partial&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\infty$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\infty&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\triangle$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\triangle&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\heartsuit$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\heartsuit&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\circledS$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\circledS&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\hbar$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\hbar&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\forall$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\forall&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\exists$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\exists&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\neg$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\neg&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\flat$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\flat&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\natural$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\natural&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\sharp$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sharp&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\angle$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\angle&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\mho$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\mho&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\Box$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Box&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\clubsuit$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\clubsuits&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\spadesuit$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\spadesuit&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\mathrm{d}$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\mathrm{d}&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;/td>
+&lt;td style="text-align: left">&lt;/td>
+&lt;td style="text-align: left">&lt;/td>
+&lt;td style="text-align: left">&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="7希腊字母greek-letters显示表">7.希腊字母(Greek Letters)显示表
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">拉丁字母&lt;/th>
+&lt;th style="text-align: left">小写显示方法&lt;/th>
+&lt;th style="text-align: left">大写显示方法&lt;/th>
+&lt;th style="text-align: left">大写字母&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">$\alpha$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\alpha&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\beta$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\beta&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\gamma$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\gamma&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Gamma&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Gamma$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\delta$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\delta&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Delta&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Delta$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\epsilon$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\epsilon&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\zeta$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\zeta&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\eta$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\eta&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\theta$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\theta&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Theta&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Theta$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\iota$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\iota&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\kappa$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\kappa&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\lambda$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\lambda&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>\lambda&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\lambda$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\mu$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\mu&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\nu$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\nu&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\xi$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\xi&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Xi&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Xi$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\omicron$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\omicron&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\pi$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\pi&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Pi&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Pi$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\rho$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\rho&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\sigma$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\sigma&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Sigma&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Sigma$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\tau$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\tau&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\upsilon$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\upsilon&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Upsilon&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Upsilon$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\phi$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\phi&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Phi&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Phi$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\chi$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\chi&lt;/code>&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;td style="text-align: left">——&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\psi$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\psi&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Psi&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Psi$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">$\omega$&lt;/td>
+&lt;td style="text-align: left">&lt;code>\omega&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>\Omega&lt;/code>&lt;/td>
+&lt;td style="text-align: left">$\Omega$&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;em>注意：将小写字母的首字母大写表示为大写拉丁字母&lt;/em>&lt;/p>
+&lt;h3 id="8常用结构例子">8.常用结构例子
+&lt;/h3>&lt;h4 id="例1">例1
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">\begin{align}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\sqrt{37} &lt;span class="err">&amp;amp;&lt;/span> = \sqrt{\frac{73^2-1}{12^2}} \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;amp;&lt;/span> = \sqrt{\frac{73^2}{12^2}\cdot\frac{73^2-1}{73^2}} \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;amp;&lt;/span> = \sqrt{\frac{73^2}{12^2}}\sqrt{\frac{73^2-1}{73^2}} \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;amp;&lt;/span> = \frac{73}{12}\sqrt{1 - \frac{1}{73^2}} \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="err">&amp;amp;&lt;/span> \approx \frac{73}{12}\left(1 - \frac{1}{2\cdot73^2}\right)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \end{align}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>$$
+\begin{align}
+\sqrt{37} &amp; = \sqrt{\frac{73^2-1}{12^2}} \\\
+&amp; = \sqrt{\frac{73^2}{12^2}\cdot\frac{73^2-1}{73^2}} \\\
+&amp; = \sqrt{\frac{73^2}{12^2}}\sqrt{\frac{73^2-1}{73^2}} \\\
+&amp; = \frac{73}{12}\sqrt{1 - \frac{1}{73^2}} \\\
+&amp; \approx \frac{73}{12}\left(1 - \frac{1}{2\cdot73^2}\right)
+\end{align}
+$$&lt;h4 id="例2">例2
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">\begin{matrix}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> x &lt;span class="err">&amp;amp;&lt;/span> x^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> y &lt;span class="err">&amp;amp;&lt;/span> y^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> z &lt;span class="err">&amp;amp;&lt;/span> z^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\end{matrix}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\begin{pmatrix}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> x &lt;span class="err">&amp;amp;&lt;/span> x^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> y &lt;span class="err">&amp;amp;&lt;/span> y^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> z &lt;span class="err">&amp;amp;&lt;/span> z^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\end{pmatrix}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\begin{bmatrix}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> x &lt;span class="err">&amp;amp;&lt;/span> x^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> y &lt;span class="err">&amp;amp;&lt;/span> y^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> z &lt;span class="err">&amp;amp;&lt;/span> z^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\end{bmatrix}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\begin{Bmatrix}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> x &lt;span class="err">&amp;amp;&lt;/span> x^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> y &lt;span class="err">&amp;amp;&lt;/span> y^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> z &lt;span class="err">&amp;amp;&lt;/span> z^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\end{Bmatrix}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\begin{vmatrix}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> x &lt;span class="err">&amp;amp;&lt;/span> x^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> y &lt;span class="err">&amp;amp;&lt;/span> y^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1 &lt;span class="err">&amp;amp;&lt;/span> z &lt;span class="err">&amp;amp;&lt;/span> z^2 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\end{vmatrix}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>$$
+\begin{matrix}
+1 &amp; x &amp; x^2 \\\
+1 &amp; y &amp; y^2 \\\
+1 &amp; z &amp; z^2
+\end{matrix}
+$$$$
+\begin{pmatrix}
+1 &amp; x &amp; x^2 \\\
+1 &amp; y &amp; y^2 \\\
+1 &amp; z &amp; z^2
+\end{pmatrix}
+$$$$
+\begin{bmatrix}
+1 &amp; x &amp; x^2 \\\
+1 &amp; y &amp; y^2 \\\
+1 &amp; z &amp; z^2
+\end{bmatrix}
+$$$$
+\begin{Bmatrix}
+1 &amp; x &amp; x^2 \\\
+1 &amp; y &amp; y^2 \\\
+1 &amp; z &amp; z^2
+\end{Bmatrix}
+$$$$
+\begin{vmatrix}
+1 &amp; x &amp; x^2 \\\
+1 &amp; y &amp; y^2 \\\
+1 &amp; z &amp; z^2
+\end{vmatrix}
+$$&lt;h4 id="例3">例3
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">\left[
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \begin{array}{cc|c}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1&lt;span class="err">&amp;amp;&lt;/span>2&lt;span class="err">&amp;amp;&lt;/span>3\\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 4&lt;span class="err">&amp;amp;&lt;/span>5&lt;span class="err">&amp;amp;&lt;/span>6
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \end{array}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\right]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>$$
+\left[
+\begin{array}{cc|c}
+1&amp;2&amp;3\\\
+4&amp;5&amp;6
+\end{array}
+\right]
+$$&lt;h4 id="例4">例4
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">f(n) =
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\begin{cases}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">n/2, &lt;span class="err">&amp;amp;&lt;/span> \text{if $n$ is even} \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">3n+1, &lt;span class="err">&amp;amp;&lt;/span> \text{if $n$ is odd}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\end{cases}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\begin{array}{c|lcr}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">n &lt;span class="err">&amp;amp;&lt;/span> \text{Left} &lt;span class="err">&amp;amp;&lt;/span> \text{Center} &lt;span class="err">&amp;amp;&lt;/span> \text{Right} \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\hline
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">1 &lt;span class="err">&amp;amp;&lt;/span> 0.24 &lt;span class="err">&amp;amp;&lt;/span> 1 &lt;span class="err">&amp;amp;&lt;/span> 125 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2 &lt;span class="err">&amp;amp;&lt;/span> -1 &lt;span class="err">&amp;amp;&lt;/span> 189 &lt;span class="err">&amp;amp;&lt;/span> -8 \\\
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">3 &lt;span class="err">&amp;amp;&lt;/span> -20 &lt;span class="err">&amp;amp;&lt;/span> 2000 &lt;span class="err">&amp;amp;&lt;/span> 1+10i
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">\end{array}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>$$
+f(n) =
+\begin{cases}
+n/2, &amp; \text{if $n$ is even} \\\
+3n+1, &amp; \text{if $n$ is odd}
+\end{cases}
+$$$$
+\begin{array}{c|lcr}
+n &amp; \text{Left} &amp; \text{Center} &amp; \text{Right} \\\
+1 &amp; 0.24 &amp; 1 &amp; 125 \\\
+2 &amp; -1 &amp; 189 &amp; -8 \\\
+3 &amp; -20 &amp; 2000 &amp; 1+10i
+\end{array}
+$$&lt;h3 id="参考文献">参考文献
+&lt;/h3></description></item><item><title>理解方差、协方差和总体方差：数据分析的基石</title><link>https://buaa-mba.pages.dev/p/%E7%90%86%E8%A7%A3%E6%96%B9%E5%B7%AE%E5%8D%8F%E6%96%B9%E5%B7%AE%E5%92%8C%E6%80%BB%E4%BD%93%E6%96%B9%E5%B7%AE%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%9A%84%E5%9F%BA%E7%9F%B3/</link><pubDate>Thu, 15 Aug 2024 21:41:14 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E7%90%86%E8%A7%A3%E6%96%B9%E5%B7%AE%E5%8D%8F%E6%96%B9%E5%B7%AE%E5%92%8C%E6%80%BB%E4%BD%93%E6%96%B9%E5%B7%AE%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%9A%84%E5%9F%BA%E7%9F%B3/</guid><description>&lt;p>在数据分析和统计学中,方差、协方差和总体方差是非常重要的概念。这些指标帮助我们理解数据的分布和变量之间的关系。本文将深入探讨这些概念,并提供清晰的数学公式来解释它们的计算方法。&lt;/p>
+&lt;h2 id="1-方差-variance">1. 方差 (Variance)
+&lt;/h2>&lt;p>方差是衡量一组数据离散程度的重要指标。它告诉我们数据点与其平均值的偏离程度。&lt;/p>
+&lt;p>对于一组数据 $X = {x_1, x_2, &amp;hellip;, x_n}$，其方差的计算公式为：&lt;/p>
+$$\text{Var}(X) = \frac{1}{n}\sum_{i=1}^n (x_i - \mu)^2$$&lt;p>其中 $\mu$ 是数据的平均值，$n$ 是数据的个数。&lt;/p>
+&lt;p>方差越大,表示数据点越分散；方差越小,表示数据点越集中。&lt;/p>
+&lt;h2 id="2-协方差-covariance">2. 协方差 (Covariance)
+&lt;/h2>&lt;p>协方差用于衡量两个变量之间的线性关系。正的协方差表示两个变量tend to move together，而负的协方差表示它们tend to move in opposite directions。&lt;/p>
+&lt;p>对于两组数据 $X$ 和 $Y$，其协方差的计算公式为：&lt;/p>
+$$\text{Cov}(X,Y) = \frac{1}{n}\sum_{i=1}^n (x_i - \mu_x)(y_i - \mu_y)$$&lt;p>其中 $\mu_x$ 和 $\mu_y$ 分别是 $X$ 和 $Y$ 的平均值。&lt;/p>
+&lt;h2 id="3-总体方差-total-variance">3. 总体方差 (Total Variance)
+&lt;/h2>&lt;p>当我们处理多个变量时,总体方差变得尤为重要。它帮助我们理解整个系统的变异程度。&lt;/p>
+&lt;h3 id="31-独立变量的总体方差">3.1 独立变量的总体方差
+&lt;/h3>&lt;p>对于 $k$ 个相互独立的变量 $X_1, X_2, &amp;hellip;, X_k$，总体方差简单地等于各个变量方差的和：&lt;/p>
+$$\text{Total Variance} = \sum_{i=1}^k \text{Var}(X_i)$$&lt;h3 id="32-考虑协方差的总体方差">3.2 考虑协方差的总体方差
+&lt;/h3>&lt;p>然而,在现实世界中,变量往往不是完全独立的。如果变量之间存在相关性,我们需要在计算总体方差时考虑协方差：&lt;/p>
+$$
+\text{Total Variance} = \sum_{i=1}^k \text{Var}(X_i) + 2 \sum_{i &lt; j} \text{Cov}(X_i, X_j)
+$$&lt;p>这个公式包含了所有变量的方差之和,以及所有变量对之间的协方差之和。&lt;/p>
+&lt;h2 id="4-方差-协方差矩阵">4. 方差-协方差矩阵
+&lt;/h2>&lt;p>对于多个变量,我们通常使用方差-协方差矩阵来概括它们之间的关系。这个矩阵的对角线元素是各个变量的方差,而非对角线元素是变量之间的协方差。&lt;/p>
+$$\Sigma = \begin{bmatrix}
+\text{Var}(X_1) &amp; \text{Cov}(X_1,X_2) &amp; \cdots &amp; \text{Cov}(X_1,X_k) \\
+\text{Cov}(X_2,X_1) &amp; \text{Var}(X_2) &amp; \cdots &amp; \text{Cov}(X_2,X_k) \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\text{Cov}(X_k,X_1) &amp; \text{Cov}(X_k,X_2) &amp; \cdots &amp; \text{Var}(X_k)
+\end{bmatrix}$$&lt;p>总体方差可以通过对这个矩阵的所有元素求和得到：&lt;/p>
+$$\text{Total Variance} = \sum_{i=1}^k \sum_{j=1}^k \Sigma_{ij}$$&lt;h2 id="结论">结论
+&lt;/h2>&lt;p>理解方差、协方差和总体方差对于数据分析至关重要。这些概念不仅帮助我们描述单个变量的分布,还能揭示变量之间的关系。在进行多变量分析、主成分分析或构建预测模型时,这些概念都是不可或缺的工具。&lt;/p>
+&lt;p>通过掌握这些基本概念及其计算方法,你将能更深入地理解数据,做出更准确的分析和预测。无论你是数据科学家、统计学家还是对数据分析感兴趣的学习者,这些知识都将为你的数据之旅提供坚实的基础。&lt;/p></description></item><item><title>线性规划中的百分比规则：多系数变化下的灵敏度分析</title><link>https://buaa-mba.pages.dev/p/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E4%B8%AD%E7%9A%84%E7%99%BE%E5%88%86%E6%AF%94%E8%A7%84%E5%88%99%E5%A4%9A%E7%B3%BB%E6%95%B0%E5%8F%98%E5%8C%96%E4%B8%8B%E7%9A%84%E7%81%B5%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90/</link><pubDate>Tue, 13 Aug 2024 20:34:22 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E4%B8%AD%E7%9A%84%E7%99%BE%E5%88%86%E6%AF%94%E8%A7%84%E5%88%99%E5%A4%9A%E7%B3%BB%E6%95%B0%E5%8F%98%E5%8C%96%E4%B8%8B%E7%9A%84%E7%81%B5%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90/</guid><description>&lt;h2 id="引言">引言
+&lt;/h2>&lt;p>在线性规划问题中，灵敏度分析是一个重要的步骤，它帮助我们理解模型参数变化对最优解的影响。当我们面对多个目标函数系数同时变化的情况时，百分比规则（也称为100%规则）提供了一个简单而有效的方法来评估这些变化是否会影响最优解。&lt;/p>
+&lt;h2 id="什么是灵敏度分析">什么是灵敏度分析
+&lt;/h2>&lt;p>灵敏度分析是研究模型输入参数的变化如何影响模型输出结果的过程。这样说还是比较抽象，我们来举个例子。（张老师对不起了）&lt;/p>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/%e7%81%b5%e6%95%8f%e5%ba%a6%e5%88%86%e6%9e%90/001.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>根据前面介绍过的线性规划的知识，我们得到了如果要让利润最大化，生产门和窗的时间分别是2和6，这是总利润是$3600。&lt;/p>
+&lt;p>那么问题来了，当单品（门或窗）的利润发生变化时，在什么范围内变化才能不影响上面的生产决策呢？这里岔开一个话题，为什么需要不影响生产决策？因为在实际的生产中调整流水线什么的是有成本的，既然希望只通过调整价格来让利润不变，当然是希望在不增加成本的基础上进行了。&lt;/p>
+&lt;p>另外一个问题是，同样在不调整生产计划的条件下，能不能调整约束条件，也就是每种Hours Available，来让总利润不变呢？这个问题的来源是，有可能现在产能是过剩的，在不影响利润的前提下，看是否可以把产能出租出去来获得更多利润。&lt;/p>
+&lt;p>要解决这两个问题，就需要进行灵敏度分析了。而这对应的是灵敏度分析的两个方面&lt;/p>
+&lt;ol>
+&lt;li>目标函数系数的灵敏度分析&lt;/li>
+&lt;li>资源约束的灵敏度分析&lt;/li>
+&lt;/ol>
+&lt;h2 id="百分比规则的核心思想">百分比规则的核心思想
+&lt;/h2>&lt;h3 id="基本原理">基本原理
+&lt;/h3>&lt;p>百分比规则指出：&lt;/p>
+&lt;ol>
+&lt;li>当多个目标函数系数同时发生变化时，只要这些变化的相对百分比之和不超过100%，最优解就不会改变。&lt;/li>
+&lt;li>当多个右端项的值同时发生变化时，只要这些变化的相对百分比不超过100%，影子价格就不会改变。&lt;/li>
+&lt;/ol>
+&lt;h3 id="计算方法">计算方法
+&lt;/h3>&lt;ul>
+&lt;li>对于系数增加：计算 &amp;ldquo;实际增加量 / 允许的增加量&amp;rdquo; 的比率&lt;/li>
+&lt;li>对于系数减少：计算 &amp;ldquo;实际减少量 / 允许的减少量&amp;rdquo; 的比率&lt;/li>
+&lt;li>对于右端值增加：计算 &amp;ldquo;实际增加量 / 允许的增加量&amp;rdquo; 的比率&lt;/li>
+&lt;li>对于右端值减少：计算 &amp;ldquo;实际减少量 / 允许的减少量&amp;rdquo; 的比率&lt;/li>
+&lt;/ul>
+&lt;h3 id="判断标准">判断标准
+&lt;/h3>&lt;p>将所有计算出的比率相加。如果总和不超过100%（或1），则最优解/影子价格保持不变。&lt;/p>
+&lt;h2 id="应用百分比规则的步骤">应用百分比规则的步骤
+&lt;/h2>&lt;h3 id="获取灵敏度报告">获取灵敏度报告
+&lt;/h3>&lt;p>使用线性规划求解器获取每个目标函数系数的允许增量和减量。&lt;/p>
+&lt;h3 id="确定系数变化">确定系数变化
+&lt;/h3>&lt;p>明确每个受影响系数的实际变化量和方向（增加或减少）。&lt;/p>
+&lt;h3 id="计算相对变化">计算相对变化
+&lt;/h3>&lt;p>对每个变化的系数，根据其变化方向计算相对于允许变化的百分比。&lt;/p>
+&lt;h3 id="汇总变化">汇总变化
+&lt;/h3>&lt;p>将所有计算出的百分比相加。&lt;/p>
+&lt;h3 id="判断影响">判断影响
+&lt;/h3>&lt;p>如果总和小于或等于100%，最优解不变；如果超过100%，可能需要重新求解问题。&lt;/p>
+&lt;h2 id="举例说明">举例说明
+&lt;/h2>&lt;h3 id="目标函数系数的灵敏度分析">目标函数系数的灵敏度分析
+&lt;/h3>&lt;ol>
+&lt;li>例1
+&lt;img src="https://buaa-mba.pages.dev/images/%e7%81%b5%e6%95%8f%e5%ba%a6%e5%88%86%e6%9e%90/002.png"
+loading="lazy"
+>&lt;/li>
+&lt;/ol>
+&lt;p>根据前面的公式，$P_D$的变化率是$(450-300)/450=1/3$，$P_W$的变化率是$(500-400)/300=1/3$，所以系数的总的变化率是$2/3 &amp;lt; 1$，故最优解保持不变。&lt;/p>
+&lt;ol start="2">
+&lt;li>例2&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/%e7%81%b5%e6%95%8f%e5%ba%a6%e5%88%86%e6%9e%90/003.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>根据前面的公式，$P_D$的变化率是$(600-300)/450=2/3$，$P_W$的变化率是$(500-300)/300=2/3$，所以系数的总的变化率是$4/3 &amp;gt; 1$，故最优解会发生变化。&lt;/p>
+&lt;ol start="3">
+&lt;li>例3&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/%e7%81%b5%e6%95%8f%e5%ba%a6%e5%88%86%e6%9e%90/004.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>根据前面的公式，$P_D$的变化率是$(300-150)/300=1/2$，$P_W$的变化率是$(500-250)/300=5/6$，所以系数的总的变化率是$4/3 &amp;gt; 1$，故最优解会发生变化。&lt;/p>
+&lt;p>&lt;strong>小结：最优解不变的前提下，单位利润率的变化范围，相当于在不影响生产运营的前提下，销售或市场部门关于产品定价所拥有的最大自由裁量权&lt;/strong>&lt;/p>
+&lt;h3 id="资源约束的灵敏度分析">资源约束的灵敏度分析
+&lt;/h3>&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/%e7%81%b5%e6%95%8f%e5%ba%a6%e5%88%86%e6%9e%90/005.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>这里一个重要的概念是影子价格，是约束右端项的单位增量所引起的目标函数值的增量/变化量（约束条件右端的值的改变给目标函数带来的变化率）表示单位资源对于企业的价值。&lt;/p>
+&lt;p>对于上面的表格，工厂2的影子价格（阴影价格）为150，表示工厂2增加1小时的产能会让总利润增加150，也就是前面说的&lt;strong>增量/变化量&lt;/strong>。工厂3也是同理。但工厂1就不同了，影子价格是0，表示已经产能过剩了，甚至可以减掉2个，同时保持影子价格不变。更进一步，工厂1的影子价格不变，也就是0，意思就是当减少2个小时的产能时它仍然是满足整体产能要求的，如果要再减，才需要做进一步的分析。&lt;/p>
+&lt;p>&lt;strong>影子价格代表了约束右端项所对应的单位资源量对于企业能创造的价值&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>例1&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/%e7%81%b5%e6%95%8f%e5%ba%a6%e5%88%86%e6%9e%90/006.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>根据前面的灵敏度分析可知，在工厂2的产能扩大到18之前，影子价格是不变的，也就是150，而企业X要租赁工厂2新增的产能，出价在成本价的基础上增加了158元，显然$158 &amp;gt; 150$，当然应该出租这部分产能。&lt;/p>
+&lt;ol start="2">
+&lt;li>例2&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/%e7%81%b5%e6%95%8f%e5%ba%a6%e5%88%86%e6%9e%90/007.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>根据前面的灵敏度分析可知，在工厂2的产能缩减到6之前，影子价格是不变的，也就是150，而企业X要租赁工厂2的现有产能，出价只在成本价的基础上增加了149元，显然$149 &amp;lt; 150$，当然不应该出租这部分产能。&lt;/p>
+&lt;ol start="3">
+&lt;li>例3&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/%e7%81%b5%e6%95%8f%e5%ba%a6%e5%88%86%e6%9e%90/008.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>根据前面的灵敏度分析可知，在工厂2的产能缩减到6之前，影子价格是不变的，也就是150，而企业X要租赁工厂2的现有产能，最多租赁6个工时时影子价格将发生变化，所以需要重新计算此时的影子价格是否大于180，如果仍然小于则可以继续增加出租量，如果大于则最多只能出租6个工时。&lt;/p>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/%e7%81%b5%e6%95%8f%e5%ba%a6%e5%88%86%e6%9e%90/009.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>将工厂2的产能调整到5时，新的灵敏度报告显示，工厂2的影子价格变成了250，而$250 &amp;gt; 180$，所以最多只能出租6个工时。&lt;/p>
+&lt;ol start="4">
+&lt;li>例4（百分百法则）&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/%e7%81%b5%e6%95%8f%e5%ba%a6%e5%88%86%e6%9e%90/010.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>工厂2和工厂3减少的工时对应的百分比为$4/6 + 1/6 = 5/6 &amp;lt; 1$，所以出租这些产能时，影子价格不变。现有的产能价值（抛开成本）是$150*4 + 100*1 = 700$ ，而出租之后这部分的产能价值是$160*4 + 110*1 = 750 &amp;gt; 700$，所以应该出租这部分产能。&lt;/p>
+&lt;h2 id="重要注意事项">重要注意事项
+&lt;/h2>&lt;ol>
+&lt;li>方向一致性：增加应与允许的增量比较，减少应与允许的减量比较。&lt;/li>
+&lt;li>线性假设：此规则基于线性规划问题的性质，假设问题保持线性。&lt;/li>
+&lt;li>局限性：仅适用于目标函数系数变化，不适用于约束条件变化。&lt;/li>
+&lt;li>精确性：在实际应用中，接近100%的总和可能导致数值不稳定，建议保留安全余量。&lt;/li>
+&lt;li>复杂情况：对于大规模或高度约束的问题，可能需要更复杂的分析方法。&lt;/li>
+&lt;/ol>
+&lt;h2 id="结论">结论
+&lt;/h2>&lt;p>百分比规则为决策者提供了一个快速评估多个系数变化影响的工具，特别适用于敏感性分析和情景规划。它允许在不需要重新求解整个问题的情况下，快速判断某些变化是否会影响最优解。然而，在应用此规则时，务必考虑到其假设和局限性，以确保分析的准确性和可靠性。&lt;/p></description></item><item><title>Julia解决线性规划问题约束参数为0时的处理</title><link>https://buaa-mba.pages.dev/p/julia%E8%A7%A3%E5%86%B3%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98%E7%BA%A6%E6%9D%9F%E5%8F%82%E6%95%B0%E4%B8%BA0%E6%97%B6%E7%9A%84%E5%A4%84%E7%90%86/</link><pubDate>Mon, 12 Aug 2024 09:51:41 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/julia%E8%A7%A3%E5%86%B3%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98%E7%BA%A6%E6%9D%9F%E5%8F%82%E6%95%B0%E4%B8%BA0%E6%97%B6%E7%9A%84%E5%A4%84%E7%90%86/</guid><description>&lt;img src="https://buaa-mba.pages.dev/images/julia/cover-01.png" alt="Featured image of post Julia解决线性规划问题约束参数为0时的处理" />&lt;p>在使用Julia画线性规划的可行域时遇到了一个奇怪的问题，这里记录一下问题的原因以及解决方案，不得不说大模型真是太厉害了（当然好像也没那么厉害）。&lt;/p>
+&lt;h2 id="起因">起因
+&lt;/h2>&lt;p>为了表达诸如$ax_1 + bx_2 &amp;lt;= c1$这种式子，大模型给出了一个自定义方法&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-julia" data-lang="julia">&lt;span class="line">&lt;span class="cl">&lt;span class="k">function&lt;/span> &lt;span class="n">plot_constraint&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">c&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">x1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="mi">20&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">x2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nd">@.&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">c&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">x1&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">/&lt;/span> &lt;span class="n">b&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">plot!&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">label&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="si">$&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="s">x1 + &lt;/span>&lt;span class="si">$&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="s">x2 &amp;lt;= &lt;/span>&lt;span class="si">$c&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>然后为了表示以下的约束&lt;/p>
+$$
+\left\{
+\begin{array}{l}
+x_1 + 2x_2 \leq 8 \\
+4x_1 \leq 16 \\
+4x_2 \leq 12 \\
+\end{array}
+\right.
+$$&lt;p>这样表达到上面的&lt;code>plot_constaint&lt;/code>方法中就是&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-julia" data-lang="julia">&lt;span class="line">&lt;span class="cl">&lt;span class="n">plot_constraint&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">8&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">plot_constraint&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">4&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">16&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">plot_constraint&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">4&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">12&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="排查问题">排查问题
+&lt;/h2>&lt;p>然后我就发现怎么也画不出第二条线，吊诡的是julia在执行时也没有任何报错。最后仔细看这个方法的定义才发现是因为第二次调用的时候&lt;code>b=0&lt;/code>，到方法里&lt;code>b&lt;/code>成了除数，所以就出现了除以0，成了无效数字了。既然发现了问题的根源，就可以继续让大模型给出更完善的写法了，没想到它居然给出了4种解决方案！&lt;/p>
+&lt;p>前面我说它厉害是因为它能这么彻底地解决问题，说它没有那么厉害是因为它第一次写这个方法的时候并没有考虑太多的边界情况，导致代码不够健壮。&lt;/p>
+&lt;h2 id="解决方案">解决方案
+&lt;/h2>&lt;blockquote>
+&lt;p>你找到了问题的根源，非常好！确实，当 b = 0 时，会出现除以零的问题。在 Julia 中，我们可以通过几种方式来处理这种情况：&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="使用条件语句">使用条件语句
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-julia" data-lang="julia">&lt;span class="line">&lt;span class="cl">&lt;span class="k">function&lt;/span> &lt;span class="n">plot_constraint&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">c&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">x1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="mi">20&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">b&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="mi">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">x2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nd">@.&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">c&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">x1&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">/&lt;/span> &lt;span class="n">b&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">plot!&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">label&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="si">$&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="s">x1 + &lt;/span>&lt;span class="si">$&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="s">x2 &amp;lt;= &lt;/span>&lt;span class="si">$c&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">x2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">fill&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">c&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">length&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x1&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">plot!&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">label&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;x1 = &lt;/span>&lt;span class="si">$c&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="使用-isfinite-函数过滤掉无穷大的值">使用 &lt;code>isfinite&lt;/code> 函数过滤掉无穷大的值
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-julia" data-lang="julia">&lt;span class="line">&lt;span class="cl">&lt;span class="k">function&lt;/span> &lt;span class="n">plot_constraint&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">c&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">x1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="mi">20&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">x2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nd">@.&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">c&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">x1&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">/&lt;/span> &lt;span class="n">b&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">valid&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">isfinite&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x2&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">plot!&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x1&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">valid&lt;/span>&lt;span class="p">],&lt;/span> &lt;span class="n">x2&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">valid&lt;/span>&lt;span class="p">],&lt;/span> &lt;span class="n">label&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="si">$&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="s">x1 + &lt;/span>&lt;span class="si">$&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="s">x2 &amp;lt;= &lt;/span>&lt;span class="si">$c&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="使用-try-catch-块">使用 &lt;code>try-catch&lt;/code> 块
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-julia" data-lang="julia">&lt;span class="line">&lt;span class="cl">&lt;span class="k">function&lt;/span> &lt;span class="n">plot_constraint&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">c&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">x1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="mi">20&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">x2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nd">@.&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">c&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">x1&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">/&lt;/span> &lt;span class="n">b&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">plot!&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">label&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="si">$&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="s">x1 + &lt;/span>&lt;span class="si">$&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="s">x2 &amp;lt;= &lt;/span>&lt;span class="si">$c&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">catch&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">a&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="mi">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">x&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">c&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">a&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">plot!&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">],&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">20&lt;/span>&lt;span class="p">],&lt;/span> &lt;span class="n">label&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;x1 = &lt;/span>&lt;span class="si">$x&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@warn&lt;/span> &lt;span class="s">&amp;#34;Invalid constraint: &lt;/span>&lt;span class="si">$&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="s">x1 + &lt;/span>&lt;span class="si">$&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="s">x2 &amp;lt;= &lt;/span>&lt;span class="si">$c&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="使用-iszero-函数">使用 &lt;code>iszero&lt;/code> 函数
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-julia" data-lang="julia">&lt;span class="line">&lt;span class="cl">&lt;span class="k">function&lt;/span> &lt;span class="n">plot_constraint&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">c&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">x1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="mi">20&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">!&lt;/span>&lt;span class="n">iszero&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">x2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nd">@.&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">c&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">x1&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">/&lt;/span> &lt;span class="n">b&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">plot!&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">label&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="si">$&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="s">x1 + &lt;/span>&lt;span class="si">$&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="s">x2 &amp;lt;= &lt;/span>&lt;span class="si">$c&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">elseif&lt;/span> &lt;span class="o">!&lt;/span>&lt;span class="n">iszero&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">x&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">c&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">a&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">plot!&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">],&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">20&lt;/span>&lt;span class="p">],&lt;/span> &lt;span class="n">label&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;x1 = &lt;/span>&lt;span class="si">$x&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@warn&lt;/span> &lt;span class="s">&amp;#34;Invalid constraint: &lt;/span>&lt;span class="si">$&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="s">x1 + &lt;/span>&lt;span class="si">$&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="s">x2 &amp;lt;= &lt;/span>&lt;span class="si">$c&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>这些方法中，第4种方法可能是最全面的，因为它处理了所有可能的情况（b = 0, a ≠ 0 和 a = b = 0）。你可以根据你的具体需求选择最适合的方法。&lt;/p>
+&lt;p>记住，当 b = 0 时，约束条件变成了一条垂直线 x1 = c/a（如果 a ≠ 0），所以我们需要特别处理这种情况。&lt;/p>
+&lt;h2 id="总结">总结
+&lt;/h2>&lt;p>大模型可以帮我们解决很多问题，但更多时候还是得人类去引导它解决问题，就像上面这个问题，你提出了&lt;code>b&lt;/code>可能为0，它甚至更进一步考虑到&lt;code>a&lt;/code>也可能等于0的情况，惊人。&lt;/p></description></item><item><title>Julia快速上手：为了实现线性规划</title><link>https://buaa-mba.pages.dev/p/julia%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E4%B8%BA%E4%BA%86%E5%AE%9E%E7%8E%B0%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/</link><pubDate>Sun, 11 Aug 2024 22:34:21 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/julia%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E4%B8%BA%E4%BA%86%E5%AE%9E%E7%8E%B0%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/</guid><description>&lt;p>众所周知，Julia就是为科学计算而生的语言，经过我的检验，它确实是很适合做科学计算，在做线性规划时其语句写出来非常接近自然语言，给人的感觉是用自然语言的方式把问题描述出来，然后就神奇地被Julia给解决了。这篇文章主要介绍Windows下如何安装Julia及做线性规划需要的几个库。&lt;/p>
+&lt;h2 id="安装julia">安装Julia
+&lt;/h2>&lt;p>推荐使用Winget进行安装，方便后期的管理。Winget是类似于macOS下的Homebrew的包管理工具。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">winget install julia -s msstore
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>这时候你会发现从CMD/PowerShell是没办法执行&lt;code>julia&lt;/code>命令的，这又是因为万恶的环境变量，而这也体现出winget相比Homebrew的缺陷：没有一个统一不变的路径，也就是说软件包实际是安装在每次对应的版本号的目录下的，但它会通过符号链接给出一个不带版本号的路径，所有通过Homebrew安装的formula的可执行文件都放在同一个路径下，只要把这个路径放在&lt;code>PATH&lt;/code>中，通过Homebrew新安装的软件包自然就可以直接执行了。而Windows上的winget并不会这样，所以我们需要把Julia的安装路径手动添加到环境变量&lt;code>Path&lt;/code>中，在我的环境下是这样（我居然还安装了一个PowerToys来简化这个过程，Windows可真是太好用啦！！！）。这样会有什么问题是显而易见的，等下次升级了Julia，这个路径要么就失效了，要么如果新版本不会覆盖旧版本，那么会发现安装了新版本，使用的还是老版本。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">C:\Users\frost\AppData\Local\Programs\Julia-1.10.4\bin
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="安装所需的包">安装所需的包
+&lt;/h2>&lt;ol>
+&lt;li>执行&lt;code>julia&lt;/code>进入JuliaREPL&lt;/li>
+&lt;li>按&lt;code>]&lt;/code>进行pkg管理模式（这一步很重要）&lt;/li>
+&lt;li>执行&lt;code>add JuMP GLPK Plots&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/julia/julia-installation.png"
+loading="lazy"
+alt="Julia交互界面"
+>
+有可能会有网络问题，请自行解决，这个需要安装非常多的依赖，很可能是由于安装了&lt;code>Plots&lt;/code>包的原因，毕竟需要画图，要的依赖就很多了。&lt;/p>
+&lt;h2 id="编辑器支持">编辑器支持
+&lt;/h2>&lt;p>这一步就很简单了，最简单的做法就是在VSCode里安装Julia扩展。&lt;/p>
+&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/julia/julia-example-01.png"
+loading="lazy"
+alt="Julia效果示例"
+>&lt;/p>
+&lt;h2 id="总结">总结
+&lt;/h2>&lt;p>本文介绍了在Windows下如何安装Julia以及安装需要的科学计算和画图相关的包，接下来就可以回到介绍线性规划的文章继续阅读了。&lt;/p></description></item><item><title>层次分析法(AHP)详解：如何选择最佳工作offer</title><link>https://buaa-mba.pages.dev/p/%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95ahp%E8%AF%A6%E8%A7%A3%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E6%9C%80%E4%BD%B3%E5%B7%A5%E4%BD%9Coffer/</link><pubDate>Sat, 10 Aug 2024 23:51:22 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95ahp%E8%AF%A6%E8%A7%A3%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E6%9C%80%E4%BD%B3%E5%B7%A5%E4%BD%9Coffer/</guid><description>&lt;p>在职业生涯中,我们经常需要在多个工作offer之间做出选择。本文将详细介绍如何使用层次分析法(Analytic Hierarchy Process, AHP)来系统地分析和选择最佳工作offer。我们将通过一个具体案例,逐步展示AHP的应用过程。&lt;/p>
+&lt;h2 id="什么是ahp">什么是AHP？
+&lt;/h2>&lt;p>AHP是一种多准则决策方法,由Thomas L. Saaty在20世纪70年代开发。它通过将复杂问题分解为层次结构,然后进行两两比较,最终综合各层次的权重得出结论。&lt;/p>
+&lt;h2 id="案例背景">案例背景
+&lt;/h2>&lt;p>假设你收到了来自A、B、C三家公司的工作offer,需要在它们之间做出选择。你考虑的主要因素包括薪资、发展前景、工作环境和工作内容。&lt;/p>
+&lt;h2 id="ahp分析步骤">AHP分析步骤
+&lt;/h2>&lt;h3 id="步骤1建立层次结构">步骤1：建立层次结构
+&lt;/h3>&lt;ul>
+&lt;li>目标：选择最佳offer&lt;/li>
+&lt;li>准则：薪资、发展前景、工作环境、工作内容&lt;/li>
+&lt;li>方案：A公司、B公司、C公司&lt;/li>
+&lt;/ul>
+&lt;h3 id="步骤2构建判断矩阵">步骤2：构建判断矩阵
+&lt;/h3>&lt;p>首先,我们需要构建准则比较矩阵:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">&lt;/th>
+&lt;th style="text-align: left">薪资&lt;/th>
+&lt;th style="text-align: left">发展前景&lt;/th>
+&lt;th style="text-align: left">工作环境&lt;/th>
+&lt;th style="text-align: left">工作内容&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">薪资&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;td style="text-align: left">3&lt;/td>
+&lt;td style="text-align: left">1/2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">发展前景&lt;/td>
+&lt;td style="text-align: left">1/2&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;td style="text-align: left">1/3&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">工作环境&lt;/td>
+&lt;td style="text-align: left">1/3&lt;/td>
+&lt;td style="text-align: left">1/2&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">1/4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">工作内容&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;td style="text-align: left">3&lt;/td>
+&lt;td style="text-align: left">4&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>然后,我们需要为每个准则构建方案比较矩阵。以下是全部四个准则的方案比较矩阵:&lt;/p>
+&lt;ol>
+&lt;li>薪资比较矩阵:&lt;/li>
+&lt;/ol>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">&lt;/th>
+&lt;th style="text-align: left">A公司&lt;/th>
+&lt;th style="text-align: left">B公司&lt;/th>
+&lt;th style="text-align: left">C公司&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">A公司&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;td style="text-align: left">3&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">B公司&lt;/td>
+&lt;td style="text-align: left">1/2&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">C公司&lt;/td>
+&lt;td style="text-align: left">1/3&lt;/td>
+&lt;td style="text-align: left">1/2&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;ol>
+&lt;li>发展前景比较矩阵:&lt;/li>
+&lt;/ol>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">&lt;/th>
+&lt;th style="text-align: left">A公司&lt;/th>
+&lt;th style="text-align: left">B公司&lt;/th>
+&lt;th style="text-align: left">C公司&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">A公司&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">1/2&lt;/td>
+&lt;td style="text-align: left">1/3&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">B公司&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">1/2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">C公司&lt;/td>
+&lt;td style="text-align: left">3&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;ol>
+&lt;li>工作环境比较矩阵:&lt;/li>
+&lt;/ol>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">&lt;/th>
+&lt;th style="text-align: left">A公司&lt;/th>
+&lt;th style="text-align: left">B公司&lt;/th>
+&lt;th style="text-align: left">C公司&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">A公司&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">B公司&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">C公司&lt;/td>
+&lt;td style="text-align: left">1/2&lt;/td>
+&lt;td style="text-align: left">1/2&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;ol>
+&lt;li>工作内容比较矩阵:&lt;/li>
+&lt;/ol>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">&lt;/th>
+&lt;th style="text-align: left">A公司&lt;/th>
+&lt;th style="text-align: left">B公司&lt;/th>
+&lt;th style="text-align: left">C公司&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">A公司&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">3&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">B公司&lt;/td>
+&lt;td style="text-align: left">1/3&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">1/2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">C公司&lt;/td>
+&lt;td style="text-align: left">1/2&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="步骤3计算权重向量">步骤3：计算权重向量
+&lt;/h3>&lt;p>对每个判断矩阵,我们使用几何平均法计算权重向量。以准则比较矩阵为例:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>计算每行的几何平均值:&lt;/p>
+&lt;p>薪资: $\sqrt[4]{(1 \times 2 \times 3 \times 1/2)} = 1.316$&lt;/p>
+&lt;p>发展前景: $\sqrt[4]{(1/2 \times 1 \times 2 \times 1/3)} = 0.760$&lt;/p>
+&lt;p>工作环境: $\sqrt[4]{(1/3 \times 1/2 \times 1 \times 1/4)} = 0.452$&lt;/p>
+&lt;p>工作内容: $\sqrt[4]{(2 \times 3 \times 4 \times 1)} = 2.213$&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>归一化处理:&lt;/p>
+&lt;p>$总和 = 1.316 + 0.760 + 0.452 + 2.213 = 4.741$&lt;/p>
+&lt;p>薪资: $1.316 / 4.741 = 0.278$&lt;/p>
+&lt;p>发展前景: $0.760 / 4.741 = 0.160$&lt;/p>
+&lt;p>工作环境: $0.452 / 4.741 = 0.095$&lt;/p>
+&lt;p>工作内容: $2.213 / 4.741 = 0.467$&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>准则权重计算结果:&lt;/p>
+&lt;ul>
+&lt;li>薪资: 0.278&lt;/li>
+&lt;li>发展前景: 0.160&lt;/li>
+&lt;li>工作环境: 0.095&lt;/li>
+&lt;li>工作内容: 0.467&lt;/li>
+&lt;/ul>
+&lt;p>对于每个准则下的方案比较矩阵,我们使用相同的方法计算权重。以下是所有方案比较矩阵的权重计算结果:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>薪资:
+A公司: 0.540, B公司: 0.297, C公司: 0.163&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>发展前景:
+A公司: 0.163, B公司: 0.297, C公司: 0.540&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>工作环境:
+A公司: 0.400, B公司: 0.400, C公司: 0.200&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>工作内容:
+A公司: 0.540, B公司: 0.163, C公司: 0.297&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="步骤4一致性检验">步骤4：一致性检验
+&lt;/h3>&lt;p>在实际应用中,应进行一致性检验以确保判断的合理性。&lt;/p>
+&lt;p>设比较矩阵为$A$，特征向量为$w$，一致性检验的步骤如下：&lt;/p>
+$$
+B_w=MMULT(A, w)
+$$$$
+\lambda_{max} = \frac{\sum\limits_{i=1}^n{\frac{(B_w)_i}{w_i}}}{n}
+$$$$
+C.I. = \frac{\lambda_{max} - n}{n-1}
+$$$$
+C.R. = \frac{C.I.}{R.I.}
+$$&lt;p>&lt;img src="https://buaa-mba.pages.dev/images/or/ahp-001.png"
+loading="lazy"
+alt="准则比较矩阵"
+>
+&lt;img src="https://buaa-mba.pages.dev/images/or/ahp-002.png"
+loading="lazy"
+alt="薪资比较矩阵"
+>
+&lt;img src="https://buaa-mba.pages.dev/images/or/ahp-003.png"
+loading="lazy"
+alt="发展前景比较矩阵"
+>
+&lt;img src="https://buaa-mba.pages.dev/images/or/ahp-004.png"
+loading="lazy"
+alt="工作环境比较矩阵"
+>
+&lt;img src="https://buaa-mba.pages.dev/images/or/ahp-005.png"
+loading="lazy"
+alt="工作内容比较矩阵"
+>&lt;/p>
+&lt;p>可以看到，每个$C.R.$都是小于0.1的，所以这些比较矩阵是是满足一致性的。&lt;/p>
+&lt;p>如果一致性检验不通过，这通常代表以下几个方面的问题：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>判断不一致：
+这意味着决策者在进行成对比较时，可能存在逻辑矛盾。例如，如果A比B重要，B比C重要，但C却比A重要，这就是一个典型的不一致判断。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>数据质量问题：
+可能存在数据输入错误，或者在收集判断数据时出现了误解或偏差。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>复杂性过高：
+当比较的因素数量较多时，保持所有判断的一致性变得更加困难。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>专家意见分歧：
+如果矩阵是基于多个专家的意见综合而成，不同专家之间的判断差异可能导致整体一致性较差。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>决策问题定义不清：
+如果问题本身定义不明确，或者各因素之间的关系复杂，可能导致判断困难，从而影响一致性。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>尺度使用不当：
+在使用1-9尺度进行判断时，如果对尺度的理解不准确，可能导致不一致的判断。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>当一致性检验不通过时，通常需要采取以下措施：&lt;/p>
+&lt;ol>
+&lt;li>重新审视判断：检查是否存在明显的逻辑矛盾或输入错误。&lt;/li>
+&lt;li>调整判断：适当调整一些判断值，使其更加一致。&lt;/li>
+&lt;li>重新收集数据：如果问题严重，可能需要重新进行调查或咨询。&lt;/li>
+&lt;li>使用其他方法：考虑使用其他决策方法或模型来补充分析。&lt;/li>
+&lt;li>分解问题：如果问题过于复杂，考虑将其分解为更小的子问题。&lt;/li>
+&lt;li>提高一致性比率阈值：在某些情况下，可以适当放宽一致性要求，但这需要谨慎操作。&lt;/li>
+&lt;/ol>
+&lt;p>总之，一致性检验不通过并不意味着整个分析无效，但确实表明需要仔细审视和可能的修正，以确保决策的可靠性和有效性。&lt;/p>
+&lt;h3 id="步骤5计算总排序">步骤5：计算总排序
+&lt;/h3>&lt;p>将每个准则下的方案权重与准则权重相乘,然后求和:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">公司&lt;/th>
+&lt;th style="text-align: left">薪资(0.278)&lt;/th>
+&lt;th style="text-align: left">发展前景(0.160)&lt;/th>
+&lt;th style="text-align: left">工作环境(0.095)&lt;/th>
+&lt;th style="text-align: left">工作内容(0.467)&lt;/th>
+&lt;th style="text-align: left">总分&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">A&lt;/td>
+&lt;td style="text-align: left">$0.540 \times 0.278$&lt;/td>
+&lt;td style="text-align: left">$0.163 \times 0.160$&lt;/td>
+&lt;td style="text-align: left">$0.400 \times 0.095$&lt;/td>
+&lt;td style="text-align: left">$0.540 \times 0.467$&lt;/td>
+&lt;td style="text-align: left">0.466&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">B&lt;/td>
+&lt;td style="text-align: left">$0.297 \times 0.278$&lt;/td>
+&lt;td style="text-align: left">$0.297 \times 0.160$&lt;/td>
+&lt;td style="text-align: left">$0.400 \times 0.095$&lt;/td>
+&lt;td style="text-align: left">$0.163 \times 0.467$&lt;/td>
+&lt;td style="text-align: left">0.242&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">C&lt;/td>
+&lt;td style="text-align: left">$0.163 \times 0.278$&lt;/td>
+&lt;td style="text-align: left">$0.540 \times 0.160$&lt;/td>
+&lt;td style="text-align: left">$0.200 \times 0.095$&lt;/td>
+&lt;td style="text-align: left">$0.297 \times 0.467$&lt;/td>
+&lt;td style="text-align: left">0.292&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>计算过程示例(A公司):&lt;/p>
+&lt;p>$0.540 \times 0.278 + 0.163 \times 0.160 + 0.400 \times 0.095 + 0.540 \times 0.467 = 0.466$&lt;/p>
+&lt;h2 id="结果分析">结果分析
+&lt;/h2>&lt;p>根据AHP分析结果,三家公司的最终排序为:&lt;/p>
+&lt;ol>
+&lt;li>A公司: 0.466&lt;/li>
+&lt;li>C公司: 0.292&lt;/li>
+&lt;li>B公司: 0.242&lt;/li>
+&lt;/ol>
+&lt;p>A公司的综合得分最高,主要得益于其在薪资和工作内容方面的优势。虽然C公司在发展前景方面表现最佳,但在其他方面相对较弱。B公司在各方面表现中等,但没有突出优势。&lt;/p>
+&lt;h2 id="结论">结论
+&lt;/h2>&lt;p>通过AHP分析,我们可以看到A公司是最佳选择。这种方法帮助我们系统地考虑了多个因素,并根据它们的相对重要性进行了权衡。然而,需要注意的是,AHP分析结果应该作为决策的参考,而不是唯一依据。个人偏好、直觉和其他定性因素也应该在最终决策中得到考虑。&lt;/p>
+&lt;p>AHP方法为复杂的决策问题提供了一个结构化的分析框架,特别适用于需要考虑多个相互冲突的准则的情况。无论是在职业选择、项目评估还是战略规划中,AHP都是一个强大的决策支持工具。&lt;/p>
+&lt;p>文中使用的&lt;a class="link" href="https://buaa-mba.pages.dev/xlsx/AHP%e7%a4%ba%e4%be%8b.xlsx" >excel文件下载&lt;/a>&lt;/p></description></item><item><title>Excel高效办公必备：10个强大函数及实用示例</title><link>https://buaa-mba.pages.dev/p/excel%E9%AB%98%E6%95%88%E5%8A%9E%E5%85%AC%E5%BF%85%E5%A4%8710%E4%B8%AA%E5%BC%BA%E5%A4%A7%E5%87%BD%E6%95%B0%E5%8F%8A%E5%AE%9E%E7%94%A8%E7%A4%BA%E4%BE%8B/</link><pubDate>Sat, 10 Aug 2024 22:54:31 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/excel%E9%AB%98%E6%95%88%E5%8A%9E%E5%85%AC%E5%BF%85%E5%A4%8710%E4%B8%AA%E5%BC%BA%E5%A4%A7%E5%87%BD%E6%95%B0%E5%8F%8A%E5%AE%9E%E7%94%A8%E7%A4%BA%E4%BE%8B/</guid><description>&lt;p>在日常工作中，Excel是我们处理数据、进行分析的得力助手。今天，我们将介绍10个强大的Excel函数，这些函数可以大大提高你的工作效率。我们不仅会解释每个函数的用途，还会提供具体的示例，帮助你更好地理解和应用这些函数。&lt;/p>
+&lt;ol>
+&lt;li>SUMPRODUCT（数组的乘积之和）&lt;/li>
+&lt;/ol>
+&lt;p>SUMPRODUCT函数可以计算多个数组中对应元素的乘积之和，非常适合用于加权计算或条件求和。&lt;/p>
+&lt;p>示例：假设A列是产品价格，B列是销售数量。
+公式：=SUMPRODUCT(A2:A10,B2:B10)
+这将计算总销售额。&lt;/p>
+&lt;ol start="2">
+&lt;li>MMULT（矩阵乘法）&lt;/li>
+&lt;/ol>
+&lt;p>MMULT函数用于计算两个矩阵的乘积，在复杂的数学计算和数据分析中很有用。&lt;/p>
+&lt;p>示例：假设A1:B3是第一个矩阵，C1:D2是第二个矩阵。
+公式：=MMULT(A1:B3,C1:D2)
+这将返回两个矩阵相乘的结果。&lt;/p>
+&lt;ol start="3">
+&lt;li>PRODUCT（乘积）&lt;/li>
+&lt;/ol>
+&lt;p>PRODUCT函数计算所有参数的乘积，适用于需要连乘的场景。&lt;/p>
+&lt;p>示例：计算A1到A5单元格的乘积。
+公式：=PRODUCT(A1:A5)&lt;/p>
+&lt;ol start="4">
+&lt;li>VLOOKUP（垂直查找）&lt;/li>
+&lt;/ol>
+&lt;p>VLOOKUP函数在表格的垂直列中查找指定的值，并返回该行中指定列的值。&lt;/p>
+&lt;p>示例：假设A列是产品代码，B列是产品名称，C列是价格。
+公式：=VLOOKUP(&amp;ldquo;A001&amp;rdquo;,A1:C100,2,FALSE)
+这将返回代码为&amp;quot;A001&amp;quot;的产品名称。&lt;/p>
+&lt;ol start="5">
+&lt;li>INDEX（返回表格或区域中的值）和MATCH（查找项目在数组中的相对位置）&lt;/li>
+&lt;/ol>
+&lt;p>这两个函数经常一起使用，可以实现更灵活的查找。&lt;/p>
+&lt;p>示例：在上述产品表中查找特定产品的价格。
+公式：=INDEX(C1:C100,MATCH(&amp;ldquo;A001&amp;rdquo;,A1:A100,0))&lt;/p>
+&lt;ol start="6">
+&lt;li>SUMIF（条件求和）&lt;/li>
+&lt;/ol>
+&lt;p>SUMIF函数可以根据给定的条件对指定区域进行求和。&lt;/p>
+&lt;p>示例：假设A列是部门，B列是销售额。
+公式：=SUMIF(A1:A100,&amp;ldquo;销售部&amp;rdquo;,B1:B100)
+这将计算销售部的总销售额。&lt;/p>
+&lt;ol start="7">
+&lt;li>COUNTIF（条件计数）&lt;/li>
+&lt;/ol>
+&lt;p>COUNTIF函数计算满足特定条件的单元格数量。&lt;/p>
+&lt;p>示例：计算A列中&amp;quot;及格&amp;quot;的数量。
+公式：=COUNTIF(A1:A100,&amp;ldquo;及格&amp;rdquo;)&lt;/p>
+&lt;ol start="8">
+&lt;li>IFERROR（错误处理）&lt;/li>
+&lt;/ol>
+&lt;p>IFERROR函数可以在公式返回错误时显示自定义的结果，使表格更加美观。&lt;/p>
+&lt;p>示例：处理除以零的错误。
+公式：=IFERROR(A1/B1,&amp;ldquo;无法计算&amp;rdquo;)&lt;/p>
+&lt;ol start="9">
+&lt;li>CONCATENATE（字符串拼接）&lt;/li>
+&lt;/ol>
+&lt;p>CONCATENATE函数用于将多个文本字符串合并为一个字符串。&lt;/p>
+&lt;p>示例：合并姓名。
+公式：=CONCATENATE(A1,&amp;quot; &amp;ldquo;,B1)
+如果A1是&amp;quot;张&amp;rdquo;，B1是&amp;quot;三&amp;quot;，结果将是&amp;quot;张 三&amp;quot;。&lt;/p>
+&lt;ol start="10">
+&lt;li>RAND（随机数）&lt;/li>
+&lt;/ol>
+&lt;p>RAND函数生成0到1之间的随机数，常用于模拟和抽样。&lt;/p>
+&lt;p>示例：生成1到100之间的随机整数。
+公式：=INT(RAND()*100)+1&lt;/p>
+&lt;p>实际应用示例：销售数据分析&lt;/p>
+&lt;p>假设我们有一个包含产品代码、产品名称、单价和销售数量的销售数据表。我们可以结合使用上述函数来进行一些有趣的分析：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>计算总销售额：
+=SUMPRODUCT(C2:C100,D2:D100) // C列是单价，D列是数量&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>查找特定产品的销售数量：
+=INDEX(D2:D100,MATCH(&amp;ldquo;A001&amp;rdquo;,A2:A100,0)) // A列是产品代码&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>计算销售额超过1000的产品数量：
+=COUNTIF(E2:E100,&amp;quot;&amp;gt;1000&amp;quot;) // E列是每种产品的销售额（=C*D）&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>生成产品报告：
+=CONCATENATE(&amp;ldquo;产品 &amp;ldquo;,B2,&amp;rdquo; 的销售额为 &amp;ldquo;,E2,&amp;rdquo; 元&amp;rdquo;) // B列是产品名称&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>通过灵活运用这些函数，你可以大大提高数据处理和分析的效率。记住，熟能生巧，多加练习才能真正掌握这些强大的工具。希望这篇文章能够帮助你在Excel中更加得心应手，成为办公室的效率之王！&lt;/p></description></item><item><title>从层次到网络：探索萨蒂教授的决策分析方法</title><link>https://buaa-mba.pages.dev/p/%E4%BB%8E%E5%B1%82%E6%AC%A1%E5%88%B0%E7%BD%91%E7%BB%9C%E6%8E%A2%E7%B4%A2%E8%90%A8%E8%92%82%E6%95%99%E6%8E%88%E7%9A%84%E5%86%B3%E7%AD%96%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/</link><pubDate>Sat, 10 Aug 2024 22:44:51 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E4%BB%8E%E5%B1%82%E6%AC%A1%E5%88%B0%E7%BD%91%E7%BB%9C%E6%8E%A2%E7%B4%A2%E8%90%A8%E8%92%82%E6%95%99%E6%8E%88%E7%9A%84%E5%86%B3%E7%AD%96%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/</guid><description>&lt;p>在我们日常生活和工作中，经常面临复杂的决策问题。如何在众多因素中权衡取舍，做出最优选择？美国著名数学家托马斯·萨蒂（Thomas L. Saaty）教授为我们提供了两个强大的工具：层次分析法（AHP）和网络分析法（ANP）。今天，让我们一起深入了解这两种方法及其应用。&lt;/p>
+&lt;p>一、决策科学的先驱：托马斯·萨蒂教授&lt;/p>
+&lt;p>托马斯·萨蒂（1926-2017）是运筹学和决策理论领域的杰出学者。他出生于伊拉克摩苏尔，在美国接受教育，先后在哥伦比亚大学和耶鲁大学获得数学学位。萨蒂教授曾在美国国防部和国务院工作，后来在匹兹堡大学担任杰出教授。他发表了近400篇学术论文和40多本著作，获得了包括国际系统科学奖在内的多个国际奖项。&lt;/p>
+&lt;p>二、层次分析法（AHP）：结构化的决策方法&lt;/p>
+&lt;p>20世纪70年代，萨蒂教授发明了层次分析法。这是一种将复杂决策问题分解为层次结构的方法，通过比较不同因素的相对重要性来做出决策。&lt;/p>
+&lt;p>AHP的主要步骤包括：&lt;/p>
+&lt;ol>
+&lt;li>建立层次结构模型&lt;/li>
+&lt;li>构造判断矩阵&lt;/li>
+&lt;li>计算权重向量&lt;/li>
+&lt;li>一致性检验&lt;/li>
+&lt;li>层次单排序&lt;/li>
+&lt;li>层次总排序&lt;/li>
+&lt;/ol>
+&lt;p>例子：选择最佳工作offer&lt;/p>
+&lt;p>假设你刚毕业，收到了三个工作offer，需要做出选择。你考虑的主要因素有：薪资、发展前景、工作环境和工作内容。使用AHP方法可以这样分析：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>建立层次结构：
+目标：选择最佳offer
+准则：薪资、发展前景、工作环境、工作内容
+方案：A公司、B公司、C公司&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>对准则进行两两比较，得出各准则的权重。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>在每个准则下对三个公司进行评分。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>综合各准则的权重和公司得分，得出最终排序。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>通过这种方式，你可以系统地考虑各个因素，做出更客观的决策。&lt;/p>
+&lt;p>三、网络分析法（ANP）：更复杂决策的解决方案&lt;/p>
+&lt;p>随着研究深入，萨蒂教授意识到现实中许多决策问题存在要素间的相互依赖和反馈关系。1996年，他提出了AHP的进阶版本——网络分析法（ANP）。&lt;/p>
+&lt;p>ANP的主要特点：&lt;/p>
+&lt;ul>
+&lt;li>允许要素之间存在网络式的复杂关系&lt;/li>
+&lt;li>考虑了要素间的依赖性和反馈&lt;/li>
+&lt;li>使用超矩阵来综合各种影响&lt;/li>
+&lt;/ul>
+&lt;p>ANP的基本步骤：&lt;/p>
+&lt;ol>
+&lt;li>建立网络结构模型&lt;/li>
+&lt;li>构造成对比较矩阵&lt;/li>
+&lt;li>形成未加权超矩阵&lt;/li>
+&lt;li>计算加权超矩阵&lt;/li>
+&lt;li>计算极限超矩阵&lt;/li>
+&lt;li>确定最终优先权重&lt;/li>
+&lt;/ol>
+&lt;p>例子：制定公司发展战略&lt;/p>
+&lt;p>假设一家公司正在制定未来五年的发展战略，需要考虑的因素包括：市场需求、技术创新、人才储备、财务状况、竞争环境等。这些因素之间存在复杂的相互影响，例如：&lt;/p>
+&lt;ul>
+&lt;li>技术创新会影响市场需求，反之亦然&lt;/li>
+&lt;li>人才储备影响技术创新能力&lt;/li>
+&lt;li>财务状况影响人才招聘和技术投入&lt;/li>
+&lt;li>竞争环境影响市场策略和创新方向&lt;/li>
+&lt;/ul>
+&lt;p>在这种情况下，使用ANP可以更好地捕捉这些复杂关系：&lt;/p>
+&lt;ol>
+&lt;li>建立包含所有因素的网络模型&lt;/li>
+&lt;li>分析因素间的影响关系&lt;/li>
+&lt;li>进行成对比较和权重计算&lt;/li>
+&lt;li>构建和计算超矩阵&lt;/li>
+&lt;li>得出各战略选项的最终优先级&lt;/li>
+&lt;/ol>
+&lt;p>通过ANP，公司可以更全面地考虑各种因素的相互作用，制定出更加合理的发展战略。&lt;/p>
+&lt;p>四、AHP vs ANP：何时使用？&lt;/p>
+&lt;p>虽然ANP比AHP更加灵活，能处理更复杂的决策情境，但它也增加了建模和计算的复杂性。在实际应用中：&lt;/p>
+&lt;ul>
+&lt;li>对于层次结构清晰、要素相对独立的问题，AHP往往就足够了&lt;/li>
+&lt;li>当决策问题涉及复杂的相互依赖关系时，ANP则更为适用&lt;/li>
+&lt;/ul>
+&lt;p>无论选择哪种方法，关键是要准确理解问题的本质，合理构建模型。&lt;/p>
+&lt;p>五、结语&lt;/p>
+&lt;p>托马斯·萨蒂教授通过AHP和ANP的开发，为复杂决策问题提供了强大的分析工具。这些方法不仅在管理、工程、政策等领域得到广泛应用，也推动了整个决策科学的发展。在面对复杂决策时，不妨尝试运用这些方法，你可能会发现决策过程变得更加清晰和系统化。&lt;/p>
+&lt;p>记住，好的决策工具可以辅助我们的思考，但最终的选择仍然需要我们的智慧和判断。让我们善用这些工具，在复杂的世界中做出更明智的决策！&lt;/p></description></item><item><title>Excel神器VLOOKUP：简单功能背后的强大应用</title><link>https://buaa-mba.pages.dev/p/excel%E7%A5%9E%E5%99%A8vlookup%E7%AE%80%E5%8D%95%E5%8A%9F%E8%83%BD%E8%83%8C%E5%90%8E%E7%9A%84%E5%BC%BA%E5%A4%A7%E5%BA%94%E7%94%A8/</link><pubDate>Tue, 30 Jul 2024 21:19:54 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/excel%E7%A5%9E%E5%99%A8vlookup%E7%AE%80%E5%8D%95%E5%8A%9F%E8%83%BD%E8%83%8C%E5%90%8E%E7%9A%84%E5%BC%BA%E5%A4%A7%E5%BA%94%E7%94%A8/</guid><description>&lt;p>在Excel的众多函数中，VLOOKUP无疑是最受欢迎和最有用的函数之一。虽然它的基本功能看似简单——在表格中查找并返回特定的值，但其实际应用范围却远远超出了这个简单的描述。今天，让我们深入探讨VLOOKUP的强大之处，并通过三个具体的例子来展示它如何在实际业务中发挥关键作用。&lt;/p>
+&lt;h2 id="vlookup的强大之处">VLOOKUP的强大之处
+&lt;/h2>&lt;ol>
+&lt;li>数据整合：轻松合并来自多个工作表或文件的数据。&lt;/li>
+&lt;li>自动化：大幅减少手动数据输入，提高效率。&lt;/li>
+&lt;li>灵活性：适用于各种数据类型和查找需求。&lt;/li>
+&lt;li>大数据处理：能够快速在包含数十万行的数据集中查找信息。&lt;/li>
+&lt;li>动态更新：创建可根据用户输入自动更新的报表。&lt;/li>
+&lt;li>错误减少：通过自动化查找过程，显著降低人为错误。&lt;/li>
+&lt;/ol>
+&lt;p>现在，让我们通过三个具体的例子来看看VLOOKUP如何在实际业务中应用。&lt;/p>
+&lt;h2 id="例子1电商平台订单处理">例子1：电商平台订单处理
+&lt;/h2>&lt;p>想象你经营一个在线商店，每天需要处理数百个订单。使用VLOOKUP，你可以轻松地从产品数据库中提取所需信息，自动填充订单详情。&lt;/p>
+&lt;p>订单表：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">订单号&lt;/th>
+&lt;th style="text-align: left">产品编码&lt;/th>
+&lt;th style="text-align: left">数量&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">001&lt;/td>
+&lt;td style="text-align: left">P1001&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">002&lt;/td>
+&lt;td style="text-align: left">P1002&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">003&lt;/td>
+&lt;td style="text-align: left">P1003&lt;/td>
+&lt;td style="text-align: left">3&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>产品数据库：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">产品编码&lt;/th>
+&lt;th style="text-align: left">产品名称&lt;/th>
+&lt;th style="text-align: left">单价&lt;/th>
+&lt;th style="text-align: left">库存数量&lt;/th>
+&lt;th style="text-align: left">预计发货时间&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">P1001&lt;/td>
+&lt;td style="text-align: left">笔记本电脑&lt;/td>
+&lt;td style="text-align: left">4999&lt;/td>
+&lt;td style="text-align: left">50&lt;/td>
+&lt;td style="text-align: left">1天&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">P1002&lt;/td>
+&lt;td style="text-align: left">智能手机&lt;/td>
+&lt;td style="text-align: left">2999&lt;/td>
+&lt;td style="text-align: left">100&lt;/td>
+&lt;td style="text-align: left">2天&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">P1003&lt;/td>
+&lt;td style="text-align: left">蓝牙耳机&lt;/td>
+&lt;td style="text-align: left">499&lt;/td>
+&lt;td style="text-align: left">200&lt;/td>
+&lt;td style="text-align: left">即日&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>使用VLOOKUP，我们可以自动填充订单表中的产品信息：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">=VLOOKUP(B2, 产品数据库!A:E, 2, FALSE) // 查找产品名称
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">=VLOOKUP(B2, 产品数据库!A:E, 3, FALSE) // 查找单价
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">=IF(VLOOKUP(B2, 产品数据库!A:E, 4, FALSE)&amp;gt;=C2, &amp;#34;有货&amp;#34;, &amp;#34;缺货&amp;#34;) // 检查库存状态
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">=VLOOKUP(B2, 产品数据库!A:E, 5, FALSE) // 查找预计发货时间
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="例子2销售佣金计算">例子2：销售佣金计算
+&lt;/h2>&lt;p>假设你的公司有不同级别的销售人员，佣金比例根据销售额和级别而变化。VLOOKUP可以帮助你快速计算每个销售员的佣金。&lt;/p>
+&lt;p>销售数据表：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">销售员ID&lt;/th>
+&lt;th style="text-align: left">销售额&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">S001&lt;/td>
+&lt;td style="text-align: left">8000&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">S002&lt;/td>
+&lt;td style="text-align: left">15000&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">S003&lt;/td>
+&lt;td style="text-align: left">3000&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>佣金比例表：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">销售额范围&lt;/th>
+&lt;th style="text-align: left">初级销售&lt;/th>
+&lt;th style="text-align: left">中级销售&lt;/th>
+&lt;th style="text-align: left">高级销售&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">0-5000&lt;/td>
+&lt;td style="text-align: left">3%&lt;/td>
+&lt;td style="text-align: left">5%&lt;/td>
+&lt;td style="text-align: left">7%&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">5001-10000&lt;/td>
+&lt;td style="text-align: left">5%&lt;/td>
+&lt;td style="text-align: left">7%&lt;/td>
+&lt;td style="text-align: left">9%&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">10001+&lt;/td>
+&lt;td style="text-align: left">7%&lt;/td>
+&lt;td style="text-align: left">9%&lt;/td>
+&lt;td style="text-align: left">11%&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>员工信息表：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">员工ID&lt;/th>
+&lt;th style="text-align: left">姓名&lt;/th>
+&lt;th style="text-align: left">级别&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">S001&lt;/td>
+&lt;td style="text-align: left">张三&lt;/td>
+&lt;td style="text-align: left">初级&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">S002&lt;/td>
+&lt;td style="text-align: left">李四&lt;/td>
+&lt;td style="text-align: left">高级&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">S003&lt;/td>
+&lt;td style="text-align: left">王五&lt;/td>
+&lt;td style="text-align: left">中级&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>使用VLOOKUP和嵌套IF，我们可以自动计算佣金：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">=IF(VLOOKUP(A2, 员工信息表!A:C, 3, FALSE)=&amp;#34;初级&amp;#34;,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> B2 * VLOOKUP(B2, 佣金比例表!A:D, 2, TRUE),
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> IF(VLOOKUP(A2, 员工信息表!A:C, 3, FALSE)=&amp;#34;中级&amp;#34;,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> B2 * VLOOKUP(B2, 佣金比例表!A:D, 3, TRUE),
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> B2 * VLOOKUP(B2, 佣金比例表!A:D, 4, TRUE)))
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="例子3动态酒店定价系统">例子3：动态酒店定价系统
+&lt;/h2>&lt;p>假设你经营一家酒店，房价会根据季节、是否周末和客户类型而变化。VLOOKUP可以帮助你实现动态定价。&lt;/p>
+&lt;p>价格表：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">季节&lt;/th>
+&lt;th style="text-align: left">工作日普通&lt;/th>
+&lt;th style="text-align: left">工作日VIP&lt;/th>
+&lt;th style="text-align: left">周末普通&lt;/th>
+&lt;th style="text-align: left">周末VIP&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">春&lt;/td>
+&lt;td style="text-align: left">300&lt;/td>
+&lt;td style="text-align: left">270&lt;/td>
+&lt;td style="text-align: left">400&lt;/td>
+&lt;td style="text-align: left">360&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">夏&lt;/td>
+&lt;td style="text-align: left">400&lt;/td>
+&lt;td style="text-align: left">360&lt;/td>
+&lt;td style="text-align: left">500&lt;/td>
+&lt;td style="text-align: left">450&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">秋&lt;/td>
+&lt;td style="text-align: left">350&lt;/td>
+&lt;td style="text-align: left">315&lt;/td>
+&lt;td style="text-align: left">450&lt;/td>
+&lt;td style="text-align: left">405&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">冬&lt;/td>
+&lt;td style="text-align: left">250&lt;/td>
+&lt;td style="text-align: left">225&lt;/td>
+&lt;td style="text-align: left">350&lt;/td>
+&lt;td style="text-align: left">315&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>预订表：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">预订日期&lt;/th>
+&lt;th style="text-align: left">客户类型&lt;/th>
+&lt;th style="text-align: left">是否周末&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">2023/7/15&lt;/td>
+&lt;td style="text-align: left">VIP&lt;/td>
+&lt;td style="text-align: left">是&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">2023/10/5&lt;/td>
+&lt;td style="text-align: left">普通&lt;/td>
+&lt;td style="text-align: left">否&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">2023/1/1&lt;/td>
+&lt;td style="text-align: left">VIP&lt;/td>
+&lt;td style="text-align: left">是&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>使用VLOOKUP结合其他函数来自动计算房价：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">=VLOOKUP(LOOKUP(MONTH(A2), {1,3,6,9,12}, {&amp;#34;冬&amp;#34;,&amp;#34;春&amp;#34;,&amp;#34;夏&amp;#34;,&amp;#34;秋&amp;#34;,&amp;#34;冬&amp;#34;}), 价格表!A:E,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> IF(C2=&amp;#34;是&amp;#34;, IF(B2=&amp;#34;VIP&amp;#34;, 5, 4), IF(B2=&amp;#34;VIP&amp;#34;, 3, 2)), FALSE)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>这个公式首先根据月份确定季节，然后根据客户类型和是否周末选择正确的价格。&lt;/p>
+&lt;h2 id="结论">结论
+&lt;/h2>&lt;p>通过这些例子，我们可以看到VLOOKUP不仅仅是一个简单的查找工具，它还是一个强大的数据处理和自动化工具。无论是处理大量订单、计算复杂的佣金还是实现动态定价系统，VLOOKUP都能大显身手，帮助我们提高工作效率，减少错误，并处理复杂的业务逻辑。&lt;/p>
+&lt;p>掌握VLOOKUP，你将拥有一个处理各种Excel任务的强大武器。所以，下次当你面对复杂的数据处理任务时，别忘了考虑使用这个Excel的&amp;quot;大利器&amp;quot;！&lt;/p></description></item><item><title>最小费用最大流：优化项目资源配置的利器</title><link>https://buaa-mba.pages.dev/p/%E6%9C%80%E5%B0%8F%E8%B4%B9%E7%94%A8%E6%9C%80%E5%A4%A7%E6%B5%81%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E8%B5%84%E6%BA%90%E9%85%8D%E7%BD%AE%E7%9A%84%E5%88%A9%E5%99%A8/</link><pubDate>Tue, 30 Jul 2024 17:03:40 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E6%9C%80%E5%B0%8F%E8%B4%B9%E7%94%A8%E6%9C%80%E5%A4%A7%E6%B5%81%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E8%B5%84%E6%BA%90%E9%85%8D%E7%BD%AE%E7%9A%84%E5%88%A9%E5%99%A8/</guid><description>&lt;h2 id="引言">引言
+&lt;/h2>&lt;p>在当今复杂多变的商业环境中,有效管理和分配资源是项目成功的关键。本文将深入探讨最小费用最大流这一强大的优化工具,介绍其基本概念、实际应用场景,并通过一个具体的软件开发项目案例,展示如何使用Excel来解决这类问题。&lt;/p>
+&lt;h2 id="什么是最小费用最大流">什么是最小费用最大流？
+&lt;/h2>&lt;p>最小费用最大流是一个网络优化问题,旨在在给定网络中找到既能满足最大流量需求又能使总体成本最小化的流量分配方案。在这个模型中,&amp;ldquo;流&amp;quot;可以代表多种资源,如信息、物资或人力,而&amp;quot;费用&amp;quot;则可能是金钱成本、时间或其他量化指标。&lt;/p>
+&lt;h2 id="实际应用场景">实际应用场景
+&lt;/h2>&lt;ul>
+&lt;li>供应链管理：优化从多个供应商到多个零售点的产品配送。&lt;/li>
+&lt;li>电信网络：设计既能满足数据传输需求又能最小化基础设施成本的网络结构。&lt;/li>
+&lt;li>人力资源分配：在多个项目或部门间合理分配员工,以最大化生产力并控制成本。&lt;/li>
+&lt;li>交通规划：设计城市交通网络,平衡交通流量和基础设施投资。&lt;/li>
+&lt;li>能源配送：优化电力或燃气从发电站到用户的配送路径。&lt;/li>
+&lt;/ul>
+&lt;h2 id="项目管理中的应用步骤">项目管理中的应用步骤
+&lt;/h2>&lt;ol>
+&lt;li>问题定义和分析&lt;/li>
+&lt;li>数据收集和建模&lt;/li>
+&lt;li>方案设计和优化&lt;/li>
+&lt;li>实施和监控&lt;/li>
+&lt;li>风险管理&lt;/li>
+&lt;li>沟通和协调&lt;/li>
+&lt;li>持续改进&lt;/li>
+&lt;/ol>
+&lt;h2 id="实际案例软件公司的多项目资源分配">实际案例：软件公司的多项目资源分配
+&lt;/h2>&lt;h3 id="背景">背景
+&lt;/h3>&lt;p>软件公司XYZ正在同时进行三个项目：A、B和C。公司有限的开发人员需要在这三个项目之间进行分配。目标是在规定时间内完成所有项目,同时最小化总体成本。&lt;/p>
+&lt;h3 id="资源情况">资源情况
+&lt;/h3>&lt;ul>
+&lt;li>5名高级开发人员（每人每天成本1000元）&lt;/li>
+&lt;li>8名中级开发人员（每人每天成本600元）&lt;/li>
+&lt;li>10名初级开发人员（每人每天成本400元）&lt;/li>
+&lt;/ul>
+&lt;h3 id="项目需求">项目需求
+&lt;/h3>&lt;ol>
+&lt;li>项目A：需要100人天,至少需要2名高级开发人员&lt;/li>
+&lt;li>项目B：需要150人天,至少需要1名高级开发人员和3名中级开发人员&lt;/li>
+&lt;li>项目C：需要200人天,对开发人员级别没有特殊要求&lt;/li>
+&lt;li>所有项目需要在30个工作日内完成。&lt;/li>
+&lt;/ol>
+&lt;h3 id="使用excel解决问题">使用Excel解决问题
+&lt;/h3>&lt;h4 id="步骤1设置初始数据表格">步骤1：设置初始数据表格
+&lt;/h4>&lt;p>创建一个表格,列出所有开发人员类型、每日成本和可用数量。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">开发人员类型&lt;/th>
+&lt;th style="text-align: left">每日成本&lt;/th>
+&lt;th style="text-align: left">可用数量&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">高级&lt;/td>
+&lt;td style="text-align: left">1000&lt;/td>
+&lt;td style="text-align: left">5&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">中级&lt;/td>
+&lt;td style="text-align: left">600&lt;/td>
+&lt;td style="text-align: left">8&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">初级&lt;/td>
+&lt;td style="text-align: left">400&lt;/td>
+&lt;td style="text-align: left">10&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="步骤2创建项目需求表格">步骤2：创建项目需求表格
+&lt;/h4>&lt;p>列出每个项目的总人天需求和特殊要求。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">项目&lt;/th>
+&lt;th style="text-align: left">总人天&lt;/th>
+&lt;th style="text-align: left">特殊要求&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">A&lt;/td>
+&lt;td style="text-align: left">100&lt;/td>
+&lt;td style="text-align: left">至少2名高级&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">B&lt;/td>
+&lt;td style="text-align: left">150&lt;/td>
+&lt;td style="text-align: left">至少1名高级,3名中级&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">C&lt;/td>
+&lt;td style="text-align: left">200&lt;/td>
+&lt;td style="text-align: left">无&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h4 id="步骤3创建分配矩阵">步骤3：创建分配矩阵
+&lt;/h4>&lt;p>创建一个矩阵,行为开发人员类型,列为项目。&lt;/p>
+&lt;h4 id="步骤4设置约束条件">步骤4：设置约束条件
+&lt;/h4>&lt;p>使用Excel公式设置各种约束,如总人天、特定技能需求等。&lt;/p>
+&lt;h4 id="步骤5设置目标函数">步骤5：设置目标函数
+&lt;/h4>&lt;p>创建一个单元格计算总成本。&lt;/p>
+&lt;h4 id="步骤6使用excel求解器">步骤6：使用Excel求解器
+&lt;/h4>&lt;p>设置目标函数、变量单元格和约束条件。&lt;/p>
+&lt;h4 id="步骤7运行求解器并分析结果">步骤7：运行求解器并分析结果
+&lt;/h4>&lt;h3 id="最终解决方案">最终解决方案
+&lt;/h3>&lt;p>最优分配结果：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">开发人员类型&lt;/th>
+&lt;th style="text-align: left">项目A&lt;/th>
+&lt;th style="text-align: left">项目B&lt;/th>
+&lt;th style="text-align: left">项目C&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">高级&lt;/td>
+&lt;td style="text-align: left">60&lt;/td>
+&lt;td style="text-align: left">60&lt;/td>
+&lt;td style="text-align: left">30&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">中级&lt;/td>
+&lt;td style="text-align: left">40&lt;/td>
+&lt;td style="text-align: left">90&lt;/td>
+&lt;td style="text-align: left">90&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">初级&lt;/td>
+&lt;td style="text-align: left">0&lt;/td>
+&lt;td style="text-align: left">0&lt;/td>
+&lt;td style="text-align: left">80&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>每个项目的人员分配：&lt;/p>
+&lt;ul>
+&lt;li>项目A：2名高级(30天),2名中级(20天)&lt;/li>
+&lt;li>项目B：2名高级(30天),3名中级(30天)&lt;/li>
+&lt;li>项目C：1名高级(30天),3名中级(30天),8名初级(10天)&lt;/li>
+&lt;/ul>
+&lt;p>总成本计算：
+(60 + 60 + 30) * 1000 + (40 + 90 + 90) * 600 + 80 * 400 = 302,000元&lt;/p>
+&lt;p>约束条件验证：&lt;/p>
+&lt;ul>
+&lt;li>所有项目完成总人天：150 + 150 + 200 = 500 &amp;gt; 450(需求)&lt;/li>
+&lt;li>项目A至少2名高级：满足(2名)&lt;/li>
+&lt;li>项目B至少1名高级,3名中级：满足(2名高级,3名中级)&lt;/li>
+&lt;li>总工期不超过30天：满足&lt;/li>
+&lt;li>所有开发人员数量在可用范围内&lt;/li>
+&lt;/ul>
+&lt;h2 id="结论">结论
+&lt;/h2>&lt;p>通过应用最小费用最大流的原理并利用Excel求解器,我们成功地为XYZ软件公司制定了一个最优的资源分配方案。这个方案不仅满足了所有项目的需求和约束条件,还将总成本控制在了最低水平。&lt;/p>
+&lt;p>这个例子展示了最小费用最大流理论在实际项目管理中的强大应用价值。通过合理分配资源,企业可以在保证项目质量的同时,显著提高资源利用效率,降低运营成本。&lt;/p>
+&lt;p>对于项目经理和资源规划人员来说,掌握这种优化技术可以极大地提升决策质量。而Excel等常用工具的支持,更使得这种复杂的优化过程变得触手可及。&lt;/p>
+&lt;p>在未来的项目管理实践中,我们建议:&lt;/p>
+&lt;ol>
+&lt;li>充分利用数据和分析工具进行资源规划&lt;/li>
+&lt;li>定期review和调整资源分配方案&lt;/li>
+&lt;li>培养团队的跨项目协作能力&lt;/li>
+&lt;li>建立灵活的资源池,以应对项目需求的变化&lt;/li>
+&lt;/ol>
+&lt;p>通过不断实践和优化,相信每个组织都能在资源管理这个永恒的主题上取得显著进步,为企业创造更大的价值。&lt;/p></description></item><item><title>握项目管理的关键：深入理解关键路径法和浮动时间计算</title><link>https://buaa-mba.pages.dev/p/%E6%8F%A1%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%9A%84%E5%85%B3%E9%94%AE%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84%E6%B3%95%E5%92%8C%E6%B5%AE%E5%8A%A8%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97/</link><pubDate>Tue, 30 Jul 2024 14:16:16 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E6%8F%A1%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%9A%84%E5%85%B3%E9%94%AE%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84%E6%B3%95%E5%92%8C%E6%B5%AE%E5%8A%A8%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97/</guid><description>&lt;p>在项目管理中，准确估算时间和资源是确保项目成功的关键因素。关键路径法（Critical Path Method, CPM）和浮动时间计算是两个强大的工具，能帮助项目经理有效规划和控制项目进度。本文将深入探讨这两个概念，解释它们的计算方法及其在项目管理中的重要性。&lt;/p>
+&lt;h2 id="关键路径法eseflslf的计算">关键路径法：ES、EF、LS、LF的计算
+&lt;/h2>&lt;p>关键路径法是一种网络计划技术，用于确定项目中最长的活动序列，即关键路径。它涉及四个关键时间点的计算：最早开始时间（ES）、最早完成时间（EF）、最晚开始时间（LS）和最晚完成时间（LF）。&lt;/p>
+&lt;h3 id="前推法计算es和ef">前推法（计算ES和EF）
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>ES (最早开始时间):&lt;/p>
+&lt;ul>
+&lt;li>对于起始活动：ES = 项目开始时间（通常为0）&lt;/li>
+&lt;li>对于其他活动：ES = 所有紧前活动中最大的EF值&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>EF (最早完成时间):
+EF = ES + 活动持续时间&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="后推法计算ls和lf">后推法（计算LS和LF）
+&lt;/h3>&lt;ol>
+&lt;li>
+&lt;p>LF (最晚完成时间):&lt;/p>
+&lt;ul>
+&lt;li>对于终止活动：LF = 项目的计划完成时间&lt;/li>
+&lt;li>对于其他活动：LF = 所有紧后活动中最小的LS值&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>LS (最晚开始时间):
+LS = LF - 活动持续时间&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="浮动时间的计算及其重要性">浮动时间的计算及其重要性
+&lt;/h2>&lt;p>浮动时间表示一个活动可以推迟的时间而不影响整个项目的完成时间。理解和管理浮动时间对于优化项目进度和资源分配至关重要。&lt;/p>
+&lt;h3 id="总浮动时间-total-float-tf">总浮动时间 (Total Float, TF)
+&lt;/h3>&lt;p>总浮动时间是一个活动可以推迟的最大时间，而不影响整个项目的完成日期。&lt;/p>
+&lt;p>计算方法：
+TF = LS - ES 或 TF = LF - EF&lt;/p>
+&lt;h3 id="自由浮动时间-free-float-ff">自由浮动时间 (Free Float, FF)
+&lt;/h3>&lt;p>自由浮动时间是一个活动可以推迟的时间，而不影响任何后续活动的最早开始时间。&lt;/p>
+&lt;p>计算方法：
+FF = 紧后活动的最早开始时间 - 当前活动的最早完成时间
+或
+FF = MIN(紧后活动的ES) - EF&lt;/p>
+&lt;h2 id="应用这些概念的步骤">应用这些概念的步骤
+&lt;/h2>&lt;ol>
+&lt;li>从项目开始到结束，使用前推法计算每个活动的ES和EF。&lt;/li>
+&lt;li>从项目结束到开始，使用后推法计算每个活动的LF和LS。&lt;/li>
+&lt;li>计算总浮动时间和自由浮动时间。&lt;/li>
+&lt;li>识别关键路径：总浮动时间为0的活动序列即为关键路径。&lt;/li>
+&lt;/ol>
+&lt;h2 id="这些概念的重要性">这些概念的重要性
+&lt;/h2>&lt;ol>
+&lt;li>识别关键活动和非关键活动&lt;/li>
+&lt;li>优化资源分配&lt;/li>
+&lt;li>评估项目风险&lt;/li>
+&lt;li>制定应急计划&lt;/li>
+&lt;/ol>
+&lt;p>通过掌握关键路径法和浮动时间计算，项目经理可以：&lt;/p>
+&lt;ul>
+&lt;li>准确预测项目完成时间&lt;/li>
+&lt;li>识别需要特别关注的关键活动&lt;/li>
+&lt;li>合理分配资源，优化项目进度&lt;/li>
+&lt;li>及时发现潜在的进度问题并采取相应措施&lt;/li>
+&lt;/ul>
+&lt;p>虽然现代项目管理软件可以自动执行这些计算，但深入理解这些概念的原理对于做出明智的项目决策至关重要。通过熟练运用这些工具，项目经理可以更好地控制项目进度，提高项目成功的可能性。&lt;/p></description></item><item><title>正态分布和标准差</title><link>https://buaa-mba.pages.dev/p/%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E5%92%8C%E6%A0%87%E5%87%86%E5%B7%AE/</link><pubDate>Mon, 29 Jul 2024 18:58:40 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E5%92%8C%E6%A0%87%E5%87%86%E5%B7%AE/</guid><description>&lt;p>正态分布（也称为高斯分布）是统计学中非常重要的一种概率分布，其特征是呈钟形曲线。正态分布的形状由其均值（μ）和标准差（σ）决定。以下是正态分布和标准差之间的关系：&lt;/p>
+&lt;h3 id="1-定义">1. 定义：
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>均值（μ）&lt;/strong>：正态分布的中心，表示数据的平均值。&lt;/li>
+&lt;li>&lt;strong>标准差（σ）&lt;/strong>：表示数据点与均值之间的离散程度或波动性。标准差越大，数据的分布越宽，曲线越平坦；标准差越小，数据分布越窄，曲线越陡。&lt;/li>
+&lt;/ul>
+&lt;h3 id="2-正态分布的概率密度函数">2. 正态分布的概率密度函数：
+&lt;/h3>&lt;p>正态分布的概率密度函数（PDF）可以表示为：
+&lt;/p>
+\[
+f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}
+\]&lt;p>
+其中：&lt;/p>
+&lt;ul>
+&lt;li>\( f(x) \) 是在某个特定值 \( x \) 处的概率密度。&lt;/li>
+&lt;li>\( e \) 是自然对数的底数。&lt;/li>
+&lt;li>\( \pi \) 是圆周率。&lt;/li>
+&lt;/ul>
+&lt;h3 id="3-标准差与曲线形状的关系">3. 标准差与曲线形状的关系：
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>68-95-99.7规则&lt;/strong>：在正态分布中，大约68%的数据位于均值±1个标准差（μ±σ）之间，约95%的数据位于均值±2个标准差（μ±2σ）之间，约99.7%的数据位于均值±3个标准差（μ±3σ）之间。这一性质使得标准差在理解数据分布的范围和集中程度上极为重要。&lt;/li>
+&lt;/ul>
+&lt;p>所以当知道一个概率之后，想推算如果想达到某一个概率需要把期望移动到哪个区间，就是基于这个原理。&lt;/p>
+&lt;h3 id="4-应用">4. 应用：
+&lt;/h3>&lt;p>标准差在许多统计分析中扮演着重要角色，尤其是在进行假设检验、控制图和其他数据分析方法时。它帮助我们理解数据的可靠性和变异性。&lt;/p>
+&lt;h3 id="总结">总结：
+&lt;/h3>&lt;p>正态分布的形状和特性直接与标准差相关。标准差不仅影响分布的宽度和高度，还在数据分析和解释中起着关键作用。了解两者之间的关系，有助于我们更好地分析和理解数据。&lt;/p></description></item><item><title>Archives</title><link>https://buaa-mba.pages.dev/archives/</link><pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate><guid>https://buaa-mba.pages.dev/archives/</guid><description/></item><item><title>Search</title><link>https://buaa-mba.pages.dev/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://buaa-mba.pages.dev/search/</guid><description/></item></channel></rss>

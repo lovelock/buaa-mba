@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>机器学习 on MBA学习记录</title><link>https://buaa-mba.pages.dev/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link><description>Recent content in 机器学习 on MBA学习记录</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 25 Sep 2024 10:41:11 +0800</lastBuildDate><atom:link href="https://buaa-mba.pages.dev/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml"/><item><title>有监督学习与无监督学习简介</title><link>https://buaa-mba.pages.dev/p/%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/</link><pubDate>Wed, 25 Sep 2024 10:41:11 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/</guid><description>&lt;p>在机器学习的领域中，学习模型的方式主要分为两种：有监督学习和无监督学习。这两种方法各自有其独特的应用场景和优势，理解它们的不同之处对于选择合适的模型训练方法至关重要。&lt;/p>
+&lt;h2 id="有监督学习">有监督学习
+&lt;/h2>&lt;p>&lt;strong>定义&lt;/strong>&lt;br>
+有监督学习是在训练过程中使用带标签的数据。每个训练样本都有一个对应的目标输出（标签），模型的任务是学习输入与输出之间的映射关系。&lt;/p>
+&lt;p>&lt;strong>特点&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>数据集&lt;/strong>：使用包含输入数据和对应标签的数据集。&lt;/li>
+&lt;li>&lt;strong>目标&lt;/strong>：通过最小化模型的预测输出与真实标签之间的差异（通常使用损失函数来衡量）来进行训练。&lt;/li>
+&lt;li>&lt;strong>应用&lt;/strong>：广泛应用于分类、回归等任务，常见的例子包括图像识别、文本分类等。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>示例&lt;/strong>&lt;br>
+假设你有一个包含猫和狗图片的数据集，每张图片都有一个标签指示它是“猫”还是“狗”。通过训练模型，模型将学习识别图像的特征，并能够在新的、未见过的图像上进行分类。&lt;/p>
+&lt;h2 id="无监督学习">无监督学习
+&lt;/h2>&lt;p>&lt;strong>定义&lt;/strong>&lt;br>
+无监督学习是在训练过程中使用不带标签的数据。模型的任务是从数据中发现潜在的结构或模式，而不依赖于预先定义的标签。&lt;/p>
+&lt;p>&lt;strong>特点&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>数据集&lt;/strong>：仅包含输入数据，没有目标输出（标签）。&lt;/li>
+&lt;li>&lt;strong>目标&lt;/strong>：发现数据的内在结构，例如聚类、降维等。&lt;/li>
+&lt;li>&lt;strong>应用&lt;/strong>：常用于聚类、关联分析、降维等任务，具体应用包括市场细分、图像压缩等。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>示例&lt;/strong>&lt;br>
+假设你有一个包含不同形状的图像的数据集，但没有任何标签。通过无监督学习，模型可能会识别出图像的不同组（例如，圆形、方形等），而无需知道每个图像的具体类别。&lt;/p>
+&lt;h2 id="总结">总结
+&lt;/h2>&lt;p>有监督学习和无监督学习在机器学习中各具特色。选择哪种学习方式取决于可用的数据类型和特定应用的需求。了解这两种学习方式的不同之处，将有助于在实际应用中做出更明智的选择。&lt;/p></description></item></channel></rss>

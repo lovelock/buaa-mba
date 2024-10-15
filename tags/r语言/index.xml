@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>R语言 on MBA学习记录</title><link>https://buaa-mba.pages.dev/tags/r%E8%AF%AD%E8%A8%80/</link><description>Recent content in R语言 on MBA学习记录</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 12 Oct 2024 12:33:37 +0800</lastBuildDate><atom:link href="https://buaa-mba.pages.dev/tags/r%E8%AF%AD%E8%A8%80/index.xml" rel="self" type="application/rss+xml"/><item><title>管理统计中的线性回归</title><link>https://buaa-mba.pages.dev/p/%E7%AE%A1%E7%90%86%E7%BB%9F%E8%AE%A1%E4%B8%AD%E7%9A%84%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</link><pubDate>Sat, 12 Oct 2024 12:33:37 +0800</pubDate><guid>https://buaa-mba.pages.dev/p/%E7%AE%A1%E7%90%86%E7%BB%9F%E8%AE%A1%E4%B8%AD%E7%9A%84%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</guid><description>&lt;p>线性回归是管理统计这门课目前为止相对体系化的一个章节，本文希望能比较完整地介绍其中的知识点，以帮助笔者和读者形成较为完整的知识图谱。&lt;/p>
+&lt;h2 id="相关系数the-correlation-coefficient">相关系数（The Correlation Coefficient）
+&lt;/h2>&lt;p>在介绍具体的求解方法之前，先来看一下相关系数。&lt;/p>
+&lt;p>相关系数是用来衡量两个变量之间关系强度和方向的统计量，最常见的有以下3个。&lt;/p>
+&lt;h3 id="皮尔逊相关系数pearson-correlation-coefficient">皮尔逊相关系数（Pearson correlation coefficient）
+&lt;/h3>&lt;h4 id="定义">定义
+&lt;/h4>&lt;p>衡量两个变量之间的线性关系强度和方向&lt;/p>
+&lt;h4 id="计算方法">计算方法
+&lt;/h4>$$
+r(x, y) = \frac{\sum^n_{i=1}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum^n_{i=1}(x_i-\bar{x})^2}\sqrt{\sum^n_{i=1}(y_i-\bar{y})^2}}
+$$&lt;h4 id="取值范围">取值范围
+&lt;/h4>&lt;ol>
+&lt;li>$-1 \leq r \leq 1$&lt;/li>
+&lt;li>$0 &amp;lt; r \leq 1$ 正线性相关&lt;/li>
+&lt;li>$-1\leq r &amp;lt; 0$ 负线性相关&lt;/li>
+&lt;li>$r=0$ 线性无关&lt;/li>
+&lt;li>$r=1$ 完全正线性相关&lt;/li>
+&lt;li>$r=-1$ 完全负线性相关&lt;/li>
+&lt;/ol>
+&lt;h4 id="适用场景">适用场景
+&lt;/h4>&lt;p>适合于数据满足正态分布和线性关系的情况。&lt;/p>
+&lt;h3 id="斯皮尔曼秩相关系数spearmans-rank-correlation-coefficient">斯皮尔曼秩相关系数（Spearman&amp;rsquo;s rank correlation coefficient）
+&lt;/h3>&lt;h4 id="定义-1">定义
+&lt;/h4>&lt;p>衡量两个变量之间的单调关系，基于变量的排名。这也是为什么名字就叫“秩”相关系数的原因。&lt;/p>
+&lt;h4 id="计算方法-1">计算方法
+&lt;/h4>$$
+\rho(u,v) = \frac{\sum^n_{i=1}(u_i - \bar{u})(v_i - \bar{v})}{\sqrt{\sum^n_{i=1}(u_i-\bar{u})^2}\sqrt{\sum^n_{i=1}(v_i - \bar{v})^2}}
+$$&lt;p>注意：公式中使用的变量是原始数据排序之后得到的序号值，也就是秩，而不是原始的数据，抛开这个差异，它和Pearson相关系数的公式是一样的。&lt;/p>
+&lt;h4 id="取值范围-1">取值范围
+&lt;/h4>&lt;p>从 -1 到 +1。&lt;/p>
+&lt;ul>
+&lt;li>+1: 完全正相关&lt;/li>
+&lt;li>-1: 完全负相关&lt;/li>
+&lt;li>0: 无单调关系&lt;/li>
+&lt;/ul>
+&lt;p>注意： Spearman秩相关系数解决了Pearson相关系数在处理&lt;strong>非线性&lt;/strong>关系时存在的问题，在处理存在特异点的情形时有优势，比如存在&lt;a class="link" href="../%e7%89%b9%e5%bc%82%e7%82%b9%e5%92%8c%e9%ab%98%e6%9d%a0%e6%9d%86%e7%82%b9" >特异点和高杠杆点&lt;/a>时。&lt;/p>
+&lt;h4 id="适用场景-1">适用场景
+&lt;/h4>&lt;ul>
+&lt;li>单调关系（非常重要）&lt;/li>
+&lt;li>非线性关系&lt;/li>
+&lt;li>存在&lt;a class="link" href="../%e7%89%b9%e5%bc%82%e7%82%b9%e5%92%8c%e9%ab%98%e6%9d%a0%e6%9d%86%e7%82%b9" >特异点和高杠杆点&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 id="肯德尔tau相关系数kendall-tau-coefficient">肯德尔$\tau$相关系数（Kendall $\tau$ coefficient）
+&lt;/h3>&lt;h4 id="定义-2">定义
+&lt;/h4>&lt;p>衡量两个定序变量的协同性，仍然是基于序号（秩）的。&lt;/p>
+&lt;h4 id="计算方法-2">计算方法
+&lt;/h4>&lt;p>对于n个样本点对：$(x_1,y_1),(x_2,y_2),&amp;hellip;(x_n,y_n)$&lt;/p>
+&lt;p>$\forall{j&amp;gt;i; i,j = 1,2,&amp;hellip;,n}$&lt;/p>
+&lt;p>$(x_i,y_i)$与$(x_j,y_j)$的秩方向相同：$(x_j-x_i)(y_j-y_i) &amp;gt; 0$
+$(x_i,y_i)$与$(x_j,y_j)$的秩方向相反：$(x_j-x_i)(y_j-y_i) &amp;lt; 0$&lt;/p>
+&lt;p>全部数据所有可能的样本点对共有&lt;/p>
+\[
+\binom{n}{2} = \frac{n!}{2!(n-2)!} = \frac{n(n-1)}{2}
+\]&lt;p>用$N_c$表示同向数对的个数，用$N_d$表示反向数对的个数，则有&lt;/p>
+$$
+\tau = \frac{N_c - N_d}{n(n-1)/2}
+$$&lt;h4 id="取值范围-2">取值范围
+&lt;/h4>&lt;p>从 -1 到 +1。&lt;/p>
+&lt;ul>
+&lt;li>+1: 完全一致的顺序&lt;/li>
+&lt;li>-1: 完全不一致的顺序&lt;/li>
+&lt;li>0: 无一致性&lt;/li>
+&lt;/ul>
+&lt;h4 id="适用场景-2">适用场景
+&lt;/h4>&lt;p>适合于小样本或有较多重复值的数据，通常被认为比斯皮尔曼更稳健。比如多个评委对多个选手的打分场景，可以用于评判对一个选手的评判是否公平。&lt;/p>
+&lt;h2 id="线性回归">线性回归
+&lt;/h2>&lt;p>所谓线性回归，就是要用&lt;strong>线性函数&lt;/strong>来&lt;strong>拟合&lt;/strong>数据，从而希望用来预测新样本数据的&lt;strong>预测&lt;/strong>的过程。那么相应的，非线性回归用的就是非线性函数。&lt;/p>
+&lt;p>线性函数就是形如$y=b+ax$这样的函数，自变量和因变量之间是线性关系。&lt;/p>
+&lt;h3 id="一元线性回归和多元线性回归">一元线性回归和多元线性回归
+&lt;/h3>&lt;p>所谓一元就是一个自变量，多元就是多个自变量，一元是多元的一个特例，所以这里就放在一起说了。&lt;/p>
+&lt;p>对于总体数据，存在&lt;/p>
+$$
+y_i = \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + ... + \beta_kx_{ik} + \epsilon_i
+$$&lt;ul>
+&lt;li>$y_i$是因变量Y在第$i$个样本点上的取值&lt;/li>
+&lt;li>$\beta_0,\beta_1,&amp;hellip;\beta_k$是未知的总体参数&lt;/li>
+&lt;li>$x_{ij}$是自变量$X_j$在第$i$个样本点上的取值&lt;/li>
+&lt;li>$\epsilon_i$是第$i$个随机误差项的取值&lt;/li>
+&lt;/ul>
+&lt;p>那么，回归建模要解决的问题就是求出$\beta_0,\beta_1,&amp;hellip;\beta_k$。&lt;/p>
+&lt;h2 id="求解方法">求解方法
+&lt;/h2>&lt;h3 id="最小二乘法">最小二乘法
+&lt;/h3>&lt;p>关于最小二乘法的具体操作可查看&lt;a class="link" href="../%e6%9c%80%e5%b0%8f%e4%ba%8c%e4%b9%98%e6%b3%95%e8%af%a6%e8%a7%a3%e4%b8%8e%e6%8b%89%e6%a0%bc%e6%9c%97%e6%97%a5%e6%b1%82%e8%a7%a3%e8%bf%87%e7%a8%8b/" >最小二乘法详解与拉格朗日求解过程&lt;/a>&lt;/p>
+&lt;h3 id="模型评估方法">模型评估方法
+&lt;/h3>&lt;p>通过最小二乘法得到了回归函数的系数了，但这个函数真的能很好地解释自变量和因变量的变化规律吗？所以就要引出对模型质量的评估方法了。有如下几个指标&lt;/p>
+&lt;h4 id="拟合优度goodness-of-fit">拟合优度（Goodness of Fit）
+&lt;/h4>&lt;p>判定系数是$R^2$（Coefficient of Determination）&lt;/p>
+$$
+R^2 = \frac{\sum^n_{i=1}(\hat{y}-\bar{y})^2}{\sum^n_{i=1}(y_i-\bar{y})^2}
+=\frac{用回归模型可解释的变异量}{总变异量}
+$$&lt;p>从定义来看，$R^2$越接近1，表示拟合优度越高，但实际并不是完全正相关的，需要具体问题具体分析。（有时过高的拟合优度可能代表&lt;a class="link" href="../%e8%bf%87%e5%ba%a6%e6%8b%9f%e5%90%88" >过度拟合&lt;/a>）。&lt;/p>
+&lt;p>$R^2$的性质：&lt;/p>
+&lt;ol>
+&lt;li>$0 &amp;lt;= R^2 &amp;lt;= 1$&lt;/li>
+&lt;li>当$R^2=1$时，表示模型解释了所有的变异，说明模型的拟合效果非常好&lt;/li>
+&lt;li>当$R^2=0$时，表示模型没有解释任何变异，说明模型的拟合效果很差&lt;/li>
+&lt;li>$\left|r(x,y)\right|=\sqrt{R^2}$，$r(x,y)$的符号取决于$b_1$的符号&lt;/li>
+&lt;li>增加更多的自变量通常不会减少$R^2$的值，但即使这些变量与因变量无关，$R^2$也可能增加，这可能导致过度拟合的问题&lt;/li>
+&lt;li>$R^2$只适用于线性回归模型，对于非线性模型不一定有效。它不能用来判断模型是否合适，模型的残差分析同样重要&lt;/li>
+&lt;/ol>
+&lt;h5 id="调整后的测定系数">调整后的测定系数
+&lt;/h5>&lt;p>为了解决增加自变量导致的$R^2$的问题，通常使用调整后的$R^2$（$\bar{R}^2$）。&lt;/p>
+$$
+\bar{R}^2 = 1 - (1-R^2) \cdot \frac{n-1}{n-p-1}
+$$&lt;p>其中，\( n \) 是样本大小，\( p \) 是自变量的数量。调整后的 \( R^2 \) 会惩罚增加不相关的自变量。&lt;/p>
+&lt;p>关于&lt;a class="link" href="../%e6%a8%a1%e5%9e%8b%e8%af%84%e4%bc%b0%e4%b8%ad%e7%9a%84f%e6%a3%80%e9%aa%8c%e5%92%8ct%e6%a3%80%e9%aa%8c" >F检验和t检验&lt;/a>，但这篇文章只介绍了二者的定义，而没有介绍它在模型评估中的作用。&lt;/p>
+&lt;h4 id="f-test">F-test
+&lt;/h4>&lt;p>F-test用来检验回归模型的线性关系，即自变量和因变量之间是否存在线性关系。&lt;/p>
+&lt;p>举例：
+$y_i = \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + &amp;hellip; + \beta_kx_{ik} + \epsilon_i$&lt;/p>
+&lt;p>F检验是用来验证$\forall_{i &amp;gt;= 1;} \beta_i \ne 0$&lt;/p>
+&lt;ul>
+&lt;li>零假设 ($H_0$​)：所有自变量的系数都等于零，即模型没有解释力。&lt;/li>
+&lt;li>备择假设 ($H_1$​)：至少有一个自变量的系数不等于零，意味着模型有解释力。&lt;/li>
+&lt;/ul>
+&lt;p>所以对于一个多元线性模型，只需要做一次F检验。&lt;/p>
+&lt;p>计算F值后，与临界值进行比较，或使用p值进行判断。如果F值大于临界值或&lt;strong>p值小于显著性水平（通常为0.05）&lt;/strong>，则拒绝零假设，表明模型具有统计显著性。&lt;/p>
+&lt;p>如果是非线性模型，F检验的结果可能不可靠。&lt;/p>
+&lt;h4 id="t-test">t-test
+&lt;/h4>&lt;p>t-test用来检验回归系数的显著性，即&lt;strong>某个&lt;/strong>自变量对因变量是否有解释作用，所以有$n$个自变量的多元线性回归函数，就要进行$n$次t检验。同样是判断p值是否小于显著性水平。&lt;/p>
+&lt;blockquote>
+&lt;p>显著性水平在Excel里是在P-value列，但在SPSS里是Sig.F&lt;/p>
+&lt;/blockquote>
+&lt;h4 id="交叉验证">交叉验证
+&lt;/h4>&lt;p>泛化能力（Generalization Ability）是模型对新样本的预测能力。&lt;/p>
+&lt;p>前面提到了过度拟合，它指的是对训练样本的拟合能力，过度拟合带来的后果可能就是泛化能力不足，光顾着满足训练样本了，无法预测新样本。&lt;/p>
+&lt;p>那么，一个直观的想法就是把已有的数据集分成两部分，一部分作为训练集，用来建立模型，另一部分作为测试集，将测试集数据代入模型，验证模型的表现。&lt;/p>
+&lt;p>模型的预测精度可以用验证集的均方误差(PRESS, predicted Error Sum of Squares)来测量&lt;/p>
+$$
+PRESS = \sum^{n_2}_{i=1}(y_i-\hat{y}_i)^2
+$$&lt;p>但是，很多实际情况下数据集并不足以拆分成两个足够大的训练集和测试集，这时候就要用到留一交叉验证法了。&lt;/p>
+&lt;p>简单来说就是依次从数据集中抽出一个作为测试集，用其他的作为训练集，第i个样本上的预测误差: $e^{\star}_i = y_i - \hat{y}_i$。那么模型的预测均方误差的估计值就是&lt;/p>
+$$
+PRESS = \sum^n_{i=1}(e^{\star}_i)^2 = \sum^n_{i=1}(y_i-\hat{y}_i)^2
+$$&lt;h3 id="变量筛选方法">变量筛选方法
+&lt;/h3>&lt;p>接上面讲的t-test，有时我们会发现一些变量的P-value并不满足要求，即它对模型的解释性不显著，需要考虑把这种自变量剔除出模型，这就要用到变量筛选方法。&lt;/p>
+&lt;h4 id="向后筛选法backward-elimination">向后筛选法(Backward Elimination)
+&lt;/h4>&lt;p>这是最直接的方法，在用所有自变量生成的模型中，先把P-value大于0.05中的最大值对应的自变量去掉重新生成模型，如果还有大于0.05的就继续这一步操作，直到所有的P-value都小于0.05。&lt;/p>
+&lt;h4 id="向前选择法forward-selection">向前选择法(Forward Selection)
+&lt;/h4>&lt;p>反过来操作就是先计算因变量与每个自变量的一元回归模型，再从中找到P-value最小(且满足&amp;lt;0.05)的进入模型，然后在保留这个自变量的前提下再继续添加别的自变量。&lt;/p>
+&lt;h4 id="逐步回归法stepwise-regression">逐步回归法(Stepwise Regression)
+&lt;/h4>&lt;p>但不管是向后筛选还是向前选择都有问题:&lt;/p>
+&lt;p>向后筛选法的问题是一旦一个自变量被剔除了，它就没机会再进入了，但随着其他自变量被删除，它的作用可能会显著起来。&lt;/p>
+&lt;p>向前选择法的问题是一旦一个自变量被加进来，它就不会再被剔出去了，但随着其他自变量的引入，一些先进入模型的变量的作用可能会变得不再显著。&lt;/p>
+&lt;p>总的来说就是没有考虑自变量之间的互相影响，这就需要逐步回归法来解决了。&lt;/p>
+&lt;p>方法：边进边退&lt;/p>
+&lt;p>起始：同前进法
+结束：模型外的所有变量均不能通过t-检验&lt;/p>
+&lt;p>这个过程比较复杂，稍后用R语言的计算过程来演示。&lt;/p>
+&lt;h2 id="r语言实战">R语言实战
+&lt;/h2>&lt;p>Excel无法实现变量筛选的自动化，SPSS用是能用，但是商用软件而且启动速度太慢了，所以这里用R语言来演示这个过程。&lt;/p>
+&lt;p>R Studio的安装非常简单，这里不再赘述，可以先看一篇非常优秀的文章：&lt;a class="link" href="https://www.geeksforgeeks.org/stepwise-regression-in-r/" target="_blank" rel="noopener"
+>Stepwise Regression in R&lt;/a>。&lt;/p>
+&lt;p>我们重点关注逐步回归法。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;span class="lnt">53
+&lt;/span>&lt;span class="lnt">54
+&lt;/span>&lt;span class="lnt">55
+&lt;/span>&lt;span class="lnt">56
+&lt;/span>&lt;span class="lnt">57
+&lt;/span>&lt;span class="lnt">58
+&lt;/span>&lt;span class="lnt">59
+&lt;/span>&lt;span class="lnt">60
+&lt;/span>&lt;span class="lnt">61
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">Start: AIC=-33.22
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Employed ~ GNP.deflator + GNP + Unemployed + Armed.Forces + Population +
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Year
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Df Sum of Sq RSS AIC
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- GNP.deflator 1 0.00292 0.83935 -35.163
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- Population 1 0.00475 0.84117 -35.129
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- GNP 1 0.10631 0.94273 -33.305
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;lt;none&amp;gt; 0.83642 -33.219
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- Year 1 1.49881 2.33524 -18.792
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- Unemployed 1 1.59014 2.42656 -18.178
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- Armed.Forces 1 2.16091 2.99733 -14.798
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Step: AIC=-35.16
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Employed ~ GNP + Unemployed + Armed.Forces + Population + Year
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Df Sum of Sq RSS AIC
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- Population 1 0.01933 0.8587 -36.799
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;lt;none&amp;gt; 0.8393 -35.163
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- GNP 1 0.14637 0.9857 -34.592
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">+ GNP.deflator 1 0.00292 0.8364 -33.219
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- Year 1 1.52725 2.3666 -20.578
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- Unemployed 1 2.18989 3.0292 -16.628
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- Armed.Forces 1 2.39752 3.2369 -15.568
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Step: AIC=-36.8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Employed ~ GNP + Unemployed + Armed.Forces + Year
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Df Sum of Sq RSS AIC
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;lt;none&amp;gt; 0.8587 -36.799
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">+ Population 1 0.0193 0.8393 -35.163
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">+ GNP.deflator 1 0.0175 0.8412 -35.129
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- GNP 1 0.4647 1.3234 -31.879
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- Year 1 1.8980 2.7567 -20.137
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- Armed.Forces 1 2.3806 3.2393 -17.556
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- Unemployed 1 4.0491 4.9077 -10.908
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;gt; # Print the summary of the selected model
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;gt; summary(stepwise_model)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Call:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lm(formula = Employed ~ GNP + Unemployed + Armed.Forces + Year,
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> data = longley)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Residuals:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Min 1Q Median 3Q Max
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-0.42165 -0.12457 -0.02416 0.08369 0.45268
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Coefficients:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Estimate Std. Error t value Pr(&amp;gt;|t|)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">(Intercept) -3.599e+03 7.406e+02 -4.859 0.000503 ***
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">GNP -4.019e-02 1.647e-02 -2.440 0.032833 *
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Unemployed -2.088e-02 2.900e-03 -7.202 1.75e-05 ***
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Armed.Forces -1.015e-02 1.837e-03 -5.522 0.000180 ***
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Year 1.887e+00 3.828e-01 4.931 0.000449 ***
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">---
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Signif. codes: 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Residual standard error: 0.2794 on 11 degrees of freedom
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Multiple R-squared: 0.9954, Adjusted R-squared: 0.9937
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">F-statistic: 589.8 on 4 and 11 DF, p-value: 9.5e-13
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>可以看到，最终的模型带$\star$的都是满足要求的，把相关的系数代进去就是回归函数了。&lt;/p>
+&lt;p>那么，AIC是什么？&lt;/p>
+&lt;p>在R语言的逐步回归过程中，AIC（赤池信息量准则）和BIC（贝叶斯信息量准则）是两个常用的模型选择标准，用于评估和比较不同的统计模型。它们的主要作用是帮助选择合适的模型，同时考虑模型的复杂性和拟合优度。&lt;/p>
+&lt;h3 id="aic赤池信息量准则">AIC（赤池信息量准则）
+&lt;/h3>&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>定义&lt;/strong>：AIC是基于信息论的模型选择标准，其公式为：
+&lt;/p>
+\[
+\text{AIC} = 2k - 2\ln(L)
+\]&lt;p>
+其中，\(k\)是模型中参数的数量，\(L\)是模型的似然函数。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>作用&lt;/strong>：AIC试图在拟合优度和模型复杂性之间取得平衡。较小的AIC值表示更优的模型。AIC倾向于选择较复杂的模型，因为它的惩罚力度相对较小。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="bic贝叶斯信息量准则">BIC（贝叶斯信息量准则）
+&lt;/h3>&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>定义&lt;/strong>：BIC是基于贝叶斯理论的模型选择标准，其公式为：
+&lt;/p>
+\[
+\text{BIC} = \ln(n)k - 2\ln(L)
+\]&lt;p>
+其中，\(n\)是样本数量，\(k\)是模型中参数的数量，\(L\)是模型的似然函数。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>作用&lt;/strong>：BIC也用于平衡模型的复杂性和拟合优度，但相较于AIC，它对模型复杂性的惩罚更为严格。BIC倾向于选择较简单的模型，尤其是在样本量较大时。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="aic与bic的比较">AIC与BIC的比较
+&lt;/h3>&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>惩罚力度&lt;/strong>：AIC的惩罚与参数数量成线性关系，而BIC的惩罚与样本量\(n\)相关，因此BIC对复杂模型的惩罚更大。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>使用场景&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>AIC&lt;/strong>：在样本量较小或对模型复杂性不太敏感的情况下，AIC可能更适用。&lt;/li>
+&lt;li>&lt;strong>BIC&lt;/strong>：在样本量较大时，BIC倾向于选择更简单的模型，适合于更关注模型的解释性的场景。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="回到julia">回到Julia
+&lt;/h3>&lt;p>如果你看过我之前的文章可能会发现在学习运筹与决策时，我是更倾向于用Julia的，但这里我选择了R语言，这是因为在处理回归问题时，R语言比Julia优势明显，一个&lt;code>step()&lt;/code>方法够Julia喝一壶的了，所以工具合适最重要，Julia的优势在于更加工程化、性能好，而R语言的优势在于包多，功能多。&lt;/p>
+&lt;h2 id="自变量的多重相关性问题">自变量的多重相关性问题
+&lt;/h2>&lt;p>前面提到了自变量之间的相互影响，这要怎么理解呢？&lt;/p>
+&lt;p>自变量的多重相关性（Multicollinearity）是指在回归分析中，自变量之间存在较强的线性关系。这种现象可能导致一些问题，影响模型的稳定性和解释能力。以下是关于多重相关性的一些重要点：&lt;/p>
+&lt;h3 id="多重相关性的影响">多重相关性的影响
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>不稳定的回归系数&lt;/strong>：当自变量之间高度相关时，回归系数的估计可能变得不稳定，导致对自变量的影响不准确。&lt;/li>
+&lt;li>&lt;strong>标准误差增大&lt;/strong>：多重共线性会导致标准误差增大，从而影响t检验的结果，导致无法显著区分自变量的影响。&lt;/li>
+&lt;li>&lt;strong>模型解释困难&lt;/strong>：由于自变量之间的相互关系，难以确定哪个自变量真正对因变量有影响。&lt;/li>
+&lt;/ul>
+&lt;h3 id="识别多重相关性">识别多重相关性
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>相关矩阵&lt;/strong>：计算自变量之间的相关系数矩阵，查看哪些自变量之间的相关性较高。&lt;/li>
+&lt;li>&lt;strong>方差膨胀因子（VIF）&lt;/strong>：
+&lt;ul>
+&lt;li>VIF是一个常用的度量指标，用于检测多重相关性。VIF值越高，表示自变量的多重相关性越强。&lt;/li>
+&lt;li>通常，VIF值大于10被认为有较强的多重共线性。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>条件数&lt;/strong>：条件数（Condition Number）也是检测多重相关性的一种方法，值越大，表示共线性越严重。&lt;/li>
+&lt;/ul>
+&lt;h3 id="解决多重相关性的方法">解决多重相关性的方法
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>删除变量&lt;/strong>：根据相关性分析，删除一些自变量，以减少多重共线性。&lt;/li>
+&lt;li>&lt;strong>合并变量&lt;/strong>：将相关性强的变量合并为一个新的变量，例如通过主成分分析（PCA）。&lt;/li>
+&lt;li>&lt;strong>正则化方法&lt;/strong>：采用正则化回归（如Lasso回归、Ridge回归等），这些方法能够减小多重共线性带来的影响。&lt;/li>
+&lt;li>&lt;strong>增加样本量&lt;/strong>：在某些情况下，增加样本量可能会减轻多重共线性的问题。&lt;/li>
+&lt;/ul>
+&lt;h3 id="注意事项">注意事项
+&lt;/h3>&lt;ul>
+&lt;li>在某些情况下，多重相关性本身并不影响模型的预测能力，但仍然需要注意模型的解释性。&lt;/li>
+&lt;li>在建立模型时，理解自变量之间的关系，可以帮助研究人员做出更好的决策。&lt;/li>
+&lt;/ul>
+&lt;p>多重相关性是回归分析中常见的问题，会影响模型的稳定性和解释能力。通过识别和解决多重相关性，可以提高模型的可靠性和准确性。&lt;/p>
+&lt;h2 id="非线性回归模型">非线性回归模型
+&lt;/h2>&lt;p>上面主要讲了线性回归模型，但有些非线性回归模型可以通过某些变换转化为线性回归模型，从而利用线性回归方法进行分析。以下是一些常见的例子：&lt;/p>
+&lt;h3 id="指数回归模型">指数回归模型
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>非线性模型&lt;/strong>：\( y = a e^{bx} \)&lt;/li>
+&lt;li>&lt;strong>线性化&lt;/strong>：取自然对数，两边取对数：
+\[
+\ln(y) = \ln(a) + bx
+\]&lt;/li>
+&lt;li>&lt;strong>线性回归形式&lt;/strong>：可以将其视为线性回归模型，其中 \( Y = \ln(y) \) 和 \( X = x \)。&lt;/li>
+&lt;/ul>
+&lt;h3 id="幂律回归模型">幂律回归模型
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>非线性模型&lt;/strong>：\( y = ax^b \)&lt;/li>
+&lt;li>&lt;strong>线性化&lt;/strong>：对两边取对数：
+\[
+\ln(y) = \ln(a) + b \ln(x)
+\]&lt;/li>
+&lt;li>&lt;strong>线性回归形式&lt;/strong>：可以将其视为线性回归模型，其中 \( Y = \ln(y) \) 和 \( X = \ln(x) \)。&lt;/li>
+&lt;/ul>
+&lt;h3 id="逻辑回归模型">逻辑回归模型
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>非线性模型&lt;/strong>：\( P(y=1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x)}} \)&lt;/li>
+&lt;li>&lt;strong>线性化&lt;/strong>：通过逻辑斯蒂变换：
+\[
+\ln\left(\frac{P}{1-P}\right) = \beta_0 + \beta_1 x
+\]&lt;/li>
+&lt;li>&lt;strong>线性回归形式&lt;/strong>：将对数比视为因变量，使用线性回归进行分析。&lt;/li>
+&lt;/ul>
+&lt;h3 id="二次回归模型">二次回归模型
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>非线性模型&lt;/strong>：\( y = ax^2 + bx + c \)&lt;/li>
+&lt;li>&lt;strong>线性化&lt;/strong>：可以重写为：
+\[
+y = c + b x + a x^2
+\]&lt;/li>
+&lt;li>&lt;strong>线性回归形式&lt;/strong>：将 \( x^2 \) 作为一个新的自变量，形成多元线性回归模型。&lt;/li>
+&lt;/ul>
+&lt;h3 id="平方根回归">平方根回归
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>非线性模型&lt;/strong>：\( y = a + b\sqrt{x} \)&lt;/li>
+&lt;li>&lt;strong>线性化&lt;/strong>：定义新的自变量 \( z = \sqrt{x} \)，则方程变为：
+\[
+y = a + bz
+\]&lt;/li>
+&lt;li>&lt;strong>线性回归形式&lt;/strong>：用 \( z \) 作为自变量进行线性回归。&lt;/li>
+&lt;/ul>
+&lt;p>通过对非线性模型进行适当的变换，可以将其转化为线性回归模型。这种方法使得我们能够利用线性回归的强大工具和技术来分析和预测数据。&lt;/p>
+&lt;h2 id="总结">总结
+&lt;/h2>&lt;p>本文整体讲了线性回归模型中的一些概念和问题，包括相关系数、模型计算和检验、拟合优度、变量筛选（R语言为例）以及非线性回归模型转换成线性模型的例子，希望能对线性回归的学习有所帮助。&lt;/p></description></item></channel></rss>
