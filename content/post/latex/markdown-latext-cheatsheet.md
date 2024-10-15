@@ -213,6 +213,7 @@ eg: `$\lfloor hllo\rfloor$` ==> $\lfloor hllo\rfloor$
 | $\neg$       | `\neg`       | $\flat$      | `\flat`      | $\natural$     | `\natural`     |
 | $\sharp$     | `\sharp`     | $\angle$     | `\angle`     | $\mho$         | `\mho`         |
 | $\Box$       | `\Box`       | $\clubsuit$  | `\clubsuits` | $\spadesuit$   | `\spadesuit`   |
+| $\mathrm{d}$       | `\mathrm{d}`       |   |  |    |    |
 
 ### 7.希腊字母(Greek Letters)显示表
 
